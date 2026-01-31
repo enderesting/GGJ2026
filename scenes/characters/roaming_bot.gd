@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name RoamingRobot
 
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 
 # Both robots and masker should inherit the movable class. Maybe give it a better name though

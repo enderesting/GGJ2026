@@ -2,6 +2,8 @@ extends RoamingRobot
 
 var states: Dictionary
 var current_state: State
+var goal: Vector2
+@export var dist_to_goal: float = 5
 
 func _ready():
 	super._ready()
@@ -12,7 +14,6 @@ func _ready():
 	}
 	for state_name in states:
 		states[state_name].character = self
-
 	change_state(states["IDLE"])
 
 func change_state(new_state: State):
