@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bal1pujq6u7ff"]
+
+[ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/character_body_2d_2.gd" id="1_few7v"]
+[ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_n7rnd"]
+[ext_resource type="PackedScene" uid="uid://bqy50s757ncyw" path="res://scenes/characters/robot/robot_npc.tscn" id="3_n7rnd"]
+[ext_resource type="Texture2D" uid="uid://cemssy3xyn808" path="res://assets/temp/mockup_bg.jpg" id="4_ki45q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
+size = Vector2(900.5, 549.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n85cq"]
+size = Vector2(50, 48)
+
+[node name="TheLevel" type="Node2D" unique_id=521265649]
+
+[node name="Area2DWall" type="StaticBody2D" parent="." unique_id=1898967462]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DWall" unique_id=1360778383]
+polygon = PackedVector2Array(376, 168, 1280, 168, 1280, 720, 368, 720, 368, 168, 320, 128, 320, 752, 1320, 752, 1320, 128, 328, 128)
+
+[node name="Area2DPlayArea" type="Area2D" parent="." unique_id=911222187]
+
+[node name="PlayArea" type="CollisionShape2D" parent="Area2DPlayArea" unique_id=743758708]
+unique_name_in_owner = true
+position = Vector2(824.75, 442.125)
+shape = SubResource("RectangleShape2D_dy4vm")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1096455937]
+collision_mask = 5
+script = ExtResource("1_few7v")
+
+[node name="Icon" type="Sprite2D" parent="Player" unique_id=198681535]
+texture = ExtResource("2_n7rnd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=198859869]
+shape = SubResource("RectangleShape2D_n85cq")
+
+[node name="Overseer" type="Node2D" parent="." unique_id=1272758883]
+
+[node name="TheHivemind" type="Node2D" parent="." unique_id=1065342543]
+
+[node name="Robot" type="AnimatedSprite2D" parent="TheHivemind" unique_id=2028356193]
+visible = false
+position = Vector2(-48, 48)
+
+[node name="Icon" type="Sprite2D" parent="TheHivemind" unique_id=1341895898]
+
+[node name="RobotNpc" parent="." unique_id=2117813626 instance=ExtResource("3_n7rnd")]
+position = Vector2(-132, 75)
+
+[node name="MockupBg" type="Sprite2D" parent="." unique_id=2028921882]
+z_index = -5
+scale = Vector2(1.33, 1.33)
+texture = ExtResource("4_ki45q")
+centered = false
