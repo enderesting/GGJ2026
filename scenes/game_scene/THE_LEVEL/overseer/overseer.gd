@@ -5,7 +5,7 @@ func _ready() -> void:
 	$Sawblade.visible = false
 	
 	
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(&"trap_1"):
 		$Deathray.position = %PlayArea.position
 		$Deathray.visible = true

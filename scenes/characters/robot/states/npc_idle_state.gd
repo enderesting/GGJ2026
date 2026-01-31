@@ -6,22 +6,20 @@ var direction
 func enter():
 	character.goal = character.random_position()
 	direction = random_dir()
-	pass
 
 func exit():
 	pass
 
-func process(delta):
+func process(_delta):
 	pass
 
-func physics_process(delta):
+func physics_process(_delta):
 	character.velocity = Vector2.ZERO
 
 	if randf() <= 0.03:
 		# change goal
 		# character.goal = character.random_position()
 		direction = random_dir()
-		pass
 	
 	
 	# if character.position.distance_to(character.goal) <= character.dist_to_goal:

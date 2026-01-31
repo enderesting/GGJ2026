@@ -9,7 +9,7 @@ var overseer
 var bad_robot
 
 func _input(event: InputEvent) -> void:
-	var device_id = event.device
+	#var device_id = event.device
 	
 	#print("press a button")
 	#ask for button player 1
@@ -27,5 +27,5 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

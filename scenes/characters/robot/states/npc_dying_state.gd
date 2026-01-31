@@ -3,15 +3,15 @@ class_name NPCDyingState
 
 
 func enter():
-    # Play dying animation
-    pass
+	# Play dying animation
+	pass
 
 func exit():
-    # Remove? Is it here?
-    pass
+	# Remove? Is it here?
+	pass
 
-func process(delta):
-    pass
+func process(_delta):
+	pass
 
-func physics_process(delta):
-    pass
+func physics_process(_delta):
+	pass

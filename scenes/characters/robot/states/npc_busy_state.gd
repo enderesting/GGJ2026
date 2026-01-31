@@ -4,14 +4,14 @@ class_name NPCBusyState
 # Has an place to go to
 
 func enter():
-    pass
+	pass
 
 func exit():
-    pass
+	pass
 
-func process(delta):
-    pass
+func process(_delta):
+	pass
 
-func physics_process(delta):
-    # once goal cleared, go to idle
-    pass
+func physics_process(_delta):
+	# once goal cleared, go to idle
+	pass
