@@ -6,16 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_k644i"]
 [ext_resource type="Script" uid="uid://duogagnrgv4n5" path="res://scenes/game_scene/THE_LEVEL/the_hivemind.gd" id="3_k644i"]
 [ext_resource type="Script" uid="uid://cxyak251lpxj5" path="res://scenes/game_scene/THE_LEVEL/overseer.gd" id="4_5edlj"]
-[ext_resource type="Script" uid="uid://dlng1v3v1sv5o" path="res://scenes/game_scene/THE_LEVEL/overseer_targetting.gd" id="6_3blnw"]
-[ext_resource type="Texture2D" uid="uid://d0bo70ucr7jx4" path="res://assets/target.png" id="7_2jkeq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(624, 382)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n85cq"]
 size = Vector2(50, 48)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2jkeq"]
 
 [node name="Main" type="Node2D" unique_id=521265649]
 script = ExtResource("1_5edlj")
@@ -42,18 +38,7 @@ shape = SubResource("RectangleShape2D_n85cq")
 [node name="Overseer" type="Node2D" parent="." unique_id=1272758883]
 script = ExtResource("4_5edlj")
 
-[node name="OverseerTarget" type="CharacterBody2D" parent="Overseer" unique_id=1367144654]
-position = Vector2(88, 72)
-script = ExtResource("6_3blnw")
-
-[node name="Sprite2D" type="Sprite2D" parent="Overseer/OverseerTarget" unique_id=1116183505]
-texture = ExtResource("7_2jkeq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Overseer/OverseerTarget" unique_id=1656602621]
-shape = SubResource("CircleShape2D_2jkeq")
-
 [node name="TheHivemind" type="Node2D" parent="." unique_id=1065342543]
-visible = false
 script = ExtResource("3_k644i")
 
 [node name="Robot" type="AnimatedSprite2D" parent="TheHivemind" unique_id=2028356193]
