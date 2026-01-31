@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bqy50s757ncyw"]
+
+[ext_resource type="Texture2D" uid="uid://daput5j66exgu" path="res://assets/godot_engine_logo/logo_vertical_color_dark.png" id="1_cw6jr"]
+[ext_resource type="Script" uid="uid://c0itcwgkt6p25" path="res://scenes/characters/robot/robot_npc.gd" id="1_g3q48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3q48"]
+size = Vector2(59, 9)
+
+[node name="RobotNpc" type="CharacterBody2D" unique_id=1985711154]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_g3q48")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1117004332]
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_cw6jr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1683743761]
+position = Vector2(-2.5, -2.5)
+shape = SubResource("RectangleShape2D_g3q48")
