@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bxmfelykv4k1a"]
+
+[ext_resource type="Script" uid="uid://cxyak251lpxj5" path="res://scenes/game_scene/THE_LEVEL/overseer.gd" id="1_341gs"]
+[ext_resource type="Script" uid="uid://dlng1v3v1sv5o" path="res://scenes/game_scene/THE_LEVEL/overseer_targetting.gd" id="2_0mq7j"]
+[ext_resource type="Texture2D" uid="uid://d0bo70ucr7jx4" path="res://assets/target.png" id="3_0tdd5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jkeq"]
+
+[node name="Overseer" type="Node2D" unique_id=1110463796]
+script = ExtResource("1_341gs")
+
+[node name="OverseerTarget" type="CharacterBody2D" parent="." unique_id=1095290642]
+position = Vector2(88, 72)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_0mq7j")
+
+[node name="Sprite2D" type="Sprite2D" parent="OverseerTarget" unique_id=990423772]
+texture = ExtResource("3_0tdd5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OverseerTarget" unique_id=1577686482]
+shape = SubResource("CircleShape2D_2jkeq")

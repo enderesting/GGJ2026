@@ -17,8 +17,6 @@ size = Vector2(228, 138)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n85cq"]
 size = Vector2(12, 11)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2jkeq"]
-
 [node name="Main" type="Node2D" unique_id=521265649]
 script = ExtResource("1_5edlj")
 
@@ -56,20 +54,7 @@ texture = ExtResource("4_521ry")
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_n85cq")
 
-[node name="Overseer" type="Node2D" parent="." unique_id=1272758883]
-script = ExtResource("4_5edlj")
-
-[node name="OverseerTarget" type="CharacterBody2D" parent="Overseer" unique_id=1367144654]
-position = Vector2(88, 72)
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("6_3blnw")
-
-[node name="Sprite2D" type="Sprite2D" parent="Overseer/OverseerTarget" unique_id=1116183505]
-texture = ExtResource("7_2jkeq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Overseer/OverseerTarget" unique_id=1656602621]
-shape = SubResource("CircleShape2D_2jkeq")
+[node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
 
 [node name="TheHivemind" type="Node2D" parent="." unique_id=1065342543]
 visible = false
