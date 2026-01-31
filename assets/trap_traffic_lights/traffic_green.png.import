@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cttkwg2rfl6x8"
-path="res://.godot/imported/traffic_green.png-4e6ccb45153ffed34164ef15e3449888.ctex"
+path="res://.godot/imported/traffic_green.png-3b3819aea981e3e5b1f3ed4d462b1aa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp/traffic_green.png"
-dest_files=["res://.godot/imported/traffic_green.png-4e6ccb45153ffed34164ef15e3449888.ctex"]
+source_file="res://assets/trap_traffic_lights/traffic_green.png"
+dest_files=["res://.godot/imported/traffic_green.png-3b3819aea981e3e5b1f3ed4d462b1aa3.ctex"]
 
 [params]
 

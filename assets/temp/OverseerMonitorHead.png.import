@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqruew5mned5q"
-path="res://.godot/imported/traffic_red.png-9ab7a39cb31249863759b41b67a245a7.ctex"
+uid="uid://db1smlxq28i06"
+path="res://.godot/imported/OverseerMonitorHead.png-4926336b55db1858cbcc14ce4f7208c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp/traffic_red.png"
-dest_files=["res://.godot/imported/traffic_red.png-9ab7a39cb31249863759b41b67a245a7.ctex"]
+source_file="res://assets/temp/OverseerMonitorHead.png"
+dest_files=["res://.godot/imported/OverseerMonitorHead.png-4926336b55db1858cbcc14ce4f7208c3.ctex"]
 
 [params]
 

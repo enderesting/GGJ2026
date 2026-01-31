@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cexm8xjkanpkb"]
 
 [ext_resource type="Script" uid="uid://7igt3pf3afue" path="res://scenes/game_scene/THE_LEVEL/main.gd" id="1_5edlj"]
-[ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/player.gd" id="1_dy4vm"]
+[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/character_body_2d_2.gd" id="1_dy4vm"]
 [ext_resource type="Script" uid="uid://blk5jdboy7ii4" path="res://scenes/game_scene/THE_LEVEL/controller_manager.gd" id="1_wkokv"]
-[ext_resource type="Script" uid="uid://duogagnrgv4n5" path="res://scenes/game_scene/THE_LEVEL/hivemind.gd" id="3_o4jwg"]
+[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/hivemind.gd" id="3_o4jwg"]
 [ext_resource type="Texture2D" uid="uid://cjs6xw151ort4" path="res://assets/sprites/robot_sprite.png" id="4_521ry"]
 [ext_resource type="PackedScene" uid="uid://bxmfelykv4k1a" path="res://scenes/game_scene/THE_LEVEL/overseer/overseer.tscn" id="5_2jkeq"]
-[ext_resource type="Texture2D" uid="uid://d2csvr8bvb03e" path="res://assets/temp/badrobot_mockup.png" id="9_cj0kf"]
+[ext_resource type="Texture2D" uid="uid://bpw0tte6ovf1u" path="res://assets/background/bg.png" id="7_3blnw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(228, 138)
@@ -56,6 +56,6 @@ shape = SubResource("RectangleShape2D_n85cq")
 
 [node name="MockupBg" type="Sprite2D" parent="." unique_id=1384063776]
 z_index = -5
-texture = ExtResource("9_cj0kf")
+texture = ExtResource("7_3blnw")
 centered = false
 metadata/_edit_lock_ = true
