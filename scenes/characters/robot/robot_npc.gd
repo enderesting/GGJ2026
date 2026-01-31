@@ -35,3 +35,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta):
 	if current_state:
 		current_state.physics_process(delta)
+	
+	# TODO HACK
+	(get_child(0) as Sprite2D).flip_h = velocity.x > 0
+	
+	
