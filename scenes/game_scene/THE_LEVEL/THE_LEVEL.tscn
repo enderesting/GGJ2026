@@ -2,15 +2,17 @@
 
 [ext_resource type="Script" uid="uid://7igt3pf3afue" path="res://scenes/game_scene/THE_LEVEL/main.gd" id="1_5edlj"]
 [ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/character_body_2d_2.gd" id="1_dy4vm"]
-[ext_resource type="Script" uid="uid://blk5jdboy7ii4" path="res://scenes/game_scene/THE_LEVEL/controller_manager.gd" id="1_wkokv"]
+[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/controller_manager.gd" id="1_wkokv"]
 [ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_k644i"]
-[ext_resource type="Script" uid="uid://duogagnrgv4n5" path="res://scenes/game_scene/THE_LEVEL/the_hivemind.gd" id="3_k644i"]
-[ext_resource type="Script" uid="uid://cxyak251lpxj5" path="res://scenes/game_scene/THE_LEVEL/overseer.gd" id="4_5edlj"]
-[ext_resource type="Script" uid="uid://dlng1v3v1sv5o" path="res://scenes/game_scene/THE_LEVEL/overseer_targetting.gd" id="6_3blnw"]
+[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/the_hivemind.gd" id="3_k644i"]
+[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/overseer.gd" id="4_5edlj"]
+[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/overseer_targetting.gd" id="6_3blnw"]
 [ext_resource type="Texture2D" uid="uid://d0bo70ucr7jx4" path="res://assets/target.png" id="7_2jkeq"]
+[ext_resource type="PackedScene" uid="uid://bqy50s757ncyw" path="res://scenes/characters/robot/robot_npc.tscn" id="9_521ry"]
+[ext_resource type="Texture2D" uid="uid://cemssy3xyn808" path="res://assets/temp/mockup_bg.jpg" id="10_cj0kf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
-size = Vector2(624, 382)
+size = Vector2(816, 492)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n85cq"]
 size = Vector2(50, 48)
@@ -23,11 +25,18 @@ script = ExtResource("1_5edlj")
 [node name="ControllerManager" type="Node2D" parent="." unique_id=744391754]
 script = ExtResource("1_wkokv")
 
+[node name="Area2DWall" type="StaticBody2D" parent="." unique_id=1615865807]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DWall" unique_id=1964629205]
+position = Vector2(-7.262508, 3.187506)
+scale = Vector2(0.91312504, 0.8984375)
+polygon = PackedVector2Array(376, 168, 1280, 168, 1280, 720, 368, 720, 368, 168, 320, 128, 320, 752, 1320, 752, 1320, 128, 328, 128)
+
 [node name="Area2D" type="Area2D" parent="." unique_id=911222187]
 
 [node name="PlayArea" type="CollisionShape2D" parent="Area2D" unique_id=743758708]
 unique_name_in_owner = true
-position = Vector2(912, 352)
+position = Vector2(744, 401)
 shape = SubResource("RectangleShape2D_dy4vm")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1096455937]
@@ -44,6 +53,8 @@ script = ExtResource("4_5edlj")
 
 [node name="OverseerTarget" type="CharacterBody2D" parent="Overseer" unique_id=1367144654]
 position = Vector2(88, 72)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("6_3blnw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Overseer/OverseerTarget" unique_id=1116183505]
@@ -60,3 +71,13 @@ script = ExtResource("3_k644i")
 position = Vector2(-48, 48)
 
 [node name="Sprite2D" type="Sprite2D" parent="TheHivemind" unique_id=979697859]
+
+[node name="RobotNpc" parent="." unique_id=1985711154 instance=ExtResource("9_521ry")]
+position = Vector2(-132, 75)
+
+[node name="MockupBg" type="Sprite2D" parent="." unique_id=1384063776]
+z_index = -5
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("10_cj0kf")
+centered = false
+metadata/_edit_lock_ = true
