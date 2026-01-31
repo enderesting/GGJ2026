@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/character_body_2d_2.gd" id="1_dy4vm"]
 [ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_k644i"]
+[ext_resource type="Script" uid="uid://duogagnrgv4n5" path="res://scenes/game_scene/THE_LEVEL/the_hivemind.gd" id="3_k644i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
-size = Vector2(1200, 700)
+size = Vector2(624, 382)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n85cq"]
 size = Vector2(50, 48)
@@ -15,7 +16,7 @@ size = Vector2(50, 48)
 
 [node name="PlayArea" type="CollisionShape2D" parent="Area2D" unique_id=743758708]
 unique_name_in_owner = true
-position = Vector2(640, 360)
+position = Vector2(912, 352)
 shape = SubResource("RectangleShape2D_dy4vm")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1096455937]
@@ -30,6 +31,9 @@ shape = SubResource("RectangleShape2D_n85cq")
 [node name="Overseer" type="Node2D" parent="." unique_id=1272758883]
 
 [node name="TheHivemind" type="Node2D" parent="." unique_id=1065342543]
+script = ExtResource("3_k644i")
 
 [node name="Robot" type="AnimatedSprite2D" parent="TheHivemind" unique_id=2028356193]
 position = Vector2(-48, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="TheHivemind" unique_id=979697859]
