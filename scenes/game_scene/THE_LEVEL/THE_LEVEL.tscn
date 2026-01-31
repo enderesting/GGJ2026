@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cexm8xjkanpkb"]
 
 [ext_resource type="Script" uid="uid://7igt3pf3afue" path="res://scenes/game_scene/THE_LEVEL/main.gd" id="1_5edlj"]
-[ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/character_body_2d_2.gd" id="1_dy4vm"]
+[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/character_body_2d_2.gd" id="1_dy4vm"]
 [ext_resource type="Script" uid="uid://blk5jdboy7ii4" path="res://scenes/game_scene/THE_LEVEL/controller_manager.gd" id="1_wkokv"]
-[ext_resource type="Script" uid="uid://duogagnrgv4n5" path="res://scenes/game_scene/THE_LEVEL/the_hivemind.gd" id="3_k644i"]
+[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/the_hivemind.gd" id="3_k644i"]
 [ext_resource type="Texture2D" uid="uid://cjs6xw151ort4" path="res://assets/sprites/robot_sprite.png" id="4_521ry"]
 [ext_resource type="PackedScene" uid="uid://bxmfelykv4k1a" path="res://scenes/game_scene/THE_LEVEL/overseer/overseer.tscn" id="5_2jkeq"]
 [ext_resource type="PackedScene" uid="uid://bqy50s757ncyw" path="res://scenes/characters/robot/robot_npc.tscn" id="9_521ry"]
@@ -21,16 +21,11 @@ script = ExtResource("1_5edlj")
 [node name="ControllerManager" type="Node2D" parent="." unique_id=744391754]
 script = ExtResource("1_wkokv")
 
-[node name="Area2DWall" type="StaticBody2D" parent="." unique_id=1615865807]
+[node name="StaticBodyWall" type="StaticBody2D" parent="." unique_id=1615865807]
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DWall" unique_id=1964629205]
-visible = false
-position = Vector2(-7.262508, 3.187506)
-polygon = PackedVector2Array(376, 168, 1280, 168, 1280, 720, 368, 720, 368, 168, 320, 128, 320, 752, 1320, 752, 1320, 128, 328, 128)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2DWall" unique_id=1418067260]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBodyWall" unique_id=1418067260]
 polygon = PackedVector2Array(92, 42, 320, 42, 320, 180, 92, 180, 92, 42, 64, 16, 64, 208, 344, 208, 344, 16, 64, 16)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=911222187]
@@ -55,7 +50,6 @@ shape = SubResource("RectangleShape2D_n85cq")
 [node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
 
 [node name="TheHivemind" type="Node2D" parent="." unique_id=1065342543]
-visible = false
 script = ExtResource("3_k644i")
 
 [node name="Robot" type="AnimatedSprite2D" parent="TheHivemind" unique_id=2028356193]
