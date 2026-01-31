@@ -20,16 +20,11 @@ script = ExtResource("1_5edlj")
 [node name="ControllerManager" type="Node2D" parent="." unique_id=744391754]
 script = ExtResource("1_wkokv")
 
-[node name="Area2DWall" type="StaticBody2D" parent="." unique_id=1615865807]
+[node name="StaticBodyWall" type="StaticBody2D" parent="." unique_id=1615865807]
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DWall" unique_id=1964629205]
-visible = false
-position = Vector2(-7.262508, 3.187506)
-polygon = PackedVector2Array(376, 168, 1280, 168, 1280, 720, 368, 720, 368, 168, 320, 128, 320, 752, 1320, 752, 1320, 128, 328, 128)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2DWall" unique_id=1418067260]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBodyWall" unique_id=1418067260]
 polygon = PackedVector2Array(92, 42, 320, 42, 320, 180, 92, 180, 92, 42, 64, 16, 64, 208, 344, 208, 344, 16, 64, 16)
 
 [node name="PlayArea" type="Area2D" parent="." unique_id=911222187]
