@@ -1,1 +1,2 @@
-random position ends up outside screen for some reason
+[FIXED] random position ends up outside screen for some reason
+[TODO] controllers yo
