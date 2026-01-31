@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cexm8xjkanpkb"]
+
+[ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/character_body_2d_2.gd" id="1_dy4vm"]
+[ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_k644i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n85cq"]
+size = Vector2(50, 48)
+
+[node name="TheLevel" type="Node2D" unique_id=521265649]
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=1096455937]
+position = Vector2(212, 89)
+script = ExtResource("1_dy4vm")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D2" unique_id=198681535]
+position = Vector2(234, 93)
+texture = ExtResource("2_k644i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2" unique_id=198859869]
+position = Vector2(234, 93)
+shape = SubResource("RectangleShape2D_n85cq")
+
+[node name="TheHivemind" type="Node2D" parent="." unique_id=1065342543]

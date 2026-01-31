@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Game Template"
-run/main_scene="res://scenes/opening/opening.tscn"
+run/main_scene="uid://cexm8xjkanpkb"
 config/features=PackedStringArray("4.6")
 config/icon="res://icon.png"
 
