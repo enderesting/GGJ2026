@@ -40,6 +40,14 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "pink",
+"res://scenes/characters/": "yellow",
+"res://scenes/game_scene/THE_LEVEL/": "orange"
+}
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
