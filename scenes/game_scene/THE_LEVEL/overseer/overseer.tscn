@@ -16,9 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://ju8bb1qjjuut" path="res://assets/AnimationLightning12.png" id="10_0acdc"]
 [ext_resource type="Script" uid="uid://r37anr75y5yg" path="res://scenes/game_scene/THE_LEVEL/overseer/sawblade_sprite.gd" id="10_bth70"]
 [ext_resource type="Texture2D" uid="uid://bp4flguq1ahb" path="res://assets/AnimationLightning13.png" id="11_t4dqw"]
+[ext_resource type="AudioStream" uid="uid://h0o6a5s00xft" path="res://assets/music/deathray_charging.wav" id="15_8el1g"]
+[ext_resource type="AudioStream" uid="uid://dudmth118q6rr" path="res://assets/music/deathray_shot.wav" id="16_a0jya"]
 [ext_resource type="Texture2D" uid="uid://c772venoppan6" path="res://assets/SawBiG1.png" id="16_u26jv"]
 [ext_resource type="Texture2D" uid="uid://duro4uoa3gskh" path="res://assets/SawBiG2.png" id="17_0acdc"]
 [ext_resource type="Texture2D" uid="uid://cttkwg2rfl6x8" path="res://assets/trap_traffic_lights/traffic_green.png" id="19_2ovfc"]
+[ext_resource type="AudioStream" uid="uid://sgi4rdfiret7" path="res://assets/music/sawblade.wav" id="19_57kmg"]
 [ext_resource type="Texture2D" uid="uid://8j454btis1ue" path="res://assets/temp/OverseerBody.png" id="19_121vy"]
 [ext_resource type="Texture2D" uid="uid://dott77pdonh6l" path="res://assets/trap_traffic_lights/traffic_yellow.png" id="20_57kmg"]
 [ext_resource type="Texture2D" uid="uid://bifa4x8yr5gq3" path="res://assets/temp/OverseerLeftArm.png" id="20_ayyg4"]
@@ -327,6 +330,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deathray/LaserHitArea" unique_id=1491206507]
 shape = SubResource("CircleShape2D_t7mmt")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Deathray" unique_id=1190446827]
+stream = ExtResource("15_8el1g")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Deathray" unique_id=2106545493]
+stream = ExtResource("16_a0jya")
+
 [node name="SawbladeClipHack" type="Sprite2D" parent="." unique_id=1639433445]
 clip_children = 1
 position = Vector2(206, 94)
@@ -346,6 +355,9 @@ sprite_frames = SubResource("SpriteFrames_k3a4y")
 frame_progress = 0.80752534
 offset = Vector2(0, -15)
 script = ExtResource("10_bth70")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SawbladeClipHack/Sawblade" unique_id=949112583]
+stream = ExtResource("19_57kmg")
 
 [node name="Stoplight" type="AnimatedSprite2D" parent="." unique_id=1524428144]
 position = Vector2(135, 22)

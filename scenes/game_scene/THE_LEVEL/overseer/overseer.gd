@@ -55,9 +55,12 @@ func _input(event: InputEvent) -> void:
 		warning_signs.play("warning_die")
 		$Deathray.position = play_area.get_parent().position
 		$Deathray.visible = true
+		$Deathray/AudioStreamPlayer.play()
 		%Bolt.visible = false
 		
 	if event.is_action_released(&"trap_1") and can_trigger_trap:
+		$Deathray/AudioStreamPlayer.stop()
+		$Deathray/AudioStreamPlayer2.play()
 		can_trigger_trap = false
 		cooldown.start()
 		trap_started.emit(&"trap_1")
@@ -82,6 +85,7 @@ func _input(event: InputEvent) -> void:
 		cooldown.start()
 		warning_signs.play("warning_run")
 		trap_started.emit(&"trap_2")
+		$SawbladeClipHack/Sawblade/AudioStreamPlayer.play()
 		%Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
 		%Sawblade.global_position.y = play_area.get_parent().position.y + 50
 		%Sawblade.visible = true
@@ -93,6 +97,7 @@ func _input(event: InputEvent) -> void:
 			.tween_property(%Sawblade, ^"global_position:x", 60, 1.0) \
 			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT) \
 			.finished
+		$SawbladeClipHack/Sawblade/AudioStreamPlayer.stop()
 		%Sawblade.visible = false
 		trap_finished.emit(&"trap_2")
 		warning_signs.play(&"warning_idle")
