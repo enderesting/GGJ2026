@@ -1,0 +1,36 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://drxh8yhpas8f0"]
+
+[ext_resource type="Texture2D" uid="uid://pks2ud241ljm" path="res://assets/AnimationDeathSaw1.png" id="1_lew6n"]
+[ext_resource type="Texture2D" uid="uid://yq710aeis773" path="res://assets/AnimationDeathSaw2.png" id="2_yb845"]
+[ext_resource type="Texture2D" uid="uid://cj0quya2eafsq" path="res://assets/AnimationDeathSaw3.png" id="3_tv4mo"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lew6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yb845")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tv4mo")
+}],
+"loop": true,
+"name": &"lightning_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lew6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yb845")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tv4mo")
+}],
+"loop": true,
+"name": &"sawblade_death",
+"speed": 5.0
+}]

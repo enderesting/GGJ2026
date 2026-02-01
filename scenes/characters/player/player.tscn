@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/player.gd" id="1_t61fv"]
 [ext_resource type="Texture2D" uid="uid://cjs6xw151ort4" path="res://assets/sprites/robot_sprite.png" id="2_686vu"]
+[ext_resource type="SpriteFrames" uid="uid://drxh8yhpas8f0" path="res://scenes/characters/robot/robot_deaths.tres" id="3_686vu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n85cq"]
 size = Vector2(12, 11)
@@ -20,3 +21,7 @@ texture = ExtResource("2_686vu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1057614396]
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_n85cq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=170366322]
+sprite_frames = ExtResource("3_686vu")
+animation = &"sawblade_death"
