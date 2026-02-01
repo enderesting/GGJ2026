@@ -59,6 +59,9 @@ PlayArea_gadgets/quadrant.tscn is instanced 4 times and the childrens are locall
 [node name="1" parent="PlayArea/Quadrants" unique_id=47736159 instance=ExtResource("5_5edlj")]
 position = Vector2(-114, -69)
 
+[node name="ProgressBar" parent="PlayArea/Quadrants/1/Shape" parent_id_path=PackedInt32Array(47736159, 945870284) index="0" unique_id=225822039]
+show_percentage = false
+
 [node name="Light" parent="PlayArea/Quadrants/1" index="1" unique_id=1600648789]
 texture = ExtResource("6_2jkeq")
 

@@ -26,17 +26,17 @@ func _ready() -> void:
 	$Stoplight.visible = false
 	$Colorpicker.visible = false
 	
-	$Colorpicker/Color1.global_position = play_area.position - play_area.shape.size/4
-	$Colorpicker/Color2.global_position = play_area.position - Vector2((-play_area.shape.size.x/4) ,play_area.shape.size.y/4)
-	$Colorpicker/Color3.global_position = play_area.position + play_area.shape.size/4
-	$Colorpicker/Color4.global_position = play_area.position - Vector2(play_area.shape.size.x/4 ,-(play_area.shape.size.y/4))
+	$Colorpicker/Color1.global_position = play_area.get_parent().position - play_area.shape.size/4
+	$Colorpicker/Color2.global_position = play_area.get_parent().position - Vector2((-play_area.shape.size.x/4) ,play_area.shape.size.y/4)
+	$Colorpicker/Color3.global_position = play_area.get_parent().position + play_area.shape.size/4
+	$Colorpicker/Color4.global_position = play_area.get_parent().position - Vector2(play_area.shape.size.x/4 ,-(play_area.shape.size.y/4))
 	$AnimationPlayer.play("overseer_idle")
 
 func _input(event: InputEvent) -> void:
 	# Trap 1: Death ray
 	if event.is_action_pressed(&"trap_1") and cooldown.is_stopped():
 		trap_started.emit(&"trap_1")
-		$Deathray.position = play_area.position
+		$Deathray.position = play_area.get_parent().position
 		$Deathray.visible = true
 		%Bolt.visible = false
 		
@@ -58,8 +58,8 @@ func _input(event: InputEvent) -> void:
 	# Trap 2: Sawblade
 	if event.is_action_pressed(&"trap_2") and cooldown.is_stopped():
 		trap_started.emit(&"trap_2")
-		$Sawblade.global_position.x = play_area.position.x + play_area.shape.size.x/2
-		$Sawblade.global_position.y =play_area.position.y
+		$Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
+		$Sawblade.global_position.y =play_area.get_parent().position.y
 		$Sawblade.visible = true
 		trap_finished.emit(&"trap_2")
 	
