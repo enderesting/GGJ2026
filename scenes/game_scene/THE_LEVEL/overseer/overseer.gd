@@ -19,7 +19,11 @@ func _ready() -> void:
 	cooldown.timeout.connect(_on_cooldown_timeout)
 	
 	%Sawblade.body_entered.connect(func(body):
-		if body is RoamingRobot:
+		if body is RobotNPC:
+			body.states.DYING.animation_name = "sawblade_death"
+			body.states.DYING.auto_free = true
+			body.change_state(body.states.DYING)
+		elif body is Player:
 			body.queue_free())
 	
 	# pass through our signals to the EventBus
@@ -67,6 +71,7 @@ func _input(event: InputEvent) -> void:
 		for roamer in doomed_roamers:
 			if roamer is RobotNPC:
 				roamer.states.DYING.animation_name = "lightning_death"
+				roamer.states.DYING.auto_free = false
 				roamer.change_state(roamer.states.DYING)
 			
 		%Bolt.visible = true

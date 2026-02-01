@@ -16,7 +16,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_tv4mo")
 }],
-"loop": true,
+"loop": false,
 "name": &"lightning_death",
 "speed": 5.0
 }, {
@@ -30,7 +30,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_tv4mo")
 }],
-"loop": true,
+"loop": false,
 "name": &"sawblade_death",
 "speed": 5.0
 }]
