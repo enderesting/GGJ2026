@@ -24,7 +24,7 @@ func _ready() -> void:
 
 
 func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
-	for npc in self:
+	for npc in get_children():
 		var next_state = npc.states.RUNNING_TO_QUADRANT
 		next_state.blessed_quadrant = blessed_quadrant
 		npc.change_state(next_state)

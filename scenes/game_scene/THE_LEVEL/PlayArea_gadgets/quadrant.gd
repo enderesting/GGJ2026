@@ -4,6 +4,7 @@ class_name Quadrant
 extends Area2D
 
 @onready var anims: AnimationPlayer = $AnimationPlayer
+@onready var shape: CollisionShape2D = $Shape
 
 signal animation_finished(anim_name: StringName)
 
@@ -13,9 +14,8 @@ func _ready() -> void:
 
 
 func get_extents() -> Rect2:
-	return Rect2(
-		
-	)
+	var shape_rect := shape.shape.get_rect()
+	return Rect2(position + shape_rect.position, shape_rect.size)
 
 
 func kill_them_all() -> void:
