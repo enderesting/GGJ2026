@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://debpgop85dvkb"]
+
+[ext_resource type="FontFile" uid="uid://cg0idfs8prkgv" path="res://resources/Technotot.otf" id="1_e7emc"]
+[ext_resource type="Texture2D" uid="uid://cqo8be6uf8533" path="res://assets/cg/game_cover_title.png" id="2_j8cx4"]
+[ext_resource type="Script" uid="uid://pw4bqhgkbhp1" path="res://scenes/game_scene/main_menu/start.gd" id="2_odjjf"]
+[ext_resource type="Script" uid="uid://la3ligc4jg6k" path="res://scenes/game_scene/main_menu/quit.gd" id="3_qnf54"]
+[ext_resource type="AudioStream" uid="uid://bic82fbh6d67e" path="res://assets/bad_robot.wav" id="5_xxfok"]
+[ext_resource type="Script" uid="uid://cg457og5om74h" path="res://scenes/game_scene/main_menu/audio_stream_player.gd" id="7_i143s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7emc"]
+bg_color = Color(0.34066254, 0.74340224, 0.58488375, 0.57254905)
+corner_detail = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e7emc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odjjf"]
+bg_color = Color(0.79447365, 0, 0.100179695, 0.57254905)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="Theme" id="Theme_odjjf"]
+default_font = ExtResource("1_e7emc")
+Button/font_sizes/font_size = 12
+Button/styles/hover = SubResource("StyleBoxFlat_e7emc")
+Button/styles/normal = SubResource("StyleBoxEmpty_e7emc")
+Button/styles/pressed = SubResource("StyleBoxFlat_odjjf")
+
+[node name="MainMenu2" type="Control" unique_id=1556016251]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_odjjf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1788192149]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("2_j8cx4")
+
+[node name="Start" type="Button" parent="." unique_id=228889176]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 8.0
+offset_top = 104.0
+offset_right = 128.0
+offset_bottom = 120.0
+text = "start"
+alignment = 0
+script = ExtResource("2_odjjf")
+
+[node name="Credits" type="Button" parent="." unique_id=407508482]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 144.0
+text = "Credits"
+alignment = 0
+
+[node name="Quit" type="Button" parent="." unique_id=1014021487]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 128.0
+offset_bottom = 168.0
+text = "quit"
+alignment = 0
+script = ExtResource("3_qnf54")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1077206528]
+stream = ExtResource("5_xxfok")
+autoplay = true
+script = ExtResource("7_i143s")

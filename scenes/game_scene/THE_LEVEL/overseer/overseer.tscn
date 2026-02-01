@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://cxyak251lpxj5" path="res://scenes/game_scene/THE_LEVEL/overseer/overseer.gd" id="1_341gs"]
 [ext_resource type="Script" uid="uid://dlng1v3v1sv5o" path="res://scenes/game_scene/THE_LEVEL/overseer/deathray.gd" id="2_n6k5h"]
 [ext_resource type="Texture2D" uid="uid://d0bo70ucr7jx4" path="res://assets/target.png" id="3_0tdd5"]
-[ext_resource type="Texture2D" uid="uid://clfv6wu6kuchu" path="res://assets/deathray0.png" id="4_bg6m3"]
-[ext_resource type="Texture2D" uid="uid://bbyfs7qxqwtrf" path="res://assets/deathray1.png" id="5_j6j5l"]
+[ext_resource type="Texture2D" uid="uid://c6yqy1v02hwvy" path="res://assets/temp/deathBlast.png" id="4_cgynf"]
 [ext_resource type="Script" uid="uid://3n4cjor3x3pu" path="res://scenes/game_scene/THE_LEVEL/overseer/deathray_emitter.gd" id="6_rd2gr"]
 [ext_resource type="Script" uid="uid://dvg6xcwcxy4hp" path="res://scenes/game_scene/THE_LEVEL/overseer/sawblade.gd" id="7_rd2gr"]
 [ext_resource type="Texture2D" uid="uid://d36pc1xcltvtv" path="res://assets/ray0.png" id="7_t7mmt"]
@@ -25,10 +24,10 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_bg6m3")
+"texture": ExtResource("4_cgynf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_j6j5l")
+"texture": ExtResource("4_cgynf")
 }],
 "loop": true,
 "name": &"default",
@@ -110,7 +109,7 @@ shape = SubResource("CircleShape2D_2jkeq")
 
 [node name="Emitter" type="AnimatedSprite2D" parent="Deathray" unique_id=1803952232]
 sprite_frames = SubResource("SpriteFrames_j8u7f")
-offset = Vector2(0, 16)
+offset = Vector2(0, 25)
 script = ExtResource("6_rd2gr")
 
 [node name="RaySpawnPosition" type="Marker2D" parent="Deathray/Emitter" unique_id=1363615208]
@@ -118,7 +117,7 @@ position = Vector2(0, 27.453945)
 
 [node name="Bolt" type="AnimatedSprite2D" parent="Deathray/Emitter/RaySpawnPosition" unique_id=528697460]
 unique_name_in_owner = true
-position = Vector2(0, 28)
+position = Vector2(0.25064087, 23)
 sprite_frames = SubResource("SpriteFrames_ly5m1")
 
 [node name="LaserHitArea" type="Area2D" parent="Deathray" unique_id=385527519]
