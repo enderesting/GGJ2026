@@ -1,20 +1,24 @@
 [gd_scene format=3 uid="uid://cexm8xjkanpkb"]
 
 [ext_resource type="Script" uid="uid://7igt3pf3afue" path="res://scenes/game_scene/THE_LEVEL/main.gd" id="1_5edlj"]
+[ext_resource type="Texture2D" uid="uid://bwbemalclinkh" path="res://assets/background/bg_2.png" id="2_batfn"]
 [ext_resource type="Script" uid="uid://duogagnrgv4n5" path="res://scenes/game_scene/THE_LEVEL/hivemind.gd" id="3_o4jwg"]
 [ext_resource type="PackedScene" uid="uid://bw5ps2bf04erm" path="res://scenes/characters/player/player.tscn" id="3_wkokv"]
 [ext_resource type="PackedScene" uid="uid://bxmfelykv4k1a" path="res://scenes/game_scene/THE_LEVEL/overseer/overseer.tscn" id="5_2jkeq"]
 [ext_resource type="PackedScene" uid="uid://dnom53p1pream" path="res://scenes/game_scene/THE_LEVEL/PlayArea_gadgets/quadrant.tscn" id="5_5edlj"]
 [ext_resource type="Texture2D" uid="uid://dn3l0pw7po5r1" path="res://assets/trap_color_quiz/color_1.png" id="6_2jkeq"]
 [ext_resource type="Texture2D" uid="uid://5ucta5egxsxu" path="res://assets/color0.png" id="6_3blnw"]
-[ext_resource type="Texture2D" uid="uid://bpw0tte6ovf1u" path="res://assets/background/bg.png" id="7_3blnw"]
 [ext_resource type="Texture2D" uid="uid://l4athfc1f4e8" path="res://assets/trap_color_quiz/color_2.png" id="8_521ry"]
 [ext_resource type="Texture2D" uid="uid://tkygwbvhy4ia" path="res://assets/color1.png" id="8_o4jwg"]
 [ext_resource type="Texture2D" uid="uid://bunbjihqtxuhn" path="res://assets/trap_color_quiz/color_4.png" id="10_batfn"]
 [ext_resource type="Texture2D" uid="uid://c5n8rjgu2p0pu" path="res://assets/color3.png" id="11_fhvee"]
+[ext_resource type="Script" uid="uid://cx5cgabfve247" path="res://scenes/game_scene/THE_LEVEL/countdown.gd" id="13_fhvee"]
+[ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="14_276iw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(228, 138)
+
+[sub_resource type="Theme" id="Theme_276iw"]
 
 [node name="TheLevel" type="Node2D" unique_id=521265649 groups=["quadrants"]]
 script = ExtResource("1_5edlj")
@@ -22,7 +26,7 @@ script = ExtResource("1_5edlj")
 [node name="MockupBg" type="Sprite2D" parent="." unique_id=1384063776]
 editor_description = "The cool background art!"
 z_index = -5
-texture = ExtResource("7_3blnw")
+texture = ExtResource("2_batfn")
 centered = false
 metadata/_edit_lock_ = true
 
@@ -89,6 +93,26 @@ texture = ExtResource("10_batfn")
 texture = ExtResource("11_fhvee")
 
 [node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
+
+[node name="Countdown" type="Node2D" parent="." unique_id=1334223834]
+script = ExtResource("13_fhvee")
+
+[node name="Label" type="Label" parent="Countdown" unique_id=319313245]
+offset_left = 60.0
+offset_top = 140.0
+offset_right = 117.0
+offset_bottom = 168.0
+scale = Vector2(0.43, 0.43)
+theme = SubResource("Theme_276iw")
+theme_override_colors/font_color = Color(0.047058824, 0.85490197, 0.63529414, 1)
+theme_override_colors/font_outline_color = Color(0.05882353, 0.39215687, 0.3019608, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("14_276iw")
+theme_override_font_sizes/font_size = 26
+text = "00:00"
+
+[node name="Timer" type="Timer" parent="Countdown" unique_id=2129905220]
+wait_time = 60.0
 
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
 

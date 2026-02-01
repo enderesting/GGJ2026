@@ -239,7 +239,7 @@ _data = {
 [sub_resource type="SpriteFrames" id="SpriteFrames_8el1g"]
 animations = [{
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("30_u26jv")
 }, {
 "duration": 1.0,
@@ -250,7 +250,7 @@ animations = [{
 "speed": 2.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("31_0acdc")
 }, {
 "duration": 1.0,
@@ -261,7 +261,7 @@ animations = [{
 "speed": 2.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": null
 }],
 "loop": true,
@@ -269,7 +269,7 @@ animations = [{
 "speed": 2.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("30_57kmg")
 }, {
 "duration": 1.0,
@@ -280,7 +280,7 @@ animations = [{
 "speed": 2.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("33_t4dqw")
 }, {
 "duration": 1.0,
@@ -364,7 +364,7 @@ texture = ExtResource("16_nld2e")
 libraries/ = SubResource("AnimationLibrary_d1gew")
 
 [node name="OverseerSprite" type="Node2D" parent="." unique_id=2114873472]
-position = Vector2(-59, 0)
+position = Vector2(-59, -33.62)
 
 [node name="OverseerBody" type="Sprite2D" parent="OverseerSprite" unique_id=1669471048]
 z_index = 2

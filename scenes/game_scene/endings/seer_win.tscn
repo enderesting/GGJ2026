@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b1tshijde4hbx"]
+
+[ext_resource type="FontFile" uid="uid://cg0idfs8prkgv" path="res://resources/Technotot.otf" id="1_wakf4"]
+[ext_resource type="Texture2D" uid="uid://5sstjjan1n6o" path="res://assets/temp/WinnerCard_Overseer.png" id="2_rsrui"]
+
+[node name="SeerWin" type="Node2D" unique_id=203469138]
+
+[node name="Label" type="Label" parent="." unique_id=673661048]
+offset_left = 153.0
+offset_top = 127.0
+offset_right = 315.0
+offset_bottom = 170.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_wakf4")
+theme_override_font_sizes/font_size = 10
+text = "Ending 1:
+Employee of the month"
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=356789073]
+z_index = -2
+position = Vector2(161, 91)
+texture = ExtResource("2_rsrui")
+metadata/_edit_lock_ = true

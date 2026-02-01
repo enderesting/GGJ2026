@@ -49,6 +49,7 @@ folder_colors={
 "res://autoloads/": "green",
 "res://scenes/characters/": "yellow",
 "res://scenes/game_scene/THE_LEVEL/": "orange",
+"res://scenes/game_scene/endings/": "red",
 "res://scenes/game_scene/main_menu/": "green"
 }
 
