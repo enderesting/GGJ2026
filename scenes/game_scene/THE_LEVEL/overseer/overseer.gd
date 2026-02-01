@@ -47,12 +47,10 @@ func _on_cooldown_timeout():
 
 
 func _input(event: InputEvent) -> void:
-	#if not can_trigger_trap:
-		#return
-	
 	# Trap 1: Death ray
 	if event.is_action_pressed(&"trap_1") and can_trigger_trap:
 		warning_signs.play("warning_die")
+		$Deathray.speed = 300
 		$Deathray.position = play_area.get_parent().position
 		$Deathray.visible = true
 		$Deathray/AudioStreamPlayer.play()
@@ -64,9 +62,12 @@ func _input(event: InputEvent) -> void:
 		can_trigger_trap = false
 		cooldown.start()
 		trap_started.emit(&"trap_1")
+		$Deathray.speed = 0
 		var doomed_roamers: Array[Node2D] = %LaserHitArea.get_overlapping_bodies()
 		for roamer in doomed_roamers:
-			roamer.process_mode = Node.PROCESS_MODE_DISABLED
+			if roamer is RobotNPC:
+				roamer.states.DYING.animation_name = "lightning_death"
+				roamer.change_state(roamer.states.DYING)
 			
 		%Bolt.visible = true
 		%Bolt.play()
@@ -139,7 +140,7 @@ func do_quadrants() -> void:
 	
 	for quadrant in quadrants:
 		quadrant.animate_dramatic_flicker()
-	await quadrants[0].animation_finished	
+	await quadrants[0].animation_finished
 	
 	var blessed_quadrant := quadrants.pick_random() as Quadrant
 	await blessed_quadrant.animate_turn_on()

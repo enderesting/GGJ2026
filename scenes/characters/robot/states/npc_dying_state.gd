@@ -2,9 +2,11 @@ extends State
 class_name NPCDyingState
 
 
+var animation_name: StringName = "sawblade_death"
+
+
 func enter():
-	# Play dying animation
-	pass
+	character.animated_sprite_2d.play(animation_name)
 
 func exit():
 	# Remove? Is it here?

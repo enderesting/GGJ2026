@@ -393,7 +393,7 @@ texture = ExtResource("22_5r2ny")
 
 [node name="TrapCooldown" type="Timer" parent="." unique_id=125273992]
 unique_name_in_owner = true
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="WarningSigns" type="AnimatedSprite2D" parent="." unique_id=1971435016]

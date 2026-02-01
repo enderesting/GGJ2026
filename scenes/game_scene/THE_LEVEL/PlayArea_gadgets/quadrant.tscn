@@ -23,16 +23,16 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_06cag"]
 resource_name = "flicker"
-length = 2.0
+length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Light:modulate")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.76666665, 1.3333334, 1.9333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.26666668, 0.61333334, 1.1733334, 1.5466666),
+"transitions": PackedFloat32Array(9.849149, 8.574185, 9.849149, 18.379152, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
@@ -82,7 +82,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_o1kds"]
-length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -90,7 +89,7 @@ tracks/0/path = NodePath("Light:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.56666666, 1.5),
+"times": PackedFloat32Array(0.2666667, 1),
 "transitions": PackedFloat32Array(103.96829, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
