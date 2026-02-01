@@ -40,12 +40,12 @@ func _input(event: InputEvent) -> void:
 	# Trap 1: Death ray
 	if event.is_action_pressed(&"trap_1") and cooldown.is_stopped():
 		warning_signs.play("warning_die")
-		trap_started.emit(&"trap_1")
 		$Deathray.position = play_area.get_parent().position
 		$Deathray.visible = true
 		%Bolt.visible = false
 		
 	if event.is_action_released(&"trap_1"):
+		trap_started.emit(&"trap_1")
 		var doomed_roamers: Array[Node2D] = %LaserHitArea.get_overlapping_bodies()
 		for roamer in doomed_roamers:
 			roamer.process_mode = Node.PROCESS_MODE_DISABLED
