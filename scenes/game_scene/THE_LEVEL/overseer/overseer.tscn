@@ -3,14 +3,21 @@
 [ext_resource type="Script" uid="uid://cxyak251lpxj5" path="res://scenes/game_scene/THE_LEVEL/overseer/overseer.gd" id="1_341gs"]
 [ext_resource type="Script" uid="uid://dlng1v3v1sv5o" path="res://scenes/game_scene/THE_LEVEL/overseer/deathray.gd" id="2_n6k5h"]
 [ext_resource type="Texture2D" uid="uid://d0bo70ucr7jx4" path="res://assets/target.png" id="3_0tdd5"]
-[ext_resource type="Texture2D" uid="uid://c6yqy1v02hwvy" path="res://assets/temp/deathBlast.png" id="4_cgynf"]
+[ext_resource type="Texture2D" uid="uid://d1a3t5spaw0br" path="res://assets/dearth_ray/DeathBlaster.png" id="4_121vy"]
+[ext_resource type="Texture2D" uid="uid://ba0b28r1gdq8o" path="res://assets/AnimationLightning1_2.png" id="4_dm4dt"]
+[ext_resource type="Texture2D" uid="uid://cc3ch6xucsojt" path="res://assets/AnimationLightning3_4.png" id="5_2ovfc"]
+[ext_resource type="Texture2D" uid="uid://b88a6k4qchltg" path="res://assets/dearth_ray/DeathBlasterLightning.png" id="5_ayyg4"]
+[ext_resource type="Texture2D" uid="uid://cidp0l3fbe43h" path="res://assets/AnimationLightning5_6.png" id="6_57kmg"]
 [ext_resource type="Script" uid="uid://3n4cjor3x3pu" path="res://scenes/game_scene/THE_LEVEL/overseer/deathray_emitter.gd" id="6_rd2gr"]
+[ext_resource type="Texture2D" uid="uid://dfrhuy3ouyouv" path="res://assets/AnimationLightning7.png" id="7_8el1g"]
 [ext_resource type="Script" uid="uid://dvg6xcwcxy4hp" path="res://scenes/game_scene/THE_LEVEL/overseer/sawblade.gd" id="7_rd2gr"]
-[ext_resource type="Texture2D" uid="uid://d36pc1xcltvtv" path="res://assets/ray0.png" id="7_t7mmt"]
+[ext_resource type="Texture2D" uid="uid://dl0e1oe8w6f7y" path="res://assets/AnimationLightning9_10.png" id="8_a0jya"]
 [ext_resource type="Texture2D" uid="uid://drbhife8ge25f" path="res://assets/sawblade0.png" id="8_bth70"]
-[ext_resource type="Texture2D" uid="uid://c11ww0c0blnkm" path="res://assets/ray1.png" id="8_nld2e"]
 [ext_resource type="Texture2D" uid="uid://dy15jkq3qxst2" path="res://assets/sawblade1.png" id="9_lkyke"]
+[ext_resource type="Texture2D" uid="uid://2c0ytppda1od" path="res://assets/AnimationLightning11.png" id="9_u26jv"]
+[ext_resource type="Texture2D" uid="uid://ju8bb1qjjuut" path="res://assets/AnimationLightning12.png" id="10_0acdc"]
 [ext_resource type="Script" uid="uid://r37anr75y5yg" path="res://scenes/game_scene/THE_LEVEL/overseer/sawblade_sprite.gd" id="10_bth70"]
+[ext_resource type="Texture2D" uid="uid://bp4flguq1ahb" path="res://assets/AnimationLightning13.png" id="11_t4dqw"]
 [ext_resource type="Texture2D" uid="uid://b4riyu6db5o32" path="res://assets/light0.png" id="11_unc0s"]
 [ext_resource type="Texture2D" uid="uid://edy727mpr770" path="res://assets/light1.png" id="12_3g30l"]
 [ext_resource type="Texture2D" uid="uid://5ucta5egxsxu" path="res://assets/color0.png" id="13_m4la8"]
@@ -22,32 +29,50 @@
 [ext_resource type="Texture2D" uid="uid://db1smlxq28i06" path="res://assets/temp/OverseerMonitorHead.png" id="21_d1gew"]
 [ext_resource type="Texture2D" uid="uid://bqf3t23ud60vt" path="res://assets/temp/OverseerRightArm.png" id="22_5r2ny"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ly5m1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dm4dt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ovfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_57kmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8el1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a0jya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_u26jv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0acdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_t4dqw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_2jkeq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8u7f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_cgynf")
+"texture": ExtResource("4_121vy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_cgynf")
+"texture": ExtResource("5_ayyg4")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ly5m1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_t7mmt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_nld2e")
-}],
-"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -218,6 +243,11 @@ script = ExtResource("2_n6k5h")
 [node name="Target" type="Sprite2D" parent="Deathray" unique_id=632358325]
 texture = ExtResource("3_0tdd5")
 
+[node name="Bolt" type="AnimatedSprite2D" parent="Deathray/Target" unique_id=528697460]
+unique_name_in_owner = true
+position = Vector2(0, -75)
+sprite_frames = SubResource("SpriteFrames_ly5m1")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deathray" unique_id=716727500]
 shape = SubResource("CircleShape2D_2jkeq")
 
@@ -228,11 +258,6 @@ script = ExtResource("6_rd2gr")
 
 [node name="RaySpawnPosition" type="Marker2D" parent="Deathray/Emitter" unique_id=1363615208]
 position = Vector2(0, 27.453945)
-
-[node name="Bolt" type="AnimatedSprite2D" parent="Deathray/Emitter/RaySpawnPosition" unique_id=528697460]
-unique_name_in_owner = true
-position = Vector2(0.25064087, 23)
-sprite_frames = SubResource("SpriteFrames_ly5m1")
 
 [node name="LaserHitArea" type="Area2D" parent="Deathray" unique_id=385527519]
 unique_name_in_owner = true
