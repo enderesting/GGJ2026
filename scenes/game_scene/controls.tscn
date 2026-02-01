@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://5ppv67na3vsm"]
+
+[ext_resource type="Texture2D" uid="uid://b8kjgn3fjd8fw" path="res://assets/temp/controls.png" id="1_2xxc8"]
+[ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="2_250am"]
+[ext_resource type="Script" uid="uid://c5wrhe1774cyw" path="res://scenes/game_scene/controls.gd" id="2_ubmpl"]
+
+[node name="Controls" type="TextureRect" unique_id=353673576]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_2xxc8")
+script = ExtResource("2_ubmpl")
+
+[node name="Label3" type="Label" parent="." unique_id=468472276]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 60.0
+offset_right = 93.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("2_250am")
+theme_override_font_sizes/font_size = 6
+text = "laser
+(hold j)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1459660589]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 56.0
+offset_right = 160.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("2_250am")
+theme_override_font_sizes/font_size = 6
+text = "saw
+blade (l)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Label2" type="Label" parent="." unique_id=516093254]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 50.0
+offset_right = 124.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("2_250am")
+theme_override_font_sizes/font_size = 6
+text = "traffic
+light (i)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Label4" type="Label" parent="." unique_id=574971246]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 93.0
+offset_right = 166.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("2_250am")
+theme_override_font_sizes/font_size = 6
+text = "color
+test (k)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Label5" type="Label" parent="." unique_id=1961090283]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 55.0
+offset_right = 47.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("2_250am")
+theme_override_font_sizes/font_size = 6
+text = "move laser
+target
+(arrows)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Label6" type="Label" parent="." unique_id=1613376002]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 44.0
+offset_right = 270.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("2_250am")
+theme_override_font_sizes/font_size = 6
+text = "move
+(wasd)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Timer" type="Timer" parent="." unique_id=120491669]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
