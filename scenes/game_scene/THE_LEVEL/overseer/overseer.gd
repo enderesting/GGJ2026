@@ -94,7 +94,10 @@ func _input(event: InputEvent) -> void:
 
 
 func do_quadrants() -> void:
-	var quadrants = get_tree().get_nodes_in_group("quadrants")
+	var quadrants = []
+	for quadrant in get_tree().get_nodes_in_group("quadrants"):
+		if quadrant is Quadrant:
+			quadrants.push_back(quadrant)
 	
 	for quadrant in quadrants:
 		quadrant.animate_dramatic_flicker()
