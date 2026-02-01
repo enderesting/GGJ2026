@@ -19,4 +19,12 @@ func _ready() -> void:
 	for _i in npcs_to_spawn:
 		var new_robot := robot_npc.instantiate() as RobotNPC
 		new_robot.play_area = play_area
+		new_robot.add_to_group(&"npcs")
 		add_child(new_robot)
+
+
+func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
+	for npc in self:
+		var next_state = npc.states.RUNNING_TO_QUADRANT
+		next_state.blessed_quadrant = blessed_quadrant
+		npc.change_state(next_state)
