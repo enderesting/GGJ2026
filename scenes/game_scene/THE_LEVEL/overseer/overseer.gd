@@ -106,12 +106,13 @@ func _input(event: InputEvent) -> void:
 		trap_started.emit(&"trap_3")
 		$Stoplight.visible = true
 		$Stoplight.play()
-		if $Stoplight.frame == 4:
-			stop_moving.emit()
+		while $Stoplight.frame < 4:
+			await $Stoplight.frame_changed
+		stop_moving.emit()
 		await $Stoplight.animation_finished
 		$Stoplight.visible = false
-		trap_finished.emit(&"trap_3")
 		warning_signs.play(&"warning_idle")
+		trap_finished.emit(&"trap_3")
 
 	# Trap 4: Color quadrants
 	if event.is_action_pressed(&"trap_4") and can_trigger_trap:

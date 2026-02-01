@@ -34,3 +34,11 @@ func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
 	for npc in get_children():
 		npc.change_state(npc.states.IDLE)
 	
+
+
+func _on_overseer_stop_moving() -> void:
+	for npc in get_children():
+		npc.change_state(npc.states.BUSY)
+	assert(await EventBus.trap_finished == &"trap_3")
+	for npc in get_children():
+		npc.change_state(npc.states.IDLE)
