@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dn3l0pw7po5r1" path="res://assets/trap_color_quiz/color_1.png" id="6_2jkeq"]
 [ext_resource type="Texture2D" uid="uid://l4athfc1f4e8" path="res://assets/trap_color_quiz/color_2.png" id="8_521ry"]
 [ext_resource type="Texture2D" uid="uid://bunbjihqtxuhn" path="res://assets/trap_color_quiz/color_4.png" id="10_batfn"]
-[ext_resource type="Script" uid="uid://cx5cgabfve247" path="res://scenes/game_scene/THE_LEVEL/countdown.gd" id="13_fhvee"]
 [ext_resource type="AudioStream" uid="uid://banana" path="res://assets/music/bg_music_level.wav" id="13_fhvee"]
 [ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="14_276iw"]
 
@@ -45,11 +44,6 @@ position = Vector2(206, 111)
 unique_name_in_owner = true
 editor_description = "Rectangle shape that should cover the whole play area"
 shape = SubResource("RectangleShape2D_dy4vm")
-
-[node name="Player" parent="PlayArea" unique_id=678857731 instance=ExtResource("3_wkokv")]
-editor_description = "The player lives in the PlayArea"
-z_index = 1
-position = Vector2(-86, 37)
 
 [node name="TheHiveminnd" type="Node2D" parent="PlayArea" unique_id=838410075 node_paths=PackedStringArray("play_area")]
 editor_description = "Where all the robots roam wild!"
@@ -91,7 +85,6 @@ texture = ExtResource("10_batfn")
 [node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
 
 [node name="Countdown" type="Node2D" parent="." unique_id=1334223834]
-script = ExtResource("13_fhvee")
 
 [node name="Label" type="Label" parent="Countdown" unique_id=319313245]
 offset_left = 60.0
@@ -116,8 +109,8 @@ volume_db = -10.0
 autoplay = true
 
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
-[connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]
 [connection signal="stop_moving" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_stop_moving"]
+[connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="PlayArea/Quadrants/1"]
 [editable path="PlayArea/Quadrants/2"]
