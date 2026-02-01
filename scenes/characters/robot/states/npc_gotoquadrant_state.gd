@@ -1,7 +1,7 @@
 extends State
 class_name NPCGotoQuadrantState
 
-const GOAL_RADIUS: float = 20.0
+const GOAL_RADIUS: float = 24.0
 
 var blessed_quadrant: Quadrant = null
 var movement_goal := Vector2.ZERO
@@ -12,8 +12,12 @@ func enter():
 		"with extents =", blessed_quadrant.get_extents(),
 		"from", character.position)
 	
-	movement_goal = blessed_quadrant.get_extents().get_center() - character.position
-	movement_goal += Vector2.RIGHT * randf_range(-20.0, 20.0)
+	var goal_rect := blessed_quadrant.get_extents().grow(-20)
+	var goal_point := goal_rect.position + Vector2(
+		goal_rect.size.x * randf(),
+		goal_rect.size.y * randf()
+	)
+	movement_goal = goal_point - character.position
 
 
 func physics_process(_delta):

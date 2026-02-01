@@ -46,7 +46,10 @@ position = Vector2(-86, 37)
 
 [node name="TheHiveminnd" type="Node2D" parent="PlayArea" unique_id=838410075 node_paths=PackedStringArray("play_area")]
 editor_description = "Where all the robots roam wild!"
+z_index = 1
+position = Vector2(-1, 0)
 script = ExtResource("3_o4jwg")
+npcs_to_spawn = 20
 play_area = NodePath("../PlayArea")
 
 [node name="Quadrants" type="Node2D" parent="PlayArea" unique_id=316367631]
