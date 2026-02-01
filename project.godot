@@ -46,6 +46,7 @@ folder_colors={
 "res://assets/": "pink",
 "res://scenes/characters/": "yellow",
 "res://scenes/game_scene/THE_LEVEL/": "orange",
+"res://scenes/game_scene/credits/": "pink",
 "res://scenes/game_scene/main_menu/": "green"
 }
 

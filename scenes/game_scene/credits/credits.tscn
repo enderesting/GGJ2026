@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://jlo6ac4y5yma"]
+
+[ext_resource type="Theme" uid="uid://djkvyrjbuapy7" path="res://resources/new_theme.tres" id="1_f4dfc"]
+[ext_resource type="Script" uid="uid://c6gef80tbvcbv" path="res://scenes/game_scene/credits/credits.gd" id="1_shyv6"]
+[ext_resource type="Texture2D" uid="uid://bh8egy53ghmkj" path="res://assets/bad_robot_logo.png" id="2_rxne1"]
+
+[node name="Credits" type="Control" unique_id=1137130746]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_f4dfc")
+script = ExtResource("1_shyv6")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1869285582]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 148.0
+offset_bottom = 141.0
+texture = ExtResource("2_rxne1")
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1982988789]
+layout_mode = 1
+offset_left = 160.0
+offset_top = 8.0
+offset_right = 304.0
+offset_bottom = 168.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "brought to you by:
+mimi
+pati
+tito
+tomi
+
+and...
+[wave][rainbow]you[/rainbow][/wave]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=508075498]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
