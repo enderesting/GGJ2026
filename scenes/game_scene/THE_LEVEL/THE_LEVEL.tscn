@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(228, 138)
 
-[node name="TheLevel" type="Node2D" unique_id=521265649]
+[node name="TheLevel" type="Node2D" unique_id=521265649 groups=["quadrants"]]
 script = ExtResource("1_5edlj")
 
 [node name="MockupBg" type="Sprite2D" parent="." unique_id=1384063776]
@@ -85,8 +85,7 @@ texture = ExtResource("10_batfn")
 [node name="number" parent="PlayArea/Quadrants/4/Light" index="0" unique_id=2085659327]
 texture = ExtResource("11_fhvee")
 
-[node name="Overseer" parent="." unique_id=1110463796 node_paths=PackedStringArray("color_quadrants") instance=ExtResource("5_2jkeq")]
-color_quadrants = [NodePath("../PlayArea/Quadrants/1"), NodePath("../PlayArea/Quadrants/2"), NodePath("../PlayArea/Quadrants/3"), NodePath("../PlayArea/Quadrants/4")]
+[node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
 
 [editable path="PlayArea/Quadrants/1"]
 [editable path="PlayArea/Quadrants/2"]

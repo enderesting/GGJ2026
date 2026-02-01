@@ -107,7 +107,7 @@ _data = {
 &"turn_on": SubResource("Animation_o1kds")
 }
 
-[node name="Quadrant" type="Area2D" unique_id=47736159]
+[node name="Quadrant" type="Area2D" unique_id=47736159 groups=["quadrants"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_06cag")

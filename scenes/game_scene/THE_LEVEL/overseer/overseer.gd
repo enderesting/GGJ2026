@@ -6,9 +6,10 @@ extends Node2D
 signal stop_moving
 signal color_picked
 
-@export_group("Traps")
-@export_subgroup("4: Ze Quadrrantz")
-@export var color_quadrants: Array[Quadrant]
+#@export_group("Traps")
+#@export_subgroup("4: Ze Quadrrantz")
+# I decided to use groups instead - more game jamy - more... godotesque
+#@export var quadrants: Array[Quadrant]
 
 
 func _ready() -> void:
@@ -67,18 +68,23 @@ func _input(event: InputEvent) -> void:
 
 
 func do_quadrants() -> void:
-	for quadrant in color_quadrants:
-		quadrant.animate_dramatic_flicker()
-	await color_quadrants[0].animation_finished	
+	var quadrants : Array[Quadrant] = []
+	for quadrant in get_tree().get_nodes_in_group("quadrants"):
+		if quadrant is Quadrant:
+			quadrants.push_back(quadrant)
 	
-	var blessed_quadrant := color_quadrants.pick_random() as Quadrant
+	for quadrant in quadrants:
+		quadrant.animate_dramatic_flicker()
+	await quadrants[0].animation_finished	
+	
+	var blessed_quadrant := quadrants.pick_random() as Quadrant
 	await blessed_quadrant.animate_turn_on()
 	
 	color_picked.emit(blessed_quadrant.get_index() + 1)
 	
 	await get_tree().create_timer(2.0).timeout
 	
-	for quadrant in color_quadrants:
+	for quadrant in quadrants:
 		if quadrant != blessed_quadrant:
 			quadrant.kill_them_all()
 
