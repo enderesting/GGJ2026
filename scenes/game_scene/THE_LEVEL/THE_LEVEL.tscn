@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cexm8xjkanpkb"]
 
 [ext_resource type="Script" uid="uid://7igt3pf3afue" path="res://scenes/game_scene/THE_LEVEL/main.gd" id="1_5edlj"]
-[ext_resource type="Texture2D" uid="uid://bwbemalclinkh" path="res://assets/background/bg_2.png" id="2_batfn"]
+[ext_resource type="Texture2D" uid="uid://bpw0tte6ovf1u" path="res://assets/background/bg.png" id="2_batfn"]
 [ext_resource type="Script" uid="uid://duogagnrgv4n5" path="res://scenes/game_scene/THE_LEVEL/hivemind.gd" id="3_o4jwg"]
 [ext_resource type="PackedScene" uid="uid://bw5ps2bf04erm" path="res://scenes/characters/player/player.tscn" id="3_wkokv"]
 [ext_resource type="PackedScene" uid="uid://bxmfelykv4k1a" path="res://scenes/game_scene/THE_LEVEL/overseer/overseer.tscn" id="5_2jkeq"]
@@ -57,7 +57,7 @@ play_area = NodePath("../PlayArea")
 
 [node name="Player" parent="PlayArea/TheHiveminnd" unique_id=678857731 instance=ExtResource("3_wkokv")]
 editor_description = "The player lives in the PlayArea"
-position = Vector2(-85, 37)
+position = Vector2(-14, -76)
 
 [node name="Quadrants" type="Node2D" parent="PlayArea" unique_id=316367631]
 editor_description = "The 4 areas for the color test.
@@ -80,13 +80,18 @@ texture = ExtResource("8_521ry")
 [node name="4" parent="PlayArea/Quadrants" unique_id=1396367876 instance=ExtResource("5_5edlj")]
 position = Vector2(-114, 0)
 
+[node name="Shape" parent="PlayArea/Quadrants/4" index="0" unique_id=945870284]
+metadata/_edit_lock_ = true
+
 [node name="Light" parent="PlayArea/Quadrants/4" index="1" unique_id=1600648789]
 texture = ExtResource("10_batfn")
 
 [node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
 
 [node name="Countdown" type="Node2D" parent="." unique_id=1334223834]
+position = Vector2(-58, -41)
 script = ExtResource("10_fhvee")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Countdown" unique_id=319313245]
 offset_left = 60.0
