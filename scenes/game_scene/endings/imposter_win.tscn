@@ -1,27 +1,33 @@
 [gd_scene format=3 uid="uid://cdc4t2emyoe6m"]
 
-[ext_resource type="Script" uid="uid://btb8ku4o886xx" path="res://scenes/game_scene/endings/imposter_win.gd" id="1_2gkdf"]
+[ext_resource type="Script" path="res://scenes/game_scene/endings/imposter_win.gd" id="1_2gkdf"]
+[ext_resource type="Texture2D" uid="uid://6m6etlnyhom5" path="res://assets/temp/WinnerCard_faker.png" id="2_canxl"]
+[ext_resource type="FontFile" uid="uid://cg0idfs8prkgv" path="res://resources/Technotot.otf" id="3_33181"]
 
 [node name="ImposterWin" type="Node2D" unique_id=456385021]
 script = ExtResource("1_2gkdf")
 
-[node name="Label" type="Label" parent="." unique_id=1768868948]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 70.0
-offset_top = 61.0
-offset_right = 104.0
-offset_bottom = 84.0
-grow_vertical = 2
-text = "yayyy imposter win  :-) "
-
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1820703229]
 offset_right = 320.0
 offset_bottom = 180.0
+texture = ExtResource("2_canxl")
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1669113331]
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="Label" type="Label" parent="." unique_id=448491119]
+offset_left = 9.0
+offset_top = 130.0
+offset_right = 171.0
+offset_bottom = 173.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_33181")
+theme_override_font_sizes/font_size = 10
+text = "Ending 2:
+the unmasking"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
