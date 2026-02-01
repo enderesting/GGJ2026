@@ -11,16 +11,16 @@ var bad_robot
 func _input(event: InputEvent) -> void:
 	var device_id = event.device
 	
-	print("press a button")
+	#print("press a button")
 	#ask for button player 1
 	
 	if event is InputEventKey:
 		overseer = event.device
-		print("kb")
+		#print("kb")
 		
 	if event is InputEventJoypadButton or InputEventJoypadMotion:
 		overseer = event.device
-		print("controller")
+		#print("controller")
 		
 
 

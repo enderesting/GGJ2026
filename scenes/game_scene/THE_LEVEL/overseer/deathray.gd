@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
+var play_area_position: Vector2
 
 const SPEED = 300.0
 
 func _ready() -> void:
-	position = %PlayArea.position
+	position = play_area_position
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector(&"target_left", &"target_right", &"target_up", &"target_down")
