@@ -11,7 +11,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	var direction := Input.get_vector(&"target_left", &"target_right", &"target_up", &"target_down")
 	direction = direction.round().normalized()
-	if direction and not stopped:
+	if direction: #and not stopped:
 		velocity = direction * SPEED
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)

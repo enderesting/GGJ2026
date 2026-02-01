@@ -14,8 +14,8 @@ func _ready() -> void:
 
 
 func get_extents() -> Rect2:
-	var shape_rect := shape.shape.get_rect()
-	return Rect2(position + shape_rect.position, shape_rect.size)
+	var rectangle := shape.shape as RectangleShape2D
+	return Rect2(position + shape.position - rectangle.size/2, rectangle.size)
 
 
 func kill_them_all() -> void:

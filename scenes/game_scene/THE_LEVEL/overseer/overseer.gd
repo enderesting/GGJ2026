@@ -43,19 +43,19 @@ func _on_cooldown_timeout():
 
 
 func _input(event: InputEvent) -> void:
-	if not can_trigger_trap:
-		return
-	
+	#if not can_trigger_trap:
+		#return
 	
 	# Trap 1: Death ray
-	if event.is_action_pressed(&"trap_1"):
-		can_trigger_trap = false
+	if event.is_action_pressed(&"trap_1") and can_trigger_trap:
 		warning_signs.play("warning_die")
 		$Deathray.position = play_area.get_parent().position
 		$Deathray.visible = true
 		%Bolt.visible = false
 		
-	if event.is_action_released(&"trap_1"):
+	if event.is_action_released(&"trap_1") and can_trigger_trap:
+		can_trigger_trap = false
+		cooldown.start()
 		trap_started.emit(&"trap_1")
 		var doomed_roamers: Array[Node2D] = %LaserHitArea.get_overlapping_bodies()
 		for roamer in doomed_roamers:
@@ -69,22 +69,26 @@ func _input(event: InputEvent) -> void:
 			roamer.queue_free()
 		
 		trap_finished.emit(&"trap_1")
-		
+		warning_signs.play(&"warning_idle")
+
 	
 	# Trap 2: Sawblade
-	if event.is_action_pressed(&"trap_2"):
+	if event.is_action_pressed(&"trap_2") and can_trigger_trap:
 		can_trigger_trap = false
+		cooldown.start()
 		warning_signs.play("warning_run")
 		trap_started.emit(&"trap_2")
 		$Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
 		$Sawblade.global_position.y =play_area.get_parent().position.y
 		$Sawblade.visible = true
 		trap_finished.emit(&"trap_2")
-	
+		warning_signs.play(&"warning_idle")
+
 
 	# Trap 3: Stop light
-	if event.is_action_pressed(&"trap_3"):
+	if event.is_action_pressed(&"trap_3") and can_trigger_trap:
 		can_trigger_trap = false
+		cooldown.start()
 		warning_signs.play("warning_stop")
 		trap_started.emit(&"trap_3")
 		$Stoplight.visible = true
@@ -94,10 +98,10 @@ func _input(event: InputEvent) -> void:
 		await $Stoplight.animation_finished
 		$Stoplight.visible = false
 		trap_finished.emit(&"trap_3")
-	
+		warning_signs.play(&"warning_idle")
 
 	# Trap 4: Color quadrants
-	if event.is_action_pressed(&"trap_4"):
+	if event.is_action_pressed(&"trap_4") and can_trigger_trap:
 		can_trigger_trap = false
 		cooldown.start()
 		warning_signs.play("warning_go")
@@ -108,8 +112,8 @@ func _input(event: InputEvent) -> void:
 
 
 func do_quadrants() -> void:
-	print("do_quadrants")
-	var quadrants = []
+	# Retrieve quadrants type-safely
+	var quadrants: Array[Quadrant] = []
 	for quadrant in get_tree().get_nodes_in_group("quadrants"):
 		if quadrant is Quadrant:
 			quadrants.push_back(quadrant)
