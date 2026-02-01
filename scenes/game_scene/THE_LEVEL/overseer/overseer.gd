@@ -17,7 +17,7 @@ func _ready() -> void:
 	$Colorpicker/Color2.global_position = play_area.position - Vector2((-play_area.shape.size.x/4) ,play_area.shape.size.y/4)
 	$Colorpicker/Color3.global_position = play_area.position + play_area.shape.size/4
 	$Colorpicker/Color4.global_position = play_area.position - Vector2(play_area.shape.size.x/4 ,-(play_area.shape.size.y/4))
-	
+	$AnimationPlayer.play("overseer_idle")
 
 func _input(event: InputEvent) -> void:
 

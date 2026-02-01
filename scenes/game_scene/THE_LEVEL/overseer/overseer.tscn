@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://tkygwbvhy4ia" path="res://assets/color1.png" id="14_cgynf"]
 [ext_resource type="Texture2D" uid="uid://de21ciwxfabsk" path="res://assets/color2.png" id="15_t7mmt"]
 [ext_resource type="Texture2D" uid="uid://c5n8rjgu2p0pu" path="res://assets/color3.png" id="16_nld2e"]
+[ext_resource type="Texture2D" uid="uid://8j454btis1ue" path="res://assets/temp/OverseerBody.png" id="19_121vy"]
+[ext_resource type="Texture2D" uid="uid://bifa4x8yr5gq3" path="res://assets/temp/OverseerLeftArm.png" id="20_ayyg4"]
+[ext_resource type="Texture2D" uid="uid://db1smlxq28i06" path="res://assets/temp/OverseerMonitorHead.png" id="21_d1gew"]
+[ext_resource type="Texture2D" uid="uid://bqf3t23ud60vt" path="res://assets/temp/OverseerRightArm.png" id="22_5r2ny"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2jkeq"]
 
@@ -92,6 +96,116 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tmyhl"]
 
+[sub_resource type="Animation" id="Animation_121vy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OverseerSprite/OverseerBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(104, 87)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OverseerSprite/OverseerMonitorHead:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(118, 96)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OverseerSprite/OverseerLeftArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 68)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OverseerSprite/OverseerRightArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(106, 118)]
+}
+
+[sub_resource type="Animation" id="Animation_ayyg4"]
+resource_name = "overseer_idle"
+length = 4.0666666
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OverseerSprite/OverseerBody:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 1, 2, 3.0333333, 4.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(104, 87), Vector2(104, 91.015), Vector2(104, 87), Vector2(104, 91.015), Vector2(104, 87)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OverseerSprite/OverseerLeftArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.7, 1.4, 2.4, 3, 3.4, 4.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(120, 65.615), Vector2(112.79, 59.162), Vector2(120, 62.405), Vector2(120, 65.615), Vector2(125.41, 71.43), Vector2(120, 62.405), Vector2(120, 65.615)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OverseerSprite/OverseerMonitorHead:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26666668, 1.2583333, 2.2583334, 3.2666667, 4.266667),
+"transitions": PackedFloat32Array(1, 0.23325826, 1.5691688, 0.233, 1.56),
+"update": 0,
+"values": [Vector2(118, 96), Vector2(119, 102.875), Vector2(118, 96), Vector2(119, 102.875), Vector2(118, 96)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OverseerSprite/OverseerRightArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 1, 1.2333333, 2, 2.4, 3.2, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(111.9, 122.065), Vector2(110.89, 130.069), Vector2(104.585, 130.11), Vector2(110.58, 124.872), Vector2(111.9, 122.065), Vector2(110.89, 130.069), Vector2(104.585, 130.11), Vector2(116.06, 124.872)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d1gew"]
+_data = {
+&"RESET": SubResource("Animation_121vy"),
+&"overseer_idle": SubResource("Animation_ayyg4")
+}
+
 [node name="Overseer" type="Node2D" unique_id=1110463796]
 script = ExtResource("1_341gs")
 
@@ -157,3 +271,28 @@ texture = ExtResource("15_t7mmt")
 
 [node name="Color4" type="Sprite2D" parent="Colorpicker" unique_id=280664679]
 texture = ExtResource("16_nld2e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=735301198]
+libraries/ = SubResource("AnimationLibrary_d1gew")
+
+[node name="OverseerSprite" type="Node2D" parent="." unique_id=2114873472]
+
+[node name="OverseerBody" type="Sprite2D" parent="OverseerSprite" unique_id=1669471048]
+z_index = 2
+position = Vector2(104, 87)
+texture = ExtResource("19_121vy")
+
+[node name="OverseerLeftArm" type="Sprite2D" parent="OverseerSprite" unique_id=1460734465]
+z_index = -2
+position = Vector2(120, 68)
+texture = ExtResource("20_ayyg4")
+
+[node name="OverseerMonitorHead" type="Sprite2D" parent="OverseerSprite" unique_id=719077939]
+z_index = 3
+position = Vector2(118, 96)
+texture = ExtResource("21_d1gew")
+
+[node name="OverseerRightArm" type="Sprite2D" parent="OverseerSprite" unique_id=1227775015]
+z_index = 1
+position = Vector2(106, 118)
+texture = ExtResource("22_5r2ny")
