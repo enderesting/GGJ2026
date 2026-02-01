@@ -5,7 +5,7 @@ extends Node2D
 
 #signal ray_shot
 signal stop_moving
-signal color_picked
+signal color_picked(blessed_quadrant: Quadrant)
 
 signal trap_started(name: StringName)
 signal trap_finished(name: StringName)
@@ -97,7 +97,7 @@ func do_quadrants() -> void:
 	var blessed_quadrant := quadrants.pick_random() as Quadrant
 	await blessed_quadrant.animate_turn_on()
 	
-	color_picked.emit(blessed_quadrant.get_index() + 1)
+	color_picked.emit(blessed_quadrant)
 	
 	await get_tree().create_timer(2.0).timeout
 	

@@ -12,6 +12,12 @@ func _ready() -> void:
 	turn_off()
 
 
+func get_extents() -> Rect2:
+	return Rect2(
+		
+	)
+
+
 func kill_them_all() -> void:
 	for body in get_overlapping_bodies():
 		if body is RoamingRobot:

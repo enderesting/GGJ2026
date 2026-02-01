@@ -2,10 +2,11 @@
 class_name RobotNPC
 extends RoamingRobot
 
-var states: Dictionary = {
+var states: Dictionary[StringName, State] = {
 	"IDLE": NPCIdleState.new(),
 	"BUSY": NPCBusyState.new(),
-	"DYING": NPCDyingState.new()
+	"RUNNING_TO_QUADRANT": NPCGotoQuadrantState.new(),
+	"DYING": NPCDyingState.new(),
 }
 
 var current_state: State
