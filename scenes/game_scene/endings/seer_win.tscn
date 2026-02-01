@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://b1tshijde4hbx"]
 
+[ext_resource type="Script" uid="uid://cj6mxp0np8rjc" path="res://scenes/game_scene/endings/seer_win.gd" id="1_rsrui"]
 [ext_resource type="FontFile" uid="uid://cg0idfs8prkgv" path="res://resources/Technotot.otf" id="1_wakf4"]
 [ext_resource type="Texture2D" uid="uid://5sstjjan1n6o" path="res://assets/temp/WinnerCard_Overseer.png" id="2_rsrui"]
 
 [node name="SeerWin" type="Node2D" unique_id=203469138]
+script = ExtResource("1_rsrui")
 
 [node name="Label" type="Label" parent="." unique_id=673661048]
 offset_left = 153.0
@@ -18,8 +20,15 @@ text = "Ending 1:
 Employee of the month"
 horizontal_alignment = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=356789073]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=256749631]
 z_index = -2
-position = Vector2(161, 91)
+offset_right = 320.0
+offset_bottom = 180.0
 texture = ExtResource("2_rsrui")
-metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="." unique_id=706230637]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

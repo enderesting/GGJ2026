@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cdc4t2emyoe6m"]
 
+[ext_resource type="Script" uid="uid://btb8ku4o886xx" path="res://scenes/game_scene/endings/imposter_win.gd" id="1_2gkdf"]
+
 [node name="ImposterWin" type="Node2D" unique_id=456385021]
+script = ExtResource("1_2gkdf")
 
 [node name="Label" type="Label" parent="." unique_id=1768868948]
 anchors_preset = 9
@@ -11,3 +14,14 @@ offset_right = 104.0
 offset_bottom = 84.0
 grow_vertical = 2
 text = "yayyy imposter win  :-) "
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1820703229]
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1669113331]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
