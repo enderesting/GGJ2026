@@ -8,6 +8,9 @@ signal trap_started(name: StringName)
 signal trap_finished(name: StringName)
 signal trap_cooldown()
 signal trap_color_picked(blessed_quadrant: Quadrant)
+
+signal player_killed()
+
 signal game_over(winner: StringName)
 
 @warning_ignore_restore("unused_signal")
