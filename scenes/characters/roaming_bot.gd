@@ -17,7 +17,6 @@ func _physics_process(_delta: float) -> void:
 func random_position():
 	var play_size := (play_area.shape as RectangleShape2D).size
 	var play_topright := -play_size/2
-	printt(play_topright, play_size)
 	return Vector2(
 		randf_range(play_topright.x, play_topright.x + play_size.x),
 		randf_range(play_topright.y, play_topright.y + play_size.y)
