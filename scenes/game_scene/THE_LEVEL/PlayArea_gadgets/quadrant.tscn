@@ -116,18 +116,6 @@ script = ExtResource("1_06cag")
 position = Vector2(57, 34)
 shape = SubResource("RectangleShape2D_wkokv")
 
-[node name="ProgressBar" type="ProgressBar" parent="Shape" unique_id=225822039]
-unique_name_in_owner = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -57.0
-offset_top = -35.0
-offset_right = 57.0
-offset_bottom = 35.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Light" type="Sprite2D" parent="." unique_id=1600648789]
 texture = ExtResource("1_ijq5s")
 centered = false

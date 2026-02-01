@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://tkygwbvhy4ia" path="res://assets/color1.png" id="8_o4jwg"]
 [ext_resource type="Texture2D" uid="uid://bunbjihqtxuhn" path="res://assets/trap_color_quiz/color_4.png" id="10_batfn"]
 [ext_resource type="Texture2D" uid="uid://c5n8rjgu2p0pu" path="res://assets/color3.png" id="11_fhvee"]
+[ext_resource type="AudioStream" uid="uid://byvcqhyvju4pe" path="res://assets/music/bg_music_level.wav" id="13_fhvee"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(228, 138)
@@ -89,6 +90,11 @@ texture = ExtResource("10_batfn")
 texture = ExtResource("11_fhvee")
 
 [node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=774278575]
+stream = ExtResource("13_fhvee")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
 
