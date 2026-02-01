@@ -1,0 +1,27 @@
+[gd_resource type="Theme" format=3 uid="uid://djkvyrjbuapy7"]
+
+[ext_resource type="FontFile" uid="uid://cg0idfs8prkgv" path="res://resources/Technotot.otf" id="1_2a54a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7emc"]
+bg_color = Color(0.34066254, 0.74340224, 0.58488375, 0.57254905)
+corner_detail = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e7emc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odjjf"]
+bg_color = Color(0.79447365, 0, 0.100179695, 0.57254905)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[resource]
+default_font = ExtResource("1_2a54a")
+Button/font_sizes/font_size = 12
+Button/styles/hover = SubResource("StyleBoxFlat_e7emc")
+Button/styles/normal = SubResource("StyleBoxEmpty_e7emc")
+Button/styles/pressed = SubResource("StyleBoxFlat_odjjf")

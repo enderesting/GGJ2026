@@ -1,35 +1,12 @@
 [gd_scene format=3 uid="uid://debpgop85dvkb"]
 
-[ext_resource type="FontFile" uid="uid://cg0idfs8prkgv" path="res://resources/Technotot.otf" id="1_e7emc"]
+[ext_resource type="Theme" uid="uid://djkvyrjbuapy7" path="res://resources/new_theme.tres" id="1_48fmb"]
 [ext_resource type="Texture2D" uid="uid://cqo8be6uf8533" path="res://assets/cg/game_cover_title.png" id="2_j8cx4"]
 [ext_resource type="Script" uid="uid://pw4bqhgkbhp1" path="res://scenes/game_scene/main_menu/start.gd" id="2_odjjf"]
 [ext_resource type="Script" uid="uid://la3ligc4jg6k" path="res://scenes/game_scene/main_menu/quit.gd" id="3_qnf54"]
-[ext_resource type="AudioStream" uid="uid://bic82fbh6d67e" path="res://assets/bad_robot.wav" id="5_xxfok"]
-[ext_resource type="AudioStream" uid="uid://ddcpip0xgyxba" path="res://assets/bg_music.wav" id="6_jhac1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7emc"]
-bg_color = Color(0.34066254, 0.74340224, 0.58488375, 0.57254905)
-corner_detail = 1
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e7emc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odjjf"]
-bg_color = Color(0.79447365, 0, 0.100179695, 0.57254905)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="Theme" id="Theme_odjjf"]
-default_font = ExtResource("1_e7emc")
-Button/font_sizes/font_size = 12
-Button/styles/hover = SubResource("StyleBoxFlat_e7emc")
-Button/styles/normal = SubResource("StyleBoxEmpty_e7emc")
-Button/styles/pressed = SubResource("StyleBoxFlat_odjjf")
+[ext_resource type="Script" uid="uid://dsvi75gojpk87" path="res://scenes/game_scene/main_menu/credits.gd" id="4_jhac1"]
+[ext_resource type="AudioStream" uid="uid://bic82fbh6d67e" path="res://assets/music/bad_robot.wav" id="5_xxfok"]
+[ext_resource type="AudioStream" uid="uid://ddcpip0xgyxba" path="res://assets/music/bg_music.wav" id="6_jhac1"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_48fmb"]
 clip_count = 2
@@ -40,7 +17,7 @@ clip_0/next_clip = 1
 clip_1/name = &"Bg Music"
 clip_1/stream = ExtResource("6_jhac1")
 clip_1/auto_advance = 1
-clip_1/next_clip = 0
+clip_1/next_clip = 1
 _transitions = {
 Vector2i(0, 1): {
 "fade_beats": 2.0,
@@ -57,7 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_odjjf")
+theme = ExtResource("1_48fmb")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1788192149]
 layout_mode = 0
@@ -84,6 +61,7 @@ offset_right = 128.0
 offset_bottom = 144.0
 text = "Credits"
 alignment = 0
+script = ExtResource("4_jhac1")
 
 [node name="Quit" type="Button" parent="." unique_id=1014021487]
 layout_mode = 0

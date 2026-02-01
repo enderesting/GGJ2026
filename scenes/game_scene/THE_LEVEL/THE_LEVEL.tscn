@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://l4athfc1f4e8" path="res://assets/trap_color_quiz/color_2.png" id="8_521ry"]
 [ext_resource type="Texture2D" uid="uid://bunbjihqtxuhn" path="res://assets/trap_color_quiz/color_4.png" id="10_batfn"]
 [ext_resource type="Script" uid="uid://cx5cgabfve247" path="res://scenes/game_scene/THE_LEVEL/countdown.gd" id="13_fhvee"]
+[ext_resource type="AudioStream" uid="uid://banana" path="res://assets/music/bg_music_level.wav" id="13_fhvee"]
 [ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="14_276iw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
@@ -108,6 +109,11 @@ text = "00:00"
 
 [node name="Timer" type="Timer" parent="Countdown" unique_id=2129905220]
 wait_time = 60.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=774278575]
+stream = ExtResource("13_fhvee")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
 [connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]

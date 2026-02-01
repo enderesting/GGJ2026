@@ -21,10 +21,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-AppConfig="*res://addons/maaacks_game_template/base/nodes/autoloads/app_config/app_config.tscn"
-SceneLoader="*res://addons/maaacks_game_template/base/nodes/autoloads/scene_loader/scene_loader.tscn"
-ProjectMusicController="*res://addons/maaacks_game_template/base/nodes/autoloads/music_controller/project_music_controller.tscn"
-ProjectUISoundController="*res://addons/maaacks_game_template/base/nodes/autoloads/ui_sound_controller/project_ui_sound_controller.tscn"
 EventBus="*uid://dtxyc6o1cjutq"
 Crossfade="*uid://4cvykri8e665"
 
@@ -40,7 +36,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 
@@ -50,6 +46,7 @@ folder_colors={
 "res://autoloads/": "green",
 "res://scenes/characters/": "yellow",
 "res://scenes/game_scene/THE_LEVEL/": "orange",
+"res://scenes/game_scene/credits/": "pink",
 "res://scenes/game_scene/endings/": "red",
 "res://scenes/game_scene/main_menu/": "green"
 }
@@ -163,10 +160,6 @@ target_right={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
 ]
 }
-
-[internationalization]
-
-locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
 
 [layer_names]
 
