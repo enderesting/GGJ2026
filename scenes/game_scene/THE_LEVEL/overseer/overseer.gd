@@ -6,6 +6,10 @@ extends Node2D
 signal stop_moving
 signal color_picked
 
+@export_group("Traps")
+@export_subgroup("4: Ze Quadrrantz")
+@export var color_quadrants: Array[Quadrant]
+
 
 func _ready() -> void:
 	$Deathray.visible = false
@@ -59,19 +63,23 @@ func _input(event: InputEvent) -> void:
 
 	# Trap 4: Color quadrants
 	if event.is_action_pressed(&"trap_4"):
-		var picked_color = $Colorpicker.get_children().pick_random()
-		
-		$Colorpicker.propagate_call("set_visible", [true]) # reset visibility
-		
-		var blinks := create_tween().set_loops(2) # <- how many times to blink
-		blinks.tween_callback($Colorpicker.set_visible.bind(true))
-		blinks.tween_interval(0.5)
-		blinks.tween_callback($Colorpicker.set_visible.bind(false))
-		blinks.tween_interval(0.5)
-		await blinks.finished
-		
-		$Colorpicker.propagate_call("set_visible", [false]) # Hide all children
-		$Colorpicker.visible = true                         # except the parent
-		picked_color.visible = true                         # and reveal the picked color
-		
-		color_picked.emit(picked_color.get_index() + 1)
+		do_quadrants()
+
+
+func do_quadrants() -> void:
+	for quadrant in color_quadrants:
+		quadrant.animate_dramatic_flicker()
+	await color_quadrants[0].animation_finished	
+	
+	var blessed_quadrant := color_quadrants.pick_random() as Quadrant
+	await blessed_quadrant.animate_turn_on()
+	
+	color_picked.emit(blessed_quadrant.get_index() + 1)
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	for quadrant in color_quadrants:
+		if quadrant != blessed_quadrant:
+			quadrant.kill_them_all()
+
+	blessed_quadrant.animate_turn_off()

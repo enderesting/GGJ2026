@@ -2,7 +2,7 @@
 extends RoamingRobot
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	direction = direction.round().normalized()
 	if direction:
@@ -12,4 +12,5 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	
+	super(delta)
 	

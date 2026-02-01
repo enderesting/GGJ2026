@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://dnom53p1pream"]
+
+[ext_resource type="Script" uid="uid://dnkwne75lcc1h" path="res://scenes/game_scene/THE_LEVEL/PlayArea_gadgets/quadrant.gd" id="1_06cag"]
+[ext_resource type="Texture2D" uid="uid://c72m7j3jcig7v" path="res://assets/trap_color_quiz/color_3.png" id="1_ijq5s"]
+[ext_resource type="Texture2D" uid="uid://de21ciwxfabsk" path="res://assets/color2.png" id="2_06cag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkokv"]
+size = Vector2(114, 69)
+
+[sub_resource type="Animation" id="Animation_ijq5s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_06cag"]
+resource_name = "flicker"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.76666665, 1.3333334, 1.9333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xmb24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:modulate")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mdixk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:modulate")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bgfh4"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o1kds"]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.56666666, 1.5),
+"transitions": PackedFloat32Array(103.96829, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xmb24"]
+_data = {
+&"RESET": SubResource("Animation_ijq5s"),
+&"flicker": SubResource("Animation_06cag"),
+&"off": SubResource("Animation_xmb24"),
+&"on": SubResource("Animation_mdixk"),
+&"turn_off": SubResource("Animation_bgfh4"),
+&"turn_on": SubResource("Animation_o1kds")
+}
+
+[node name="Quadrant" type="Area2D" unique_id=47736159]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_06cag")
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=945870284]
+position = Vector2(57, 34)
+shape = SubResource("RectangleShape2D_wkokv")
+
+[node name="Light" type="Sprite2D" parent="." unique_id=1600648789]
+texture = ExtResource("1_ijq5s")
+centered = false
+offset = Vector2(2, 3)
+
+[node name="number" type="Sprite2D" parent="Light" unique_id=2085659327]
+visible = false
+position = Vector2(58, 36)
+texture = ExtResource("2_06cag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1615619985]
+libraries/ = SubResource("AnimationLibrary_xmb24")
+autoplay = &"off"

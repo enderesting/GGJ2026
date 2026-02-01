@@ -44,6 +44,7 @@ enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 
 folder_colors={
 "res://assets/": "pink",
+"res://assets/trap_color_quiz/": "red",
 "res://scenes/characters/": "yellow",
 "res://scenes/game_scene/THE_LEVEL/": "orange",
 "res://scenes/game_scene/main_menu/": "green"
