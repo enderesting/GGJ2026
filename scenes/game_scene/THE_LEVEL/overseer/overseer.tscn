@@ -397,7 +397,6 @@ wait_time = 5.0
 one_shot = true
 
 [node name="WarningSigns" type="AnimatedSprite2D" parent="." unique_id=1971435016]
-z_index = 1
 position = Vector2(230, 21)
 sprite_frames = SubResource("SpriteFrames_8el1g")
 animation = &"warning_die"
