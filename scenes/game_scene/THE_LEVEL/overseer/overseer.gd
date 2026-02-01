@@ -134,7 +134,7 @@ func do_quadrants() -> void:
 	
 	for quadrant in quadrants:
 		quadrant.animate_dramatic_flicker()
-	await quadrants[0].animation_finished	
+	await quadrants[0].animation_finished
 	
 	var blessed_quadrant := quadrants.pick_random() as Quadrant
 	await blessed_quadrant.animate_turn_on()
