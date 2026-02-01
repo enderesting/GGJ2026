@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dn3l0pw7po5r1" path="res://assets/trap_color_quiz/color_1.png" id="6_2jkeq"]
 [ext_resource type="Texture2D" uid="uid://l4athfc1f4e8" path="res://assets/trap_color_quiz/color_2.png" id="8_521ry"]
 [ext_resource type="Texture2D" uid="uid://bunbjihqtxuhn" path="res://assets/trap_color_quiz/color_4.png" id="10_batfn"]
-[ext_resource type="AudioStream" uid="uid://byvcqhyvju4pe" path="res://assets/music/bg_music_level.wav" id="13_fhvee"]
+[ext_resource type="Script" uid="uid://cx5cgabfve247" path="res://scenes/game_scene/THE_LEVEL/countdown.gd" id="13_fhvee"]
 [ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="14_276iw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
@@ -37,6 +37,7 @@ polygon = PackedVector2Array(92, 42, 320, 42, 320, 180, 92, 180, 92, 42, 64, 16,
 
 [node name="PlayArea" type="Area2D" parent="." unique_id=911222187]
 editor_description = "The confines of the player and the NPC robots"
+y_sort_enabled = true
 position = Vector2(206, 111)
 
 [node name="PlayArea" type="CollisionShape2D" parent="PlayArea" unique_id=743758708]
@@ -44,17 +45,18 @@ unique_name_in_owner = true
 editor_description = "Rectangle shape that should cover the whole play area"
 shape = SubResource("RectangleShape2D_dy4vm")
 
-[node name="Player" parent="PlayArea" unique_id=678857731 instance=ExtResource("3_wkokv")]
-editor_description = "The player lives in the PlayArea"
-position = Vector2(-86, 37)
-
 [node name="TheHiveminnd" type="Node2D" parent="PlayArea" unique_id=838410075 node_paths=PackedStringArray("play_area")]
 editor_description = "Where all the robots roam wild!"
 z_index = 1
+y_sort_enabled = true
 position = Vector2(-1, 0)
 script = ExtResource("3_o4jwg")
 npcs_to_spawn = 20
 play_area = NodePath("../PlayArea")
+
+[node name="Player" parent="PlayArea/TheHiveminnd" unique_id=678857731 instance=ExtResource("3_wkokv")]
+editor_description = "The player lives in the PlayArea"
+position = Vector2(-85, 37)
 
 [node name="Quadrants" type="Node2D" parent="PlayArea" unique_id=316367631]
 editor_description = "The 4 areas for the color test.
@@ -83,6 +85,7 @@ texture = ExtResource("10_batfn")
 [node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
 
 [node name="Countdown" type="Node2D" parent="." unique_id=1334223834]
+script = ExtResource("13_fhvee")
 
 [node name="Label" type="Label" parent="Countdown" unique_id=319313245]
 offset_left = 60.0
@@ -102,6 +105,7 @@ text = "00:00"
 wait_time = 60.0
 
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
+[connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="PlayArea/Quadrants/1"]
 [editable path="PlayArea/Quadrants/2"]

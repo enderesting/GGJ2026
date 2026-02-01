@@ -25,6 +25,7 @@ func _ready() -> void:
 
 func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
 	for npc in get_children():
+		if npc is Player: continue
 		var next_state = npc.states.RUNNING_TO_QUADRANT
 		next_state.blessed_quadrant = blessed_quadrant
 		npc.change_state(next_state)
@@ -32,5 +33,6 @@ func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
 	assert(await EventBus.trap_finished == &"trap_4")
 	
 	for npc in get_children():
+		if npc is Player: continue
 		npc.change_state(npc.states.IDLE)
 	

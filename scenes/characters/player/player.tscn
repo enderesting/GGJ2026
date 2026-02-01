@@ -7,12 +7,14 @@
 size = Vector2(12, 11)
 
 [node name="Player" type="CharacterBody2D" unique_id=678857731 node_paths=PackedStringArray("play_area")]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_t61fv")
 play_area = NodePath("CollisionShape2D")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=931940375]
+y_sort_enabled = true
 texture = ExtResource("2_686vu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1057614396]
