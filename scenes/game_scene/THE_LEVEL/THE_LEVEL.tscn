@@ -34,6 +34,7 @@ play_area = NodePath("../PlayArea")
 position = Vector2(120, 148)
 
 [node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
+position = Vector2(-59, -27)
 
 [node name="MockupBg" type="Sprite2D" parent="." unique_id=1384063776]
 z_index = -5
