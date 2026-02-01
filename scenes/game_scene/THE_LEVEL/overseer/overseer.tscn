@@ -12,8 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dfrhuy3ouyouv" path="res://assets/AnimationLightning7.png" id="7_8el1g"]
 [ext_resource type="Script" uid="uid://dvg6xcwcxy4hp" path="res://scenes/game_scene/THE_LEVEL/overseer/sawblade.gd" id="7_rd2gr"]
 [ext_resource type="Texture2D" uid="uid://dl0e1oe8w6f7y" path="res://assets/AnimationLightning9_10.png" id="8_a0jya"]
-[ext_resource type="Texture2D" uid="uid://drbhife8ge25f" path="res://assets/sawblade0.png" id="8_bth70"]
-[ext_resource type="Texture2D" uid="uid://dy15jkq3qxst2" path="res://assets/sawblade1.png" id="9_lkyke"]
 [ext_resource type="Texture2D" uid="uid://2c0ytppda1od" path="res://assets/AnimationLightning11.png" id="9_u26jv"]
 [ext_resource type="Texture2D" uid="uid://ju8bb1qjjuut" path="res://assets/AnimationLightning12.png" id="10_0acdc"]
 [ext_resource type="Script" uid="uid://r37anr75y5yg" path="res://scenes/game_scene/THE_LEVEL/overseer/sawblade_sprite.gd" id="10_bth70"]
@@ -22,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://tkygwbvhy4ia" path="res://assets/color1.png" id="14_cgynf"]
 [ext_resource type="Texture2D" uid="uid://de21ciwxfabsk" path="res://assets/color2.png" id="15_t7mmt"]
 [ext_resource type="Texture2D" uid="uid://c5n8rjgu2p0pu" path="res://assets/color3.png" id="16_nld2e"]
+[ext_resource type="Texture2D" uid="uid://c772venoppan6" path="res://assets/SawBiG1.png" id="16_u26jv"]
+[ext_resource type="Texture2D" uid="uid://duro4uoa3gskh" path="res://assets/SawBiG2.png" id="17_0acdc"]
 [ext_resource type="Texture2D" uid="uid://cttkwg2rfl6x8" path="res://assets/trap_traffic_lights/traffic_green.png" id="19_2ovfc"]
 [ext_resource type="Texture2D" uid="uid://8j454btis1ue" path="res://assets/temp/OverseerBody.png" id="19_121vy"]
 [ext_resource type="Texture2D" uid="uid://dott77pdonh6l" path="res://assets/trap_traffic_lights/traffic_yellow.png" id="20_57kmg"]
@@ -85,16 +85,22 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_t7mmt"]
 radius = 27.468658
 
+[sub_resource type="Gradient" id="Gradient_u26jv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0acdc"]
+gradient = SubResource("Gradient_u26jv")
+width = 227
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_pp6dj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k3a4y"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_bth70")
+"texture": ExtResource("16_u26jv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_lkyke")
+"texture": ExtResource("17_0acdc")
 }],
 "loop": true,
 "name": &"default",
@@ -328,13 +334,21 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deathray/LaserHitArea" unique_id=1491206507]
 shape = SubResource("CircleShape2D_t7mmt")
 
-[node name="Sawblade" type="Area2D" parent="." unique_id=827974639]
+[node name="SawbladeClipHack" type="Sprite2D" parent="." unique_id=1639433445]
+clip_children = 1
+position = Vector2(206, 94)
+texture = SubResource("GradientTexture2D_0acdc")
+
+[node name="Sawblade" type="Area2D" parent="SawbladeClipHack" unique_id=827974639]
+unique_name_in_owner = true
+position = Vector2(19, -3)
+collision_mask = 2
 script = ExtResource("7_rd2gr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sawblade" unique_id=804227076]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SawbladeClipHack/Sawblade" unique_id=804227076]
 shape = SubResource("CircleShape2D_pp6dj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sawblade" unique_id=1450157656]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SawbladeClipHack/Sawblade" unique_id=1450157656]
 sprite_frames = SubResource("SpriteFrames_k3a4y")
 frame_progress = 0.80752534
 script = ExtResource("10_bth70")

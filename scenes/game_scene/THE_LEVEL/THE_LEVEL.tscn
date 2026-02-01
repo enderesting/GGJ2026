@@ -45,6 +45,11 @@ unique_name_in_owner = true
 editor_description = "Rectangle shape that should cover the whole play area"
 shape = SubResource("RectangleShape2D_dy4vm")
 
+[node name="Player" parent="PlayArea" unique_id=678857731 instance=ExtResource("3_wkokv")]
+editor_description = "The player lives in the PlayArea"
+z_index = 1
+position = Vector2(-86, 37)
+
 [node name="TheHiveminnd" type="Node2D" parent="PlayArea" unique_id=838410075 node_paths=PackedStringArray("play_area")]
 editor_description = "Where all the robots roam wild!"
 z_index = 1
@@ -106,6 +111,7 @@ wait_time = 60.0
 
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
 [connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]
+[connection signal="stop_moving" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_stop_moving"]
 
 [editable path="PlayArea/Quadrants/1"]
 [editable path="PlayArea/Quadrants/2"]

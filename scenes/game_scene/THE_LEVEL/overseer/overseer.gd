@@ -18,6 +18,10 @@ signal trap_cooldown()
 func _ready() -> void:
 	cooldown.timeout.connect(_on_cooldown_timeout)
 	
+	%Sawblade.body_entered.connect(func(body):
+		if body is RoamingRobot:
+			body.queue_free())
+	
 	# pass through our signals to the EventBus
 	trap_started.connect(EventBus.trap_started.emit)
 	trap_finished.connect(EventBus.trap_finished.emit)
@@ -26,7 +30,7 @@ func _ready() -> void:
 	
 	warning_signs.play("warning_idle")
 	$Deathray.visible = false
-	$Sawblade.visible = false
+	%Sawblade.visible = false
 	$Stoplight.visible = false
 	$Colorpicker.visible = false
 	
@@ -78,9 +82,18 @@ func _input(event: InputEvent) -> void:
 		cooldown.start()
 		warning_signs.play("warning_run")
 		trap_started.emit(&"trap_2")
-		$Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
-		$Sawblade.global_position.y =play_area.get_parent().position.y
-		$Sawblade.visible = true
+		%Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
+		%Sawblade.global_position.y = play_area.get_parent().position.y + 50
+		%Sawblade.visible = true
+		create_tween() \
+			.tween_property(%Sawblade, ^"global_position:y", -50, 0.5) \
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD) \
+			.as_relative()
+		await create_tween() \
+			.tween_property(%Sawblade, ^"global_position:x", 60, 1.0) \
+			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT) \
+			.finished
+		%Sawblade.visible = false
 		trap_finished.emit(&"trap_2")
 		warning_signs.play(&"warning_idle")
 
@@ -93,12 +106,13 @@ func _input(event: InputEvent) -> void:
 		trap_started.emit(&"trap_3")
 		$Stoplight.visible = true
 		$Stoplight.play()
-		if $Stoplight.frame == 4:
-			stop_moving.emit()
+		while $Stoplight.frame < 4:
+			await $Stoplight.frame_changed
+		stop_moving.emit()
 		await $Stoplight.animation_finished
 		$Stoplight.visible = false
-		trap_finished.emit(&"trap_3")
 		warning_signs.play(&"warning_idle")
+		trap_finished.emit(&"trap_3")
 
 	# Trap 4: Color quadrants
 	if event.is_action_pressed(&"trap_4") and can_trigger_trap:
