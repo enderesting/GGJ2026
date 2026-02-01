@@ -2,12 +2,10 @@
 
 [ext_resource type="Script" uid="uid://7igt3pf3afue" path="res://scenes/game_scene/THE_LEVEL/main.gd" id="1_5edlj"]
 [ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/character_body_2d_2.gd" id="1_dy4vm"]
-[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/controller_manager.gd" id="1_wkokv"]
-[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/the_hivemind.gd" id="3_k644i"]
-[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/overseer.gd" id="4_5edlj"]
+[ext_resource type="Script" uid="uid://blk5jdboy7ii4" path="res://scenes/game_scene/THE_LEVEL/controller_manager.gd" id="1_wkokv"]
+[ext_resource type="Script" uid="uid://duogagnrgv4n5" path="res://scenes/game_scene/THE_LEVEL/the_hivemind.gd" id="3_k644i"]
 [ext_resource type="Texture2D" uid="uid://cjs6xw151ort4" path="res://assets/sprites/robot_sprite.png" id="4_521ry"]
-[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/overseer_targetting.gd" id="6_3blnw"]
-[ext_resource type="Texture2D" uid="uid://d0bo70ucr7jx4" path="res://assets/target.png" id="7_2jkeq"]
+[ext_resource type="PackedScene" uid="uid://bxmfelykv4k1a" path="res://scenes/game_scene/THE_LEVEL/overseer/overseer.tscn" id="5_2jkeq"]
 [ext_resource type="PackedScene" uid="uid://bqy50s757ncyw" path="res://scenes/characters/robot/robot_npc.tscn" id="9_521ry"]
 [ext_resource type="Texture2D" uid="uid://d2csvr8bvb03e" path="res://assets/temp/badrobot_mockup.png" id="9_cj0kf"]
 
