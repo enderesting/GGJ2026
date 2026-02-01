@@ -13,12 +13,13 @@ func enter():
 		"from", character.position)
 	
 	movement_goal = blessed_quadrant.get_extents().get_center() - character.position
-	
+	movement_goal += Vector2.RIGHT * randf_range(-20.0, 20.0)
 
 
 func physics_process(_delta):
 	if movement_goal.length() > GOAL_RADIUS:
-		var this_step = movement_goal.normalized().round().normalized()
-		printt(character, movement_goal, this_step)
+		var this_step = character.SPEED * movement_goal.normalized().round().normalized()
+		#printt(character, movement_goal, this_step)
 		character.velocity = this_step
-		movement_goal -= this_step
+		character.move_and_slide()
+		movement_goal -= character.get_position_delta() # this_step * _delta

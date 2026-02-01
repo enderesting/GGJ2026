@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dnkwne75lcc1h" path="res://scenes/game_scene/THE_LEVEL/PlayArea_gadgets/quadrant.gd" id="1_06cag"]
 [ext_resource type="Texture2D" uid="uid://c72m7j3jcig7v" path="res://assets/trap_color_quiz/color_3.png" id="1_ijq5s"]
-[ext_resource type="Texture2D" uid="uid://de21ciwxfabsk" path="res://assets/color2.png" id="2_06cag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkokv"]
 size = Vector2(114, 69)
@@ -116,27 +115,10 @@ script = ExtResource("1_06cag")
 position = Vector2(57, 34)
 shape = SubResource("RectangleShape2D_wkokv")
 
-[node name="ProgressBar" type="ProgressBar" parent="Shape" unique_id=225822039]
-unique_name_in_owner = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -57.0
-offset_top = -35.0
-offset_right = 57.0
-offset_bottom = 35.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Light" type="Sprite2D" parent="." unique_id=1600648789]
 texture = ExtResource("1_ijq5s")
 centered = false
 offset = Vector2(2, 3)
-
-[node name="number" type="Sprite2D" parent="Light" unique_id=2085659327]
-visible = false
-position = Vector2(58, 36)
-texture = ExtResource("2_06cag")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1615619985]
 libraries/ = SubResource("AnimationLibrary_xmb24")
