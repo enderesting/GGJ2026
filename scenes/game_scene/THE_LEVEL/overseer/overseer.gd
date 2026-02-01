@@ -13,15 +13,17 @@ signal trap_started(name: StringName)
 signal trap_finished(name: StringName)
 signal trap_cooldown()
 
-#@export_group("Traps")
-#@export_subgroup("4: Ze Quadrrantz")
-# I decided to use groups instead - more game jamy - more... godotesque
-#@export var quadrants: Array[Quadrant]
-
 
 func _ready() -> void:
 	# pass through cooldown timeout signal to trap_cooldown
 	cooldown.timeout.connect(trap_cooldown.emit)
+	
+	# pass through our signals to the EventBus
+	trap_started.connect(EventBus.trap_started.emit)
+	trap_finished.connect(EventBus.trap_finished.emit)
+	trap_cooldown.connect(EventBus.trap_cooldown.emit)
+	color_picked.connect(EventBus.trap_color_picked.emit)
+	
 	warning_signs.play("warning_idle")
 	$Deathray.visible = false
 	$Sawblade.visible = false
@@ -88,13 +90,11 @@ func _input(event: InputEvent) -> void:
 		await do_quadrants()
 		cooldown.start()
 		trap_finished.emit(&"trap_4")
+		warning_signs.play(&"warning_idle")
 
 
 func do_quadrants() -> void:
-	var quadrants : Array[Quadrant] = []
-	for quadrant in get_tree().get_nodes_in_group("quadrants"):
-		if quadrant is Quadrant:
-			quadrants.push_back(quadrant)
+	var quadrants = get_tree().get_nodes_in_group("quadrants")
 	
 	for quadrant in quadrants:
 		quadrant.animate_dramatic_flicker()
