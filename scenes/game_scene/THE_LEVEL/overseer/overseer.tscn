@@ -18,14 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://ju8bb1qjjuut" path="res://assets/AnimationLightning12.png" id="10_0acdc"]
 [ext_resource type="Script" uid="uid://r37anr75y5yg" path="res://scenes/game_scene/THE_LEVEL/overseer/sawblade_sprite.gd" id="10_bth70"]
 [ext_resource type="Texture2D" uid="uid://bp4flguq1ahb" path="res://assets/AnimationLightning13.png" id="11_t4dqw"]
-[ext_resource type="Texture2D" uid="uid://b4riyu6db5o32" path="res://assets/light0.png" id="11_unc0s"]
-[ext_resource type="Texture2D" uid="uid://edy727mpr770" path="res://assets/light1.png" id="12_3g30l"]
 [ext_resource type="Texture2D" uid="uid://5ucta5egxsxu" path="res://assets/color0.png" id="13_m4la8"]
 [ext_resource type="Texture2D" uid="uid://tkygwbvhy4ia" path="res://assets/color1.png" id="14_cgynf"]
 [ext_resource type="Texture2D" uid="uid://de21ciwxfabsk" path="res://assets/color2.png" id="15_t7mmt"]
 [ext_resource type="Texture2D" uid="uid://c5n8rjgu2p0pu" path="res://assets/color3.png" id="16_nld2e"]
+[ext_resource type="Texture2D" uid="uid://cttkwg2rfl6x8" path="res://assets/trap_traffic_lights/traffic_green.png" id="19_2ovfc"]
 [ext_resource type="Texture2D" uid="uid://8j454btis1ue" path="res://assets/temp/OverseerBody.png" id="19_121vy"]
+[ext_resource type="Texture2D" uid="uid://dott77pdonh6l" path="res://assets/trap_traffic_lights/traffic_yellow.png" id="20_57kmg"]
 [ext_resource type="Texture2D" uid="uid://bifa4x8yr5gq3" path="res://assets/temp/OverseerLeftArm.png" id="20_ayyg4"]
+[ext_resource type="Texture2D" uid="uid://cqruew5mned5q" path="res://assets/trap_traffic_lights/traffic_red.png" id="21_8el1g"]
 [ext_resource type="Texture2D" uid="uid://db1smlxq28i06" path="res://assets/temp/OverseerMonitorHead.png" id="21_d1gew"]
 [ext_resource type="Texture2D" uid="uid://bqf3t23ud60vt" path="res://assets/temp/OverseerRightArm.png" id="22_5r2ny"]
 
@@ -58,7 +59,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 12.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2jkeq"]
@@ -100,23 +101,23 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_unc0s")
+"texture": ExtResource("19_2ovfc")
 }, {
 "duration": 1.0,
 "texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_unc0s")
+"texture": ExtResource("20_57kmg")
 }, {
 "duration": 1.0,
 "texture": null
 }, {
-"duration": 5.0,
-"texture": ExtResource("12_3g30l")
+"duration": 8.0,
+"texture": ExtResource("21_8el1g")
 }],
 "loop": false,
 "name": &"default",
-"speed": 3.0
+"speed": 2.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tmyhl"]
@@ -279,8 +280,10 @@ frame_progress = 0.80752534
 script = ExtResource("10_bth70")
 
 [node name="Stoplight" type="AnimatedSprite2D" parent="." unique_id=1524428144]
-position = Vector2(288, 40)
+position = Vector2(135, 22)
 sprite_frames = SubResource("SpriteFrames_jwofy")
+frame = 4
+frame_progress = 1.0
 
 [node name="Colorpicker" type="AnimatedSprite2D" parent="." unique_id=1431448885]
 sprite_frames = SubResource("SpriteFrames_tmyhl")
