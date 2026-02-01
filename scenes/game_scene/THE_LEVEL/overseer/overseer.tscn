@@ -297,3 +297,8 @@ texture = ExtResource("21_d1gew")
 z_index = 1
 position = Vector2(106, 118)
 texture = ExtResource("22_5r2ny")
+
+[node name="TrapCooldown" type="Timer" parent="." unique_id=125273992]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true

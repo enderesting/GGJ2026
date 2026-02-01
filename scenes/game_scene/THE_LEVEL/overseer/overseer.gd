@@ -1,10 +1,15 @@
 extends Node2D
 
-@onready var play_area = %PlayArea
+@onready var play_area: CollisionShape2D = %PlayArea
+@onready var cooldown: Timer = %TrapCooldown
 
 #signal ray_shot
 signal stop_moving
 signal color_picked
+
+signal trap_started(name: StringName)
+signal trap_finished(name: StringName)
+signal trap_cooldown()
 
 #@export_group("Traps")
 #@export_subgroup("4: Ze Quadrrantz")
@@ -13,6 +18,9 @@ signal color_picked
 
 
 func _ready() -> void:
+	# pass through cooldown timeout signal to trap_cooldown
+	cooldown.timeout.connect(trap_cooldown.emit)
+	
 	$Deathray.visible = false
 	$Sawblade.visible = false
 	$Stoplight.visible = false
@@ -25,9 +33,9 @@ func _ready() -> void:
 	$AnimationPlayer.play("overseer_idle")
 
 func _input(event: InputEvent) -> void:
-
 	# Trap 1: Death ray
-	if event.is_action_pressed(&"trap_1"):
+	if event.is_action_pressed(&"trap_1") and cooldown.is_stopped():
+		trap_started.emit(&"trap_1")
 		$Deathray.position = play_area.position
 		$Deathray.visible = true
 		%Bolt.visible = false
@@ -44,27 +52,36 @@ func _input(event: InputEvent) -> void:
 		for roamer in doomed_roamers:
 			roamer.queue_free()
 		
+		trap_finished.emit(&"trap_1")
+		
 	
 	# Trap 2: Sawblade
-	if event.is_action_pressed(&"trap_2"):
+	if event.is_action_pressed(&"trap_2") and cooldown.is_stopped():
+		trap_started.emit(&"trap_2")
 		$Sawblade.global_position.x = play_area.position.x + play_area.shape.size.x/2
 		$Sawblade.global_position.y =play_area.position.y
 		$Sawblade.visible = true
+		trap_finished.emit(&"trap_2")
 	
 
 	# Trap 3: Stop light
-	if event.is_action_pressed(&"trap_3"):
+	if event.is_action_pressed(&"trap_3") and cooldown.is_stopped():
+		trap_started.emit(&"trap_3")
 		$Stoplight.visible = true
 		$Stoplight.play()
 		if $Stoplight.frame == 4:
 			stop_moving.emit()
 		await $Stoplight.animation_finished
 		$Stoplight.visible = false
+		trap_finished.emit(&"trap_3")
 	
 
 	# Trap 4: Color quadrants
-	if event.is_action_pressed(&"trap_4"):
-		do_quadrants()
+	if event.is_action_pressed(&"trap_4") and cooldown.is_stopped():
+		trap_started.emit(&"trap_4")
+		await do_quadrants()
+		cooldown.start()
+		trap_finished.emit(&"trap_4")
 
 
 func do_quadrants() -> void:
@@ -88,4 +105,4 @@ func do_quadrants() -> void:
 		if quadrant != blessed_quadrant:
 			quadrant.kill_them_all()
 
-	blessed_quadrant.animate_turn_off()
+	return blessed_quadrant.animate_turn_off()
