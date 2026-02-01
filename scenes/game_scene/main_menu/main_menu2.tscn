@@ -4,9 +4,31 @@
 [ext_resource type="Texture2D" uid="uid://cqo8be6uf8533" path="res://assets/cg/game_cover_title.png" id="2_j8cx4"]
 [ext_resource type="Script" uid="uid://pw4bqhgkbhp1" path="res://scenes/game_scene/main_menu/start.gd" id="2_odjjf"]
 [ext_resource type="Script" uid="uid://la3ligc4jg6k" path="res://scenes/game_scene/main_menu/quit.gd" id="3_qnf54"]
-[ext_resource type="Script" uid="uid://dsvi75gojpk87" path="res://scenes/game_scene/main_menu/credits.gd" id="4_jhac1"]
+[ext_resource type="Script" path="res://scenes/game_scene/main_menu/credits.gd" id="4_jhac1"]
 [ext_resource type="AudioStream" uid="uid://bic82fbh6d67e" path="res://assets/music/bad_robot.wav" id="5_xxfok"]
 [ext_resource type="AudioStream" uid="uid://ddcpip0xgyxba" path="res://assets/music/bg_music.wav" id="6_jhac1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhac1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+skew = Vector2(0.285, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_48fmb"]
 clip_count = 2
@@ -49,6 +71,7 @@ offset_left = 8.0
 offset_top = 104.0
 offset_right = 128.0
 offset_bottom = 120.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "start"
 alignment = 0
 script = ExtResource("2_odjjf")
@@ -59,6 +82,7 @@ offset_left = 8.0
 offset_top = 128.0
 offset_right = 128.0
 offset_bottom = 144.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "Credits"
 alignment = 0
 script = ExtResource("4_jhac1")
@@ -69,6 +93,7 @@ offset_left = 8.0
 offset_top = 152.0
 offset_right = 128.0
 offset_bottom = 168.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "quit"
 alignment = 0
 script = ExtResource("3_qnf54")

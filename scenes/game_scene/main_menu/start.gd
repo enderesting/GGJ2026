@@ -1,5 +1,7 @@
 extends Button
 
+func _ready() -> void:
+	grab_focus()
 
 func _pressed() -> void:
 	Crossfade.fade_out()
