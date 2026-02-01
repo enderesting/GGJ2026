@@ -276,6 +276,7 @@ texture = ExtResource("16_nld2e")
 libraries/ = SubResource("AnimationLibrary_d1gew")
 
 [node name="OverseerSprite" type="Node2D" parent="." unique_id=2114873472]
+position = Vector2(-59, 0)
 
 [node name="OverseerBody" type="Sprite2D" parent="OverseerSprite" unique_id=1669471048]
 z_index = 2
