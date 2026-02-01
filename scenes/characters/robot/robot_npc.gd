@@ -2,10 +2,11 @@
 class_name RobotNPC
 extends RoamingRobot
 
-var states: Dictionary = {
+var states: Dictionary[StringName, State] = {
 	"IDLE": NPCIdleState.new(),
 	"BUSY": NPCBusyState.new(),
-	"DYING": NPCDyingState.new()
+	"RUNNING_TO_QUADRANT": NPCGotoQuadrantState.new(),
+	"DYING": NPCDyingState.new(),
 }
 
 var current_state: State
@@ -35,8 +36,5 @@ func _process(delta: float) -> void:
 func _physics_process(delta):
 	if current_state:
 		current_state.physics_process(delta)
-	
-	# TODO HACK
-	(get_child(0) as Sprite2D).flip_h = velocity.x > 0
-	
-	
+
+	super(delta)

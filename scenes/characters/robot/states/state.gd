@@ -3,7 +3,7 @@
 class_name State
 extends RefCounted # Inherit RefCounted for automatic memory management
 
-var character: Node
+var character: RoamingRobot
 
 func enter():
 	pass

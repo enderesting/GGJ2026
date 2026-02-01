@@ -239,7 +239,7 @@ _data = {
 [sub_resource type="SpriteFrames" id="SpriteFrames_8el1g"]
 animations = [{
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("30_u26jv")
 }, {
 "duration": 1.0,
@@ -247,10 +247,10 @@ animations = [{
 }],
 "loop": true,
 "name": &"warning_die",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("31_0acdc")
 }, {
 "duration": 1.0,
@@ -258,18 +258,18 @@ animations = [{
 }],
 "loop": true,
 "name": &"warning_go",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": null
 }],
 "loop": true,
 "name": &"warning_idle",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("30_57kmg")
 }, {
 "duration": 1.0,
@@ -277,10 +277,10 @@ animations = [{
 }],
 "loop": true,
 "name": &"warning_run",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("33_t4dqw")
 }, {
 "duration": 1.0,
@@ -288,14 +288,13 @@ animations = [{
 }],
 "loop": true,
 "name": &"warning_stop",
-"speed": 2.0
+"speed": 5.0
 }]
 
 [node name="Overseer" type="Node2D" unique_id=1110463796]
 script = ExtResource("1_341gs")
 
 [node name="Deathray" type="CharacterBody2D" parent="." unique_id=1767803891]
-z_index = 3
 position = Vector2(59.74936, 45.546055)
 collision_layer = 0
 collision_mask = 4
@@ -392,7 +391,6 @@ wait_time = 10.0
 one_shot = true
 
 [node name="WarningSigns" type="AnimatedSprite2D" parent="." unique_id=1971435016]
-z_index = 1
 position = Vector2(230, 21)
 sprite_frames = SubResource("SpriteFrames_8el1g")
 animation = &"warning_die"

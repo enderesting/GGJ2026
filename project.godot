@@ -44,11 +44,17 @@ enabled=PackedStringArray()
 
 folder_colors={
 "res://assets/": "pink",
+"res://assets/trap_color_quiz/": "red",
 "res://scenes/characters/": "yellow",
 "res://scenes/game_scene/THE_LEVEL/": "orange",
 "res://scenes/game_scene/credits/": "pink",
 "res://scenes/game_scene/main_menu/": "green"
 }
+
+[global_group]
+
+quadrants="The quadrants"
+npcs=""
 
 [gui]
 

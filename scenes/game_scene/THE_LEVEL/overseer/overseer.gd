@@ -1,29 +1,45 @@
 extends Node2D
 
-@onready var play_area = %PlayArea
+@onready var play_area: CollisionShape2D = %PlayArea
+@onready var cooldown: Timer = %TrapCooldown
+@onready var warning_signs: AnimatedSprite2D = $WarningSigns
+
 
 #signal ray_shot
 signal stop_moving
-signal color_picked
+signal color_picked(blessed_quadrant: Quadrant)
+
+signal trap_started(name: StringName)
+signal trap_finished(name: StringName)
+signal trap_cooldown()
+
+#@export_group("Traps")
+#@export_subgroup("4: Ze Quadrrantz")
+# I decided to use groups instead - more game jamy - more... godotesque
+#@export var quadrants: Array[Quadrant]
 
 
 func _ready() -> void:
+	# pass through cooldown timeout signal to trap_cooldown
+	cooldown.timeout.connect(trap_cooldown.emit)
+	warning_signs.play("warning_idle")
 	$Deathray.visible = false
 	$Sawblade.visible = false
 	$Stoplight.visible = false
 	$Colorpicker.visible = false
 	
-	$Colorpicker/Color1.global_position = play_area.position - play_area.shape.size/4
-	$Colorpicker/Color2.global_position = play_area.position - Vector2((-play_area.shape.size.x/4) ,play_area.shape.size.y/4)
-	$Colorpicker/Color3.global_position = play_area.position + play_area.shape.size/4
-	$Colorpicker/Color4.global_position = play_area.position - Vector2(play_area.shape.size.x/4 ,-(play_area.shape.size.y/4))
+	$Colorpicker/Color1.global_position = play_area.get_parent().position - play_area.shape.size/4
+	$Colorpicker/Color2.global_position = play_area.get_parent().position - Vector2((-play_area.shape.size.x/4) ,play_area.shape.size.y/4)
+	$Colorpicker/Color3.global_position = play_area.get_parent().position + play_area.shape.size/4
+	$Colorpicker/Color4.global_position = play_area.get_parent().position - Vector2(play_area.shape.size.x/4 ,-(play_area.shape.size.y/4))
 	$AnimationPlayer.play("overseer_idle")
 
 func _input(event: InputEvent) -> void:
-
 	# Trap 1: Death ray
-	if event.is_action_pressed(&"trap_1"):
-		$Deathray.position = play_area.position
+	if event.is_action_pressed(&"trap_1") and cooldown.is_stopped():
+		warning_signs.play("warning_die")
+		trap_started.emit(&"trap_1")
+		$Deathray.position = play_area.get_parent().position
 		$Deathray.visible = true
 		%Bolt.visible = false
 		
@@ -39,39 +55,60 @@ func _input(event: InputEvent) -> void:
 		for roamer in doomed_roamers:
 			roamer.queue_free()
 		
+		trap_finished.emit(&"trap_1")
+		
 	
 	# Trap 2: Sawblade
-	if event.is_action_pressed(&"trap_2"):
-		$Sawblade.global_position.x = play_area.position.x + play_area.shape.size.x/2
-		$Sawblade.global_position.y =play_area.position.y
+	if event.is_action_pressed(&"trap_2") and cooldown.is_stopped():
+		warning_signs.play("warning_run")
+		trap_started.emit(&"trap_2")
+		$Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
+		$Sawblade.global_position.y =play_area.get_parent().position.y
 		$Sawblade.visible = true
+		trap_finished.emit(&"trap_2")
 	
 
 	# Trap 3: Stop light
-	if event.is_action_pressed(&"trap_3"):
+	if event.is_action_pressed(&"trap_3") and cooldown.is_stopped():
+		warning_signs.play("warning_stop")
+		trap_started.emit(&"trap_3")
 		$Stoplight.visible = true
 		$Stoplight.play()
 		if $Stoplight.frame == 4:
 			stop_moving.emit()
 		await $Stoplight.animation_finished
 		$Stoplight.visible = false
+		trap_finished.emit(&"trap_3")
 	
 
 	# Trap 4: Color quadrants
-	if event.is_action_pressed(&"trap_4"):
-		var picked_color = $Colorpicker.get_children().pick_random()
-		
-		$Colorpicker.propagate_call("set_visible", [true]) # reset visibility
-		
-		var blinks := create_tween().set_loops(2) # <- how many times to blink
-		blinks.tween_callback($Colorpicker.set_visible.bind(true))
-		blinks.tween_interval(0.5)
-		blinks.tween_callback($Colorpicker.set_visible.bind(false))
-		blinks.tween_interval(0.5)
-		await blinks.finished
-		
-		$Colorpicker.propagate_call("set_visible", [false]) # Hide all children
-		$Colorpicker.visible = true                         # except the parent
-		picked_color.visible = true                         # and reveal the picked color
-		
-		color_picked.emit(picked_color.get_index() + 1)
+	if event.is_action_pressed(&"trap_4") and cooldown.is_stopped():
+		warning_signs.play("warning_go")
+		trap_started.emit(&"trap_4")
+		await do_quadrants()
+		cooldown.start()
+		trap_finished.emit(&"trap_4")
+
+
+func do_quadrants() -> void:
+	var quadrants : Array[Quadrant] = []
+	for quadrant in get_tree().get_nodes_in_group("quadrants"):
+		if quadrant is Quadrant:
+			quadrants.push_back(quadrant)
+	
+	for quadrant in quadrants:
+		quadrant.animate_dramatic_flicker()
+	await quadrants[0].animation_finished	
+	
+	var blessed_quadrant := quadrants.pick_random() as Quadrant
+	await blessed_quadrant.animate_turn_on()
+	
+	color_picked.emit(blessed_quadrant)
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	for quadrant in quadrants:
+		if quadrant != blessed_quadrant:
+			quadrant.kill_them_all()
+
+	return blessed_quadrant.animate_turn_off()

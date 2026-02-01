@@ -9,9 +9,16 @@ extends CharacterBody2D
 const SPEED = 100.0
 
 
+func _physics_process(_delta: float) -> void:
+	# TODO HACK
+	(get_child(0) as Sprite2D).flip_h = velocity.x > 0
+
+
 func random_position():
+	var play_size := (play_area.shape as RectangleShape2D).size
+	var play_topright := -play_size/2
+	printt(play_topright, play_size)
 	return Vector2(
-		randi_range(play_area.position.x - play_area.shape.size.x/2, play_area.shape.size.x),
-		randi_range(play_area.position.y - play_area.shape.size.y/2, play_area.shape.size.y)
+		randf_range(play_topright.x, play_topright.x + play_size.x),
+		randf_range(play_topright.y, play_topright.y + play_size.y)
 	)
-	

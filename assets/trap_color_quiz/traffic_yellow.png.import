@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1a3t5spaw0br"
-path="res://.godot/imported/DeathBlaster.png-b8067811a87040526dbdce9b6c03b006.ctex"
+uid="uid://1a22jolqagyu"
+path="res://.godot/imported/traffic_yellow.png-004534386b3aaa3a9a3d53f576eba8f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DeathBlaster.png"
-dest_files=["res://.godot/imported/DeathBlaster.png-b8067811a87040526dbdce9b6c03b006.ctex"]
+source_file="res://assets/trap_color_quiz/traffic_yellow.png"
+dest_files=["res://.godot/imported/traffic_yellow.png-004534386b3aaa3a9a3d53f576eba8f0.ctex"]
 
 [params]
 
