@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var play_area: CollisionShape2D = %PlayArea
 @onready var cooldown: Timer = %TrapCooldown
+@onready var warning_signs: AnimatedSprite2D = $WarningSigns
+
 
 #signal ray_shot
 signal stop_moving
@@ -20,7 +22,7 @@ signal trap_cooldown()
 func _ready() -> void:
 	# pass through cooldown timeout signal to trap_cooldown
 	cooldown.timeout.connect(trap_cooldown.emit)
-	
+	warning_signs.play("warning_idle")
 	$Deathray.visible = false
 	$Sawblade.visible = false
 	$Stoplight.visible = false
@@ -35,6 +37,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	# Trap 1: Death ray
 	if event.is_action_pressed(&"trap_1") and cooldown.is_stopped():
+		warning_signs.play("warning_die")
 		trap_started.emit(&"trap_1")
 		$Deathray.position = play_area.get_parent().position
 		$Deathray.visible = true
@@ -57,6 +60,7 @@ func _input(event: InputEvent) -> void:
 	
 	# Trap 2: Sawblade
 	if event.is_action_pressed(&"trap_2") and cooldown.is_stopped():
+		warning_signs.play("warning_run")
 		trap_started.emit(&"trap_2")
 		$Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
 		$Sawblade.global_position.y =play_area.get_parent().position.y
@@ -66,6 +70,7 @@ func _input(event: InputEvent) -> void:
 
 	# Trap 3: Stop light
 	if event.is_action_pressed(&"trap_3") and cooldown.is_stopped():
+		warning_signs.play("warning_stop")
 		trap_started.emit(&"trap_3")
 		$Stoplight.visible = true
 		$Stoplight.play()
@@ -78,6 +83,7 @@ func _input(event: InputEvent) -> void:
 
 	# Trap 4: Color quadrants
 	if event.is_action_pressed(&"trap_4") and cooldown.is_stopped():
+		warning_signs.play("warning_go")
 		trap_started.emit(&"trap_4")
 		await do_quadrants()
 		cooldown.start()
