@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://l4athfc1f4e8" path="res://assets/trap_color_quiz/color_2.png" id="8_521ry"]
 [ext_resource type="Texture2D" uid="uid://bunbjihqtxuhn" path="res://assets/trap_color_quiz/color_4.png" id="10_batfn"]
 [ext_resource type="AudioStream" uid="uid://byvcqhyvju4pe" path="res://assets/music/bg_music_level.wav" id="13_fhvee"]
+[ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="14_276iw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(228, 138)
@@ -99,6 +100,7 @@ text = "00:00"
 
 [node name="Timer" type="Timer" parent="Countdown" unique_id=2129905220]
 wait_time = 60.0
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=774278575]
 stream = ExtResource("13_fhvee")
 volume_db = -10.0
