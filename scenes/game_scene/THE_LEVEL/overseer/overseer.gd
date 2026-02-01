@@ -108,8 +108,8 @@ func _input(event: InputEvent) -> void:
 
 
 func do_quadrants() -> void:
-	print("do_quadrants")
-	var quadrants = []
+	# Retrieve quadrants type-safely
+	var quadrants: Array[Quadrant] = []
 	for quadrant in get_tree().get_nodes_in_group("quadrants"):
 		if quadrant is Quadrant:
 			quadrants.push_back(quadrant)

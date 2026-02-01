@@ -8,9 +8,6 @@ var movement_goal := Vector2.ZERO
 
 func enter():
 	assert(blessed_quadrant, "RUNNING_TO_QUADRANT needs to have a blessed_quadrant assigned!")
-	prints(character, "going to", blessed_quadrant,
-		"with extents =", blessed_quadrant.get_extents(),
-		"from", character.position)
 	
 	var goal_rect := blessed_quadrant.get_extents().grow(-20)
 	var goal_point := goal_rect.position + Vector2(
