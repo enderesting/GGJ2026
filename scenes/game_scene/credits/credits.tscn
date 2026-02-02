@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://djkvyrjbuapy7" path="res://resources/new_theme.tres" id="1_f4dfc"]
 [ext_resource type="Script" uid="uid://c6gef80tbvcbv" path="res://scenes/game_scene/credits/credits.gd" id="1_shyv6"]
 [ext_resource type="Texture2D" uid="uid://bh8egy53ghmkj" path="res://assets/bad_robot_logo.png" id="2_rxne1"]
+[ext_resource type="Script" uid="uid://6g6c3wl4tgv3" path="res://scenes/game_scene/backbutton.gd" id="4_hlm60"]
 
 [node name="Credits" type="Control" unique_id=1137130746]
 layout_mode = 3
@@ -40,9 +41,12 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="." unique_id=508075498]
-wait_time = 5.0
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="BackButton" type="Button" parent="." unique_id=1083864638]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 29.0
+theme = ExtResource("1_f4dfc")
+text = "back"
+script = ExtResource("4_hlm60")
