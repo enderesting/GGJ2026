@@ -78,6 +78,7 @@ offset_top = 102.0
 offset_right = 128.0
 offset_bottom = 165.0
 theme_override_constants/separation = 1
+alignment = 2
 metadata/_edit_group_ = true
 
 [node name="Start" type="Button" parent="VBoxContainer" unique_id=228889176]
