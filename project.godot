@@ -14,10 +14,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Game Template"
+config/name="Bad Robot"
+config/version="v1.0.1"
 run/main_scene="uid://debpgop85dvkb"
 config/features=PackedStringArray("4.6")
-config/icon="res://icon.png"
+config/icon="uid://c36cbqtsp6qdq"
 
 [autoload]
 

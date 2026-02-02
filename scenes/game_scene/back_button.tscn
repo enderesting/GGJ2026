@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://g7p2mjvwlpoh"]
+
+[ext_resource type="Theme" uid="uid://djkvyrjbuapy7" path="res://resources/new_theme.tres" id="1_4x764"]
+[ext_resource type="Script" uid="uid://6g6c3wl4tgv3" path="res://scenes/game_scene/backbutton.gd" id="2_w1ium"]
+
+[node name="BackButton" type="Button" unique_id=669514025]
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 39.0
+offset_bottom = 19.0
+theme = ExtResource("1_4x764")
+text = "back"
+script = ExtResource("2_w1ium")

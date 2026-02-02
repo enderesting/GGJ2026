@@ -12,6 +12,7 @@ const SPEED = 100.0
 func _physics_process(_delta: float) -> void:
 	# TODO HACK
 	(get_child(0) as Sprite2D).flip_h = velocity.x > 0
+	# printt(get_child(0), velocity.x)
 
 
 func random_position():

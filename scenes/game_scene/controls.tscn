@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://5ppv67na3vsm"]
 
 [ext_resource type="Texture2D" uid="uid://b8kjgn3fjd8fw" path="res://assets/temp/controls.png" id="1_2xxc8"]
+[ext_resource type="Theme" uid="uid://djkvyrjbuapy7" path="res://resources/new_theme.tres" id="1_ubmpl"]
 [ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="2_250am"]
 [ext_resource type="Script" uid="uid://c5wrhe1774cyw" path="res://scenes/game_scene/controls.gd" id="2_ubmpl"]
+[ext_resource type="Script" uid="uid://6g6c3wl4tgv3" path="res://scenes/game_scene/backbutton.gd" id="5_8fecg"]
 
 [node name="Controls" type="TextureRect" unique_id=353673576]
-offset_right = 320.0
-offset_bottom = 180.0
+offset_right = 327.1111
+offset_bottom = 184.0
 texture = ExtResource("1_2xxc8")
 script = ExtResource("2_ubmpl")
 
@@ -107,9 +109,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
-[node name="Timer" type="Timer" parent="." unique_id=120491669]
-wait_time = 5.0
-one_shot = true
-autostart = true
+[node name="BackButton" type="Button" parent="." unique_id=1967478065]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 29.0
+theme = ExtResource("1_ubmpl")
+text = "back"
+script = ExtResource("5_8fecg")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="BackButton" to="." method="_on_button_pressed"]
