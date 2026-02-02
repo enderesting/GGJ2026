@@ -19,9 +19,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func _on_overseer_trap_started(name: StringName) -> void:
+func _on_overseer_trap_started(_name: StringName) -> void:
 	stopped = true
 	
 
-func _on_overseer_trap_finished(name: StringName) -> void:
+func _on_overseer_trap_finished(_name: StringName) -> void:
 	stopped = false
