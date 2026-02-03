@@ -147,6 +147,7 @@ func setup_swoosh_effect() -> AudioStreamPlayer:
 	var player = AudioStreamPlayer.new()
 	add_child(player)
 	player.stream = swoosh_sound
+	player.volume_db = -10
 	return player
 
 #endregion
