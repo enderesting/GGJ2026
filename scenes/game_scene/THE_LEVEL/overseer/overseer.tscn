@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxyak251lpxj5" path="res://scenes/game_scene/THE_LEVEL/overseer/overseer.gd" id="1_341gs"]
 [ext_resource type="Script" uid="uid://dlng1v3v1sv5o" path="res://scenes/game_scene/THE_LEVEL/overseer/deathray.gd" id="2_n6k5h"]
-[ext_resource type="Texture2D" uid="uid://bvy8ekvaca5am" path="res://assets/temp/TARGET.png" id="3_u26jv"]
+[ext_resource type="Texture2D" uid="uid://6nhopmf7q2cy" path="res://assets/temp/TARGET.png" id="3_u26jv"]
 [ext_resource type="Texture2D" uid="uid://d1a3t5spaw0br" path="res://assets/dearth_ray/DeathBlaster.png" id="4_121vy"]
 [ext_resource type="Texture2D" uid="uid://ba0b28r1gdq8o" path="res://assets/AnimationLightning1_2.png" id="4_dm4dt"]
 [ext_resource type="Texture2D" uid="uid://cc3ch6xucsojt" path="res://assets/AnimationLightning3_4.png" id="5_2ovfc"]
@@ -332,9 +332,11 @@ shape = SubResource("CircleShape2D_t7mmt")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Deathray" unique_id=1190446827]
 stream = ExtResource("15_8el1g")
+volume_db = -25.0
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Deathray" unique_id=2106545493]
 stream = ExtResource("16_a0jya")
+volume_db = -25.0
 
 [node name="SawbladeClipHack" type="Sprite2D" parent="." unique_id=1639433445]
 clip_children = 1
@@ -358,6 +360,7 @@ script = ExtResource("10_bth70")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SawbladeClipHack/Sawblade" unique_id=949112583]
 stream = ExtResource("19_57kmg")
+volume_db = -25.0
 
 [node name="Stoplight" type="AnimatedSprite2D" parent="." unique_id=1524428144]
 position = Vector2(135, 22)
