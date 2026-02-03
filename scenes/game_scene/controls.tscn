@@ -12,64 +12,61 @@ texture = ExtResource("1_2xxc8")
 
 [node name="Label3" type="Label" parent="." unique_id=468472276]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 59.0
-offset_right = 95.0
-offset_bottom = 74.0
+offset_left = 91.0
+offset_top = 57.0
+offset_right = 130.0
+offset_bottom = 72.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = ExtResource("2_250am")
 theme_override_font_sizes/font_size = 6
-text = "laser
-(hold j)"
+text = "color test (i)"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="." unique_id=1459660589]
 layout_mode = 0
-offset_left = 132.0
-offset_top = 56.0
-offset_right = 171.0
-offset_bottom = 77.0
+offset_left = 136.0
+offset_top = 60.0
+offset_right = 175.0
+offset_bottom = 81.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = ExtResource("2_250am")
 theme_override_font_sizes/font_size = 6
-text = "saw
-blade (l)"
+text = "saw blade (l)"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="Label2" type="Label" parent="." unique_id=516093254]
 layout_mode = 0
-offset_left = 89.0
-offset_top = 49.0
-offset_right = 128.0
-offset_bottom = 70.0
+offset_left = 52.0
+offset_top = 55.0
+offset_right = 91.0
+offset_bottom = 76.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = ExtResource("2_250am")
 theme_override_font_sizes/font_size = 6
 text = "traffic
-light (i)"
+light (J)"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="Label4" type="Label" parent="." unique_id=574971246]
 layout_mode = 0
-offset_left = 135.0
-offset_top = 90.0
-offset_right = 174.0
-offset_bottom = 111.0
+offset_left = 142.0
+offset_top = 93.0
+offset_right = 181.0
+offset_bottom = 114.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = ExtResource("2_250am")
 theme_override_font_sizes/font_size = 6
-text = "color
-test (k)"
+text = "laser beam (k)"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
@@ -77,9 +74,9 @@ metadata/_edit_group_ = true
 [node name="Label5" type="Label" parent="." unique_id=1961090283]
 layout_mode = 0
 offset_left = 14.0
-offset_top = 55.0
+offset_top = 53.0
 offset_right = 53.0
-offset_bottom = 77.0
+offset_bottom = 75.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = ExtResource("2_250am")

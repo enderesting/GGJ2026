@@ -30,7 +30,7 @@ func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
 		next_state.blessed_quadrant = blessed_quadrant
 		npc.change_state(next_state)
 	
-	assert(await EventBus.trap_finished == &"trap_4")
+	assert(await EventBus.trap_finished == &"trap_color")
 	
 	for npc in get_children():
 		if npc is Player: continue
@@ -42,7 +42,7 @@ func _on_overseer_stop_moving() -> void:
 	for npc in get_children():
 		if npc is Player: continue
 		npc.change_state(npc.states.BUSY)
-	assert(await EventBus.trap_finished == &"trap_3")
+	assert(await EventBus.trap_finished == &"trap_stop")
 	for npc in get_children():
 		if npc is Player: continue
 		npc.change_state(npc.states.IDLE)
