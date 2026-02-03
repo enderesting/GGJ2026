@@ -10,15 +10,12 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 2
+corner_detail = 1
 expand_margin_left = 4.0
 expand_margin_top = 2.0
 expand_margin_right = 4.0
 expand_margin_bottom = 2.0
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7emc"]
 bg_color = Color(0.34066254, 0.74340224, 0.58488375, 0.57254905)
@@ -32,16 +29,22 @@ expand_margin_left = 4.0
 expand_margin_top = 1.0
 expand_margin_right = 4.0
 expand_margin_bottom = 1.0
+anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e7emc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odjjf"]
 bg_color = Color(0.79447365, 0, 0.100179695, 0.57254905)
 skew = Vector2(0.25, 0)
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.79447365, 0, 0.100179695, 0.57254905)
+border_blend = true
 expand_margin_left = 4.0
 expand_margin_top = 1.0
 expand_margin_right = 4.0
 expand_margin_bottom = 1.0
+anti_aliasing = false
 
 [resource]
 default_font = ExtResource("1_2a54a")
