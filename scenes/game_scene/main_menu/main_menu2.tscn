@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cqo8be6uf8533" path="res://assets/cg/game_cover_title.png" id="2_j8cx4"]
 [ext_resource type="Script" uid="uid://pw4bqhgkbhp1" path="res://scenes/game_scene/main_menu/start.gd" id="2_odjjf"]
 [ext_resource type="Script" uid="uid://la3ligc4jg6k" path="res://scenes/game_scene/main_menu/quit.gd" id="3_qnf54"]
-[ext_resource type="Script" uid="uid://dsvi75gojpk87" path="res://scenes/game_scene/main_menu/credits.gd" id="4_jhac1"]
+[ext_resource type="Script" path="res://scenes/game_scene/main_menu/credits.gd" id="4_jhac1"]
 [ext_resource type="AudioStream" uid="uid://bic82fbh6d67e" path="res://assets/music/bad_robot.wav" id="5_xxfok"]
 [ext_resource type="AudioStream" uid="uid://ddcpip0xgyxba" path="res://assets/music/bg_music.wav" id="6_jhac1"]
 [ext_resource type="Script" uid="uid://d3b2kiceochj6" path="res://scenes/game_scene/main_menu/controls.gd" id="7_i143s"]
@@ -108,3 +108,5 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "quit"
 alignment = 0
 script = ExtResource("3_qnf54")
+
+[connection signal="pressed" from="VBoxContainer/Controls" to="VBoxContainer/Controls" method="_on_pressed"]
