@@ -35,12 +35,12 @@ func _pressed() -> void:
 	tween_labels()
 
 func _on_controls_back_pressed() -> void:
-	grab_focus()
 	swoosh.play()
 	await create_tween().tween_property(
 		get_tree().root, ^"canvas_transform:origin:y",
 		0, DURATION
 	).set_trans(Tween.TRANS_SINE).finished
+	grab_focus()
 	controls_screen.get_parent().remove_child(controls_screen)
 
 

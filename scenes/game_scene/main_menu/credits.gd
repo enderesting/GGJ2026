@@ -39,12 +39,12 @@ func _pressed() -> void:
 	).set_trans(Tween.TRANS_SINE)
 
 func _on_credits_back_pressed() -> void:
-	grab_focus()
 	swoosh.play()
 	await create_tween().tween_property(
 		get_tree().root, ^"canvas_transform:origin:x",
 		0, DURATION
 	).set_trans(Tween.TRANS_SINE).finished
+	grab_focus()
 	credits_screen.get_parent().remove_child(credits_screen)
 
 
