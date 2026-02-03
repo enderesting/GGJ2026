@@ -16,13 +16,13 @@ var back_btn := controls_screen.find_children("*", "BaseButton")[0] as BaseButto
 @onready var swoosh := setup_swoosh_effect()
 
 func _init() -> void:
+	# Position controls screen above the current scene
+	controls_screen.anchor_bottom = -1
+	
 	# HACK the back button
 	back_btn.position.y += 140
 	back_btn.set_script(null)
 	back_btn.tree_entered.connect(back_btn.grab_focus)
-
-func _ready() -> void:
-	controls_screen.anchor_bottom = -1
 
 func _pressed() -> void:
 	this_screen.add_sibling(controls_screen)
@@ -32,6 +32,7 @@ func _pressed() -> void:
 		get_tree().root, ^"canvas_transform:origin:y",
 		get_viewport_rect().size.y, DURATION
 	).set_trans(Tween.TRANS_SINE)
+	tween_labels()
 
 func _on_controls_back_pressed() -> void:
 	grab_focus()
@@ -41,6 +42,31 @@ func _on_controls_back_pressed() -> void:
 		0, DURATION
 	).set_trans(Tween.TRANS_SINE).finished
 	controls_screen.get_parent().remove_child(controls_screen)
+
+
+func tween_labels():
+	var tween := create_tween().set_parallel()
+	var delay := 0.0
+	
+	for label in controls_screen.find_children("*", "Label"):
+		# Fade in
+		label.modulate.a = 0
+		tween.tween_property(label, ^"modulate:a", 1, 0.5).set_delay(delay)
+		
+		# Bounce from joypad
+		var original_position = label.position
+		label.position = Vector2(66, 90) if label.name != "Label6" else Vector2(240, 90)
+		tween.tween_property(label, ^"position", original_position, 0.5) \
+			.set_trans(Tween.TRANS_SPRING) \
+			.set_ease(Tween.EASE_OUT) \
+			.set_delay(delay)
+		
+		# Typing effect
+		label.visible_characters_behavior = TextServer.VC_CHARS_AFTER_SHAPING
+		tween.tween_property(label, ^"visible_ratio", 1, 0.5).from(0).set_delay(delay)
+		
+		# Stagger the label animations a bit
+		delay += 0.04
 
 
 #region of code by Claude-kun
