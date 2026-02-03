@@ -35,28 +35,6 @@ shader_parameter/delay = 0.0
 shader_parameter/offset = 150.0
 shader_parameter/speed = 7.5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhac1"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-skew = Vector2(0.285, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jp46r"]
 shader = ExtResource("5_cmwri")
 shader_parameter/delay = 0.1
@@ -109,7 +87,6 @@ metadata/_edit_group_ = true
 [node name="Start" type="Button" parent="VBoxContainer" unique_id=228889176]
 material = SubResource("ShaderMaterial_hgkkd")
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "start"
 alignment = 0
 script = ExtResource("2_odjjf")
@@ -117,7 +94,6 @@ script = ExtResource("2_odjjf")
 [node name="Credits" type="Button" parent="VBoxContainer" unique_id=407508482]
 material = SubResource("ShaderMaterial_jp46r")
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "Credits"
 alignment = 0
 script = ExtResource("4_jhac1")
@@ -125,7 +101,6 @@ script = ExtResource("4_jhac1")
 [node name="Controls" type="Button" parent="VBoxContainer" unique_id=355322499]
 material = SubResource("ShaderMaterial_71tdq")
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "Controls"
 alignment = 0
 script = ExtResource("7_i143s")
@@ -133,7 +108,15 @@ script = ExtResource("7_i143s")
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=1014021487]
 material = SubResource("ShaderMaterial_og5eu")
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "quit"
 alignment = 0
 script = ExtResource("3_qnf54")
+
+[connection signal="focus_entered" from="VBoxContainer/Start" to="VBoxContainer/Start" method="set_z_index" binds= [1]]
+[connection signal="focus_exited" from="VBoxContainer/Start" to="VBoxContainer/Start" method="set_z_index" binds= [0]]
+[connection signal="focus_entered" from="VBoxContainer/Credits" to="VBoxContainer/Credits" method="set_z_index" binds= [1]]
+[connection signal="focus_exited" from="VBoxContainer/Credits" to="VBoxContainer/Credits" method="set_z_index" binds= [0]]
+[connection signal="focus_entered" from="VBoxContainer/Controls" to="VBoxContainer/Controls" method="set_z_index" binds= [1]]
+[connection signal="focus_exited" from="VBoxContainer/Controls" to="VBoxContainer/Controls" method="set_z_index" binds= [0]]
+[connection signal="focus_entered" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="set_z_index" binds= [1]]
+[connection signal="focus_exited" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="set_z_index" binds= [0]]
