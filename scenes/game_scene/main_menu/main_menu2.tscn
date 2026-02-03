@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://pw4bqhgkbhp1" path="res://scenes/game_scene/main_menu/start.gd" id="2_odjjf"]
 [ext_resource type="Script" uid="uid://la3ligc4jg6k" path="res://scenes/game_scene/main_menu/quit.gd" id="3_qnf54"]
 [ext_resource type="Script" uid="uid://dsvi75gojpk87" path="res://scenes/game_scene/main_menu/credits.gd" id="4_jhac1"]
+[ext_resource type="Shader" uid="uid://cpkuc68tu41hp" path="res://scenes/game_scene/main_menu/staggered_entry.gdshader" id="5_cmwri"]
 [ext_resource type="AudioStream" uid="uid://bic82fbh6d67e" path="res://assets/music/bad_robot.wav" id="5_xxfok"]
 [ext_resource type="AudioStream" uid="uid://ddcpip0xgyxba" path="res://assets/music/bg_music.wav" id="6_jhac1"]
 [ext_resource type="Script" uid="uid://d3b2kiceochj6" path="res://scenes/game_scene/main_menu/controls.gd" id="7_i143s"]
@@ -28,6 +29,12 @@ Vector2i(0, 1): {
 }
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgkkd"]
+shader = ExtResource("5_cmwri")
+shader_parameter/delay = 0.0
+shader_parameter/offset = 150.0
+shader_parameter/speed = 7.5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhac1"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -49,6 +56,24 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jp46r"]
+shader = ExtResource("5_cmwri")
+shader_parameter/delay = 0.1
+shader_parameter/offset = 100.0
+shader_parameter/speed = 7.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71tdq"]
+shader = ExtResource("5_cmwri")
+shader_parameter/delay = 0.15
+shader_parameter/offset = 100.0
+shader_parameter/speed = 7.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_og5eu"]
+shader = ExtResource("5_cmwri")
+shader_parameter/delay = 0.2
+shader_parameter/offset = 100.0
+shader_parameter/speed = 7.5
 
 [node name="MainMenu2" type="Control" unique_id=1556016251]
 layout_mode = 3
@@ -82,6 +107,7 @@ alignment = 2
 metadata/_edit_group_ = true
 
 [node name="Start" type="Button" parent="VBoxContainer" unique_id=228889176]
+material = SubResource("ShaderMaterial_hgkkd")
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "start"
@@ -89,6 +115,7 @@ alignment = 0
 script = ExtResource("2_odjjf")
 
 [node name="Credits" type="Button" parent="VBoxContainer" unique_id=407508482]
+material = SubResource("ShaderMaterial_jp46r")
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "Credits"
@@ -96,6 +123,7 @@ alignment = 0
 script = ExtResource("4_jhac1")
 
 [node name="Controls" type="Button" parent="VBoxContainer" unique_id=355322499]
+material = SubResource("ShaderMaterial_71tdq")
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "Controls"
@@ -103,6 +131,7 @@ alignment = 0
 script = ExtResource("7_i143s")
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=1014021487]
+material = SubResource("ShaderMaterial_og5eu")
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "quit"
