@@ -22,7 +22,7 @@ var back_btn := credits_screen.find_children("*", "BaseButton")[0] as BaseButton
 
 func _init() -> void:
 	# Position credits screen at the left of the current scene
-	credits_screen.anchor_right = -1
+	credits_screen.anchor_top = 1
 	
 	# HACK the back button
 	back_btn.position.y += 140
@@ -34,14 +34,14 @@ func _pressed() -> void:
 	back_btn.pressed.connect(_on_credits_back_pressed, CONNECT_ONE_SHOT)
 	swoosh.play()
 	create_tween().tween_property(
-		get_tree().root, ^"canvas_transform:origin:x",
-		get_viewport_rect().size.x, DURATION
+		get_tree().root, ^"canvas_transform:origin:y",
+		-get_viewport_rect().size.y, DURATION
 	).set_trans(Tween.TRANS_SINE)
 
 func _on_credits_back_pressed() -> void:
 	swoosh.play()
 	await create_tween().tween_property(
-		get_tree().root, ^"canvas_transform:origin:x",
+		get_tree().root, ^"canvas_transform:origin:y",
 		0, DURATION
 	).set_trans(Tween.TRANS_SINE).finished
 	grab_focus()
