@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4cvykri8e665"]
 
-[ext_resource type="Script" uid="uid://croarero8g310" path="res://scenes/transition/crossfade.gd" id="1_di6nj"]
+[ext_resource type="Script" uid="uid://croarero8g310" path="res://autoloads/transition/crossfade.gd" id="1_di6nj"]
 
 [node name="Crossfade" type="Control" unique_id=932095863]
 z_index = 100

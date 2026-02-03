@@ -10,9 +10,9 @@ func _ready():
 
 func time_left_to_live():
 	var time_left = timer.time_left
-	var min = floor(time_left /60)
-	var sec = int(time_left) % 60
-	return [min,sec]
+	var mins = floor(time_left /60)
+	var secs = int(time_left) % 60
+	return [mins, secs]
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	label.text = "%02d:%02d" % time_left_to_live()

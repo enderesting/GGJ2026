@@ -59,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_48fmb")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1788192149]
+[node name="Background" type="TextureRect" parent="." unique_id=1788192149]
 layout_mode = 0
 offset_right = 315.0
 offset_bottom = 180.0
@@ -108,5 +108,3 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_jhac1")
 text = "quit"
 alignment = 0
 script = ExtResource("3_qnf54")
-
-[connection signal="pressed" from="VBoxContainer/Controls" to="VBoxContainer/Controls" method="_on_pressed"]
