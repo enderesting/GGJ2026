@@ -52,7 +52,7 @@ func _on_cooldown_timeout():
 
 func _input(event: InputEvent) -> void:
 	# Trap 1: Death ray
-	if event.is_action_pressed(&"trap_1") and can_trigger_trap:
+	if event.is_action_pressed(&"trap_laser") and can_trigger_trap:
 		warning_signs.play("warning_die")
 		$Deathray.speed = 300
 		$Deathray.position = play_area.get_parent().position
@@ -60,12 +60,12 @@ func _input(event: InputEvent) -> void:
 		$Deathray/AudioStreamPlayer.play()
 		%Bolt.visible = false
 		
-	if event.is_action_released(&"trap_1") and can_trigger_trap:
+	if event.is_action_released(&"trap_laser") and can_trigger_trap:
 		$Deathray/AudioStreamPlayer.stop()
 		$Deathray/AudioStreamPlayer2.play()
 		can_trigger_trap = false
 		cooldown.start()
-		trap_started.emit(&"trap_1")
+		trap_started.emit(&"trap_laser")
 		$Deathray.speed = 0
 		var doomed_roamers: Array[Node2D] = %LaserHitArea.get_overlapping_bodies()
 		for roamer in doomed_roamers:
@@ -81,16 +81,16 @@ func _input(event: InputEvent) -> void:
 		for roamer in doomed_roamers:
 			roamer.queue_free()
 		
-		trap_finished.emit(&"trap_1")
+		trap_finished.emit(&"trap_laser")
 		warning_signs.play(&"warning_idle")
 
 	
 	# Trap 2: Sawblade
-	if event.is_action_pressed(&"trap_2") and can_trigger_trap:
+	if event.is_action_pressed(&"trap_saw") and can_trigger_trap:
 		can_trigger_trap = false
 		cooldown.start()
 		warning_signs.play("warning_run")
-		trap_started.emit(&"trap_2")
+		trap_started.emit(&"trap_saw")
 		$SawbladeClipHack/Sawblade/AudioStreamPlayer.play()
 		%Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
 		%Sawblade.global_position.y = play_area.get_parent().position.y + 50
@@ -105,16 +105,16 @@ func _input(event: InputEvent) -> void:
 			.finished
 		$SawbladeClipHack/Sawblade/AudioStreamPlayer.stop()
 		%Sawblade.visible = false
-		trap_finished.emit(&"trap_2")
+		trap_finished.emit(&"trap_saw")
 		warning_signs.play(&"warning_idle")
 
 
 	# Trap 3: Stop light
-	if event.is_action_pressed(&"trap_3") and can_trigger_trap:
+	if event.is_action_pressed(&"trap_stop") and can_trigger_trap:
 		can_trigger_trap = false
 		cooldown.start()
 		warning_signs.play("warning_stop")
-		trap_started.emit(&"trap_3")
+		trap_started.emit(&"trap_stop")
 		$Stoplight.visible = true
 		$Stoplight.play()
 		while $Stoplight.frame < 4:
@@ -123,16 +123,16 @@ func _input(event: InputEvent) -> void:
 		await $Stoplight.animation_finished
 		$Stoplight.visible = false
 		warning_signs.play(&"warning_idle")
-		trap_finished.emit(&"trap_3")
+		trap_finished.emit(&"trap_stop")
 
 	# Trap 4: Color quadrants
-	if event.is_action_pressed(&"trap_4") and can_trigger_trap:
+	if event.is_action_pressed(&"trap_color") and can_trigger_trap:
 		can_trigger_trap = false
 		cooldown.start()
 		warning_signs.play("warning_go")
-		trap_started.emit(&"trap_4")
+		trap_started.emit(&"trap_color")
 		await do_quadrants()
-		trap_finished.emit(&"trap_4")
+		trap_finished.emit(&"trap_color")
 		warning_signs.play(&"warning_idle")
 
 
