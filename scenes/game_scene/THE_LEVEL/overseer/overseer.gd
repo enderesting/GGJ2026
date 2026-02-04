@@ -4,7 +4,9 @@ extends Node2D
 @onready var cooldown: Timer = %TrapCooldown
 @onready var warning_signs: AnimatedSprite2D = $WarningSigns
 
+# Bad State
 var can_trigger_trap := true
+var charging_laser := false
 
 #signal ray_shot
 signal stop_moving
@@ -54,6 +56,7 @@ func _input(event: InputEvent) -> void:
 	# Trap 1: Death ray
 	if event.is_action_pressed(&"trap_laser") and can_trigger_trap:
 		can_trigger_trap = false
+		charging_laser = true
 		warning_signs.play("warning_die")
 		$Deathray.speed = 300
 		$Deathray.position = play_area.get_parent().position
@@ -61,7 +64,8 @@ func _input(event: InputEvent) -> void:
 		$Deathray/AudioStreamPlayer.play()
 		%Bolt.visible = false
 		
-	if event.is_action_released(&"trap_laser"):
+	if event.is_action_released(&"trap_laser") and charging_laser:
+		charging_laser = false
 		$Deathray/AudioStreamPlayer.stop()
 		$Deathray/AudioStreamPlayer2.play()
 		cooldown.start()
