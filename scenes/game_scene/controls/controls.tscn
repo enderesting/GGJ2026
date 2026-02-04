@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://5ppv67na3vsm"]
+
+[ext_resource type="Texture2D" uid="uid://b8kjgn3fjd8fw" path="res://assets/temp/controls.png" id="1_2xxc8"]
+[ext_resource type="Script" uid="uid://cf5vi6vg3wssw" path="res://scenes/game_scene/controls/controls_screen.gd" id="2_45wye"]
+[ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="2_250am"]
+
+[sub_resource type="FontVariation" id="FontVariation_ubmpl"]
+base_font = ExtResource("2_250am")
+spacing_glyph = 1
+
+[node name="Controls" type="TextureRect" unique_id=353673576]
+offset_right = 327.1111
+offset_bottom = 184.0
+texture = ExtResource("1_2xxc8")
+script = ExtResource("2_45wye")
+
+[node name="P1_tint" type="ColorRect" parent="." unique_id=767008792]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 64.0
+offset_right = 146.0
+offset_bottom = 159.0
+color = Color(0.08235294, 0.101960786, 0.11764706, 0.83137256)
+
+[node name="P2_tint" type="ColorRect" parent="." unique_id=1318220715]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 56.0
+offset_right = 297.0
+offset_bottom = 166.0
+color = Color(0.08235294, 0.101960786, 0.11764706, 0.83137256)
+
+[node name="trap_color" type="Label" parent="." unique_id=468472276]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 42.0
+offset_right = 134.0
+offset_bottom = 67.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_ubmpl")
+theme_override_font_sizes/font_size = 8
+text = "color
+test
+(i)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="trap_saw" type="Label" parent="." unique_id=1459660589]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 70.0
+offset_right = 189.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_ubmpl")
+theme_override_font_sizes/font_size = 8
+text = "saw blade
+(l)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="trap_stop" type="Label" parent="." unique_id=516093254]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 55.0
+offset_right = 93.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_ubmpl")
+theme_override_font_sizes/font_size = 8
+text = "traffic
+light
+(J)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="trap_laser" type="Label" parent="." unique_id=574971246]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 99.0
+offset_right = 191.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_ubmpl")
+theme_override_font_sizes/font_size = 8
+text = "laser beam
+(k)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="target" type="Label" parent="." unique_id=1961090283]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 51.0
+offset_right = 50.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_ubmpl")
+theme_override_font_sizes/font_size = 8
+text = "move laser
+target
+(arrows)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="move" type="Label" parent="." unique_id=1613376002]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 45.0
+offset_right = 279.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_ubmpl")
+theme_override_font_sizes/font_size = 8
+text = "move
+(wasd)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true

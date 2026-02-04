@@ -10,7 +10,6 @@ const DURATION: float = 0.25
 const CONTROLS_SCENE: PackedScene = preload("res://scenes/game_scene/controls/controls.tscn")
 
 var controls_screen := CONTROLS_SCENE.instantiate() as Control
-var back_btn := controls_screen.find_children("*", "BaseButton")[0] as BaseButton
 
 @onready var this_screen := get_tree().current_scene
 @onready var swoosh := setup_swoosh_effect()
@@ -20,13 +19,10 @@ func _init() -> void:
 	controls_screen.anchor_bottom = -1
 	
 	# HACK the back button
-	back_btn.position.y += 140
-	back_btn.set_script(null)
-	back_btn.tree_entered.connect(back_btn.grab_focus)
 
 func _pressed() -> void:
 	this_screen.add_sibling(controls_screen)
-	back_btn.pressed.connect(_on_controls_back_pressed, CONNECT_ONE_SHOT)
+	controls_screen.back_requested.connect(_on_controls_back_pressed, CONNECT_ONE_SHOT)
 	swoosh.play()
 	create_tween().tween_property(
 		get_tree().root, ^"canvas_transform:origin:y",
