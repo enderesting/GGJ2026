@@ -7,7 +7,7 @@ extends Button
 
 const DURATION: float = 0.25
 
-const CONTROLS_SCENE: PackedScene = preload("res://scenes/game_scene/controls.tscn")
+const CONTROLS_SCENE: PackedScene = preload("res://scenes/game_scene/controls/controls.tscn")
 
 var controls_screen := CONTROLS_SCENE.instantiate() as Control
 var back_btn := controls_screen.find_children("*", "BaseButton")[0] as BaseButton

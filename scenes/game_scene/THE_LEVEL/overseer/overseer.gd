@@ -53,6 +53,7 @@ func _on_cooldown_timeout():
 func _input(event: InputEvent) -> void:
 	# Trap 1: Death ray
 	if event.is_action_pressed(&"trap_laser") and can_trigger_trap:
+		can_trigger_trap = false
 		warning_signs.play("warning_die")
 		$Deathray.speed = 300
 		$Deathray.position = play_area.get_parent().position
@@ -60,10 +61,9 @@ func _input(event: InputEvent) -> void:
 		$Deathray/AudioStreamPlayer.play()
 		%Bolt.visible = false
 		
-	if event.is_action_released(&"trap_laser") and can_trigger_trap:
+	if event.is_action_released(&"trap_laser"):
 		$Deathray/AudioStreamPlayer.stop()
 		$Deathray/AudioStreamPlayer2.play()
-		can_trigger_trap = false
 		cooldown.start()
 		trap_started.emit(&"trap_laser")
 		$Deathray.speed = 0
