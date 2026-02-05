@@ -13,7 +13,7 @@ throw_sound = NodePath("throw")
 beep_boop = ExtResource("3_wt6ej")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1223162749]
-animation = &"lightning_death_human"
+animation = &"beep_boop"
 
 [node name="throw" type="AudioStreamPlayer" parent="." index="4" unique_id=190951860]
 stream = ExtResource("2_ejp87")
