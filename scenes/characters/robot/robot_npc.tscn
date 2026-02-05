@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c0itcwgkt6p25" path="res://scenes/characters/robot/robot_npc.gd" id="1_g3q48"]
 [ext_resource type="SpriteFrames" uid="uid://drxh8yhpas8f0" path="res://scenes/characters/robot/robot_deaths.tres" id="3_2sjva"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3q48"]
-size = Vector2(15, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ou7uy"]
+radius = 4.0
 
 [node name="RobotNpc" type="CharacterBody2D" unique_id=1985711154]
 y_sort_enabled = true
@@ -17,5 +17,5 @@ sprite_frames = ExtResource("3_2sjva")
 animation = &"sawblade_death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1683743761]
-position = Vector2(0.5, 8)
-shape = SubResource("RectangleShape2D_g3q48")
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_ou7uy")

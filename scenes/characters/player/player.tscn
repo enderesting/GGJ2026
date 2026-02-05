@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/player.gd" id="1_t61fv"]
 [ext_resource type="SpriteFrames" uid="uid://drxh8yhpas8f0" path="res://scenes/characters/robot/robot_deaths.tres" id="3_686vu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n85cq"]
-size = Vector2(12, 11)
+[sub_resource type="CircleShape2D" id="CircleShape2D_t61fv"]
+radius = 4.0
 
 [node name="Player" type="CharacterBody2D" unique_id=678857731 node_paths=PackedStringArray("play_area")]
 y_sort_enabled = true
@@ -18,5 +18,5 @@ sprite_frames = ExtResource("3_686vu")
 animation = &"sawblade_death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1057614396]
-position = Vector2(0, 10.5)
-shape = SubResource("RectangleShape2D_n85cq")
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_t61fv")
