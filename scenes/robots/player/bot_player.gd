@@ -2,6 +2,7 @@
 extends Bot
 class_name BotPlayer
 
+
 func _ready() -> void:
 	# HACK we need TheHivemind to shove us .play_area before we can randomize
 	# the position

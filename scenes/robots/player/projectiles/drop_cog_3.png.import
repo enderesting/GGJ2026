@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqaq3ek0bvin6"
-path="res://.godot/imported/drop_cog_2.png-3a86212854b68d54edc8c2e7928f0338.ctex"
+uid="uid://cxi8v1tt5c64p"
+path="res://.godot/imported/drop_cog_3.png-abd83e22b6d33929335863785015b2a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp/drop_cog_2.png"
-dest_files=["res://.godot/imported/drop_cog_2.png-3a86212854b68d54edc8c2e7928f0338.ctex"]
+source_file="res://scenes/robots/player/projectiles/drop_cog_3.png"
+dest_files=["res://.godot/imported/drop_cog_3.png-abd83e22b6d33929335863785015b2a3.ctex"]
 
 [params]
 
