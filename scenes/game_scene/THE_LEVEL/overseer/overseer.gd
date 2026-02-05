@@ -33,6 +33,30 @@ signal trap_started(name: StringName)
 signal trap_finished(name: StringName)
 signal trap_cooldown()
 
+#region life
+
+@export var max_life: int = 10
+@onready var life := max_life
+
+@onready var lifebar := %TextureProgressBar as TextureProgressBar
+@onready var lifebar_timer := lifebar.get_node("LifebarTimer") as Timer
+
+func take_damage():
+	life -= 1
+	lifebar.value = life
+	
+	# Temporary visibility
+	lifebar.visible = true
+	lifebar_timer.start()
+	
+	if life <= 0:
+		print("ded")
+
+func _hide_lifebar():
+	lifebar.visible = false
+
+#endregion
+
 
 func _ready() -> void:
 	cooldown.timeout.connect(_on_cooldown_timeout)

@@ -11,14 +11,14 @@ func _ready() -> void:
 	move_to_overseer()
 
 func _process(delta: float) -> void:
-	rotate(delta * 10.0)
+	rotate(delta * -20.0)
 
 func _reached_overseer():
 #	explosion animation goes here
 	$AnimatedSprite2D.visible = false
-	
 	%sfx.play()
 	%sfx.finished.connect(queue_free)
+	(get_tree().get_first_node_in_group("overseer") as Overseer).take_damage()
 
 func move_to_overseer():
 	var tween = get_tree().create_tween()
@@ -28,3 +28,4 @@ func move_to_overseer():
 		).get_random_global_position(),
 		1.0)
 	tween.finished.connect(_reached_overseer)
+	
