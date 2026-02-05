@@ -197,7 +197,7 @@ func do_quadrants() -> void:
 		quadrant.kill_them_all()
 
 	await get_tree().create_timer(2.0).timeout
-	for quadrant in killing_quadrants:
-		quadrant.reset()
+	for quadrant in quadrants:
+		quadrant.off()
 
 	return blessed_quadrant.animate_turn_off()
