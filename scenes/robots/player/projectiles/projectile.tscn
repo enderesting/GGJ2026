@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bb4xrkt6yfsjq" path="res://scenes/robots/player/projectiles/drop_cog_1.png" id="4_th84y"]
 [ext_resource type="Texture2D" uid="uid://bqaq3ek0bvin6" path="res://scenes/robots/player/projectiles/drop_cog_2.png" id="5_grgqx"]
 [ext_resource type="Texture2D" uid="uid://cxi8v1tt5c64p" path="res://scenes/robots/player/projectiles/drop_cog_3.png" id="6_to68y"]
+[ext_resource type="AudioStream" uid="uid://dk51rgcyofsg0" path="res://assets/music/hit.wav" id="8_t8jgj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bh4yx"]
 animations = [{
@@ -50,3 +51,7 @@ script = ExtResource("1_fdw7l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1023416322]
 sprite_frames = SubResource("SpriteFrames_bh4yx")
 animation = &"chip"
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." unique_id=35009791]
+unique_name_in_owner = true
+stream = ExtResource("8_t8jgj")

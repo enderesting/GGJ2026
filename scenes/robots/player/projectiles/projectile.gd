@@ -9,11 +9,18 @@ func _ready() -> void:
 	$AnimatedSprite2D.play(parts.get_animation_names().get(part))
 	move_to_overseer()
 
+func _process(delta: float) -> void:
+	rotate(delta * 10.0)
+
 func _reached_overseer():
 #	explosion animation goes here
-	queue_free()
+	$AnimatedSprite2D.visible = false
+	%sfx.play()
+	%sfx.finished.connect(queue_free)
 
 func move_to_overseer():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", overseer_location, 1.0)
+	tween.tween_property(self, "global_position",
+		get_tree().get_first_node_in_group("overseer").get_node("%ProjectileTarget").global_position,
+		1.0)
 	tween.finished.connect(_reached_overseer)

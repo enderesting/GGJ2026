@@ -19,6 +19,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("throw"):
 		#throwing animation goes here
 		$throw.play()
+		var projectile := preload("res://scenes/robots/player/projectiles/projectile.tscn").instantiate() as Node2D
+		projectile.top_level = true
+		projectile.global_position = global_position
+		projectile.z_index = 1000
+		projectile.z_as_relative = false
+		add_child(projectile)
 
 
 func _physics_process(_delta: float) -> void:

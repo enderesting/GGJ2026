@@ -400,6 +400,10 @@ z_index = 2
 position = Vector2(104, 87)
 texture = ExtResource("19_121vy")
 
+[node name="ProjectileTarget" type="Marker2D" parent="OverseerSprite/OverseerBody" unique_id=1050295867]
+unique_name_in_owner = true
+position = Vector2(-27, -18)
+
 [node name="OverseerLeftArm" type="Sprite2D" parent="OverseerSprite" unique_id=1460734465]
 z_index = -2
 position = Vector2(120, 68)
