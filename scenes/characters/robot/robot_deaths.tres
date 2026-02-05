@@ -16,7 +16,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_jrni1")
 }],
-"loop": true,
+"loop": false,
 "name": &"RESET",
 "speed": 5.0
 }, {
