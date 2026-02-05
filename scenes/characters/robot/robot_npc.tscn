@@ -6,6 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ou7uy"]
 radius = 4.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ou7uy"]
+size = Vector2(16, 29)
+
 [node name="RobotNpc" type="CharacterBody2D" unique_id=1985711154]
 y_sort_enabled = true
 collision_layer = 2
@@ -19,3 +22,10 @@ animation = &"sawblade_death"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1683743761]
 position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_ou7uy")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=855694440]
+
+[node name="TrapHitbox" type="CollisionShape2D" parent="Area2D" unique_id=325316462]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ou7uy")
+debug_color = Color(0.94960386, 1.0588765e-06, 0.57506585, 0.41960785)

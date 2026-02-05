@@ -1,4 +1,5 @@
 extends Node2D
+class_name Overseer
 
 @onready var play_area: CollisionShape2D = %PlayArea
 @onready var cooldown: Timer = %TrapCooldown
@@ -54,39 +55,49 @@ func _on_cooldown_timeout():
 
 func _input(event: InputEvent) -> void:
 	# Trap 1: Death ray
+	
 	if event.is_action_pressed(&"trap_laser") and can_trigger_trap:
+		#if not charging_laser:
 		can_trigger_trap = false
-		# charging_laser = true
+		charging_laser = true
 		warning_signs.play("warning_die")
 		$Deathray.speed = 300
 		$Deathray.position = play_area.get_parent().position
 		$Deathray.visible = true
 		$Deathray/AudioStreamPlayer.play()
 		%Bolt.visible = false
-		# wait like 5 secs
-		await get_tree().create_timer(3.0).timeout
-		# charging_laser = false
+		return
+
+	if event.is_action_pressed(&"trap_laser") and charging_laser:
 		$Deathray/AudioStreamPlayer.stop()
 		$Deathray/AudioStreamPlayer2.play()
 		cooldown.start()
 		trap_started.emit(&"trap_laser")
 		$Deathray.speed = 0
+		Engine.time_scale = 0.2
 		var doomed_roamers: Array[Node2D] = %LaserHitArea.get_overlapping_bodies()
 		for roamer in doomed_roamers:
 			if roamer is RobotNPC:
 				roamer.states.DYING.animation_name = "lightning_death"
 				roamer.states.DYING.auto_free = false
 				roamer.change_state(roamer.states.DYING)
-			
 		%Bolt.visible = true
 		%Bolt.play()
+		create_tween() \
+			.tween_property(Engine, "time_scale", 0.2, 0.1) \
+			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
 		await %Bolt.animation_finished
+
+		create_tween() \
+			.tween_property(Engine, "time_scale", 1, 0.1) \
+			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
+			
 		$Deathray.visible = false
 		for roamer in doomed_roamers:
 			roamer.queue_free()
 		trap_finished.emit(&"trap_laser")
 		warning_signs.play(&"warning_idle")
-
+		charging_laser = false
 	
 	# Trap 2: Sawblade
 	if event.is_action_pressed(&"trap_saw") and can_trigger_trap:

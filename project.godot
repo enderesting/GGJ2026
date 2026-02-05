@@ -177,6 +177,7 @@ target_right={
 
 2d_physics/layer_2="roamers"
 2d_physics/layer_3="walls"
+2d_physics/layer_4="roamers_hitbox"
 
 [maaacks_game_template]
 
