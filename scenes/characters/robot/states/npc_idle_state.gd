@@ -39,7 +39,7 @@ func physics_process(_delta):
 	
 
 func random_dir():
-	match randi_range(0,7): 
+	match randi_range(0,8): 
 		0:
 			return Vector2(0,1)
 		1:
@@ -56,3 +56,5 @@ func random_dir():
 			return Vector2(-1,0)
 		7:
 			return Vector2(0,-1)
+		8:
+			return Vector2(0,0)
