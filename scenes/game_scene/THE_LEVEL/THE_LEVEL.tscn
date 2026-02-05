@@ -93,7 +93,8 @@ metadata/_edit_lock_ = true
 [node name="Light" parent="PlayArea/Quadrants/4" index="1" unique_id=1600648789]
 texture = ExtResource("10_batfn")
 
-[node name="Overseer" parent="." unique_id=1110463796 groups=["overseer"] instance=ExtResource("5_2jkeq")]
+[node name="Overseer" parent="." unique_id=1110463796 node_paths=PackedStringArray("play_area") groups=["overseer"] instance=ExtResource("5_2jkeq")]
+play_area = NodePath("../PlayArea")
 
 [node name="Countdown" type="Node2D" parent="." unique_id=1334223834]
 z_index = -3

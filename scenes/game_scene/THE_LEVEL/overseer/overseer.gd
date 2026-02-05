@@ -78,7 +78,7 @@ func _input(event: InputEvent) -> void:
 		charging_laser = true
 		warning_signs.play("warning_die")
 		$Deathray.speed = 300
-		$Deathray.position = play_area.get_extents().position
+		$Deathray.position = play_area.get_extents().get_center()
 		$Deathray.visible = true
 		$Deathray/AudioStreamPlayer.play()
 		%Bolt.visible = false

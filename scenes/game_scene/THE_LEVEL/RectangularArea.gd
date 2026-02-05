@@ -27,9 +27,18 @@ func get_extents() -> Rect2:
 func get_local_extents() -> Rect2:
 	return Rect2(-rectangle_shape.size/2, rectangle_shape.size)
 
+func get_global_extents() -> Rect2:
+	return Rect2(
+		collision_shape_node.global_position - rectangle_shape.size/2,
+		rectangle_shape.size
+	)
+
 ## Utility function to grab a random point from a rectangle
 static func sample_point(rect: Rect2) -> Vector2:
 	return rect.position + Vector2(randf() * rect.size.x, randf() * rect.size.y)
 
 func get_random_position() -> Vector2:
 	return RectangularArea.sample_point(get_local_extents())
+
+func get_random_global_position() -> Vector2:
+	return RectangularArea.sample_point(get_global_extents())

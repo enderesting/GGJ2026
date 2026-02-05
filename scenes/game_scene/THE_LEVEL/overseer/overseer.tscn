@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cqruew5mned5q" path="res://assets/trap_traffic_lights/traffic_red.png" id="21_8el1g"]
 [ext_resource type="Texture2D" uid="uid://db1smlxq28i06" path="res://assets/temp/OverseerMonitorHead.png" id="21_d1gew"]
 [ext_resource type="Texture2D" uid="uid://bqf3t23ud60vt" path="res://assets/temp/OverseerRightArm.png" id="22_5r2ny"]
+[ext_resource type="Script" uid="uid://dfsq0hl3208t5" path="res://scenes/game_scene/THE_LEVEL/RectangularArea.gd" id="27_0acdc"]
 [ext_resource type="Texture2D" uid="uid://bah245par16xj" path="res://assets/sign/warning_run.png" id="30_57kmg"]
 [ext_resource type="Texture2D" uid="uid://bju2581jk8fb8" path="res://assets/sign/warning_die.png" id="30_u26jv"]
 [ext_resource type="Texture2D" uid="uid://dwfhnl63ghd3r" path="res://assets/sign/warning_go.png" id="31_0acdc"]
@@ -255,6 +256,9 @@ _data = {
 &"overseer_idle": SubResource("Animation_ayyg4")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0acdc"]
+size = Vector2(20, 34)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8el1g"]
 animations = [{
 "frames": [{
@@ -403,6 +407,17 @@ texture = ExtResource("19_121vy")
 [node name="ProjectileTarget" type="Marker2D" parent="OverseerSprite/OverseerBody" unique_id=1050295867]
 unique_name_in_owner = true
 position = Vector2(-27, -18)
+
+[node name="ProjectileDestination" type="Area2D" parent="OverseerSprite/OverseerBody" unique_id=1743918259 node_paths=PackedStringArray("collision_shape_node")]
+unique_name_in_owner = true
+position = Vector2(-27, -17)
+script = ExtResource("27_0acdc")
+collision_shape_node = NodePath("Extents")
+metadata/_custom_type_script = "uid://dfsq0hl3208t5"
+
+[node name="Extents" type="CollisionShape2D" parent="OverseerSprite/OverseerBody/ProjectileDestination" unique_id=741210065]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_0acdc")
 
 [node name="OverseerLeftArm" type="Sprite2D" parent="OverseerSprite" unique_id=1460734465]
 z_index = -2
