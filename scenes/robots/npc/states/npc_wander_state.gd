@@ -1,5 +1,5 @@
 extends State
-class_name NPCIdleState
+class_name NPCWanderState
 
 var direction
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7igt3pf3afue" path="res://scenes/game_scene/THE_LEVEL/main.gd" id="1_5edlj"]
 [ext_resource type="Texture2D" uid="uid://bpw0tte6ovf1u" path="res://assets/background/bg.png" id="2_batfn"]
-[ext_resource type="Script" uid="uid://dfsq0hl3208t5" path="res://scenes/game_scene/THE_LEVEL/RectangularArea.gd" id="3_fhvee"]
+[ext_resource type="Script" path="res://scenes/game_scene/THE_LEVEL/RectangularArea.gd" id="3_fhvee"]
 [ext_resource type="Script" uid="uid://duogagnrgv4n5" path="res://scenes/game_scene/THE_LEVEL/hivemind.gd" id="3_o4jwg"]
 [ext_resource type="PackedScene" uid="uid://bwa4kswvu2q6h" path="res://scenes/robots/player/bot_player.tscn" id="3_wkokv"]
 [ext_resource type="PackedScene" uid="uid://bxmfelykv4k1a" path="res://scenes/game_scene/THE_LEVEL/overseer/overseer.tscn" id="5_2jkeq"]

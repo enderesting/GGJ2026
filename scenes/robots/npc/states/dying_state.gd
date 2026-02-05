@@ -1,6 +1,5 @@
 extends State
-class_name NPCDyingState
-
+class_name DyingState
 
 var animation_name: StringName = "sawblade_death"
 var auto_free: bool = false

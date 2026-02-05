@@ -47,7 +47,7 @@ func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
 	for npc in get_children():
 		if npc is BotPlayer:
 			continue
-		if npc is BotNPC and npc.current_state is NPCDyingState:
+		if npc is BotNPC and npc.current_state is DyingState:
 			continue
 		npc.change_state(npc.states.IDLE)
 

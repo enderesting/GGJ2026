@@ -3,10 +3,10 @@ class_name BotNPC
 extends Bot
 
 var states: Dictionary[StringName, State] = {
-	"IDLE": NPCIdleState.new(),
+	"IDLE": NPCWanderState.new(),
 	"BUSY": NPCBusyState.new(),
 	"RUNNING_TO_QUADRANT": NPCGotoQuadrantState.new(),
-	"DYING": NPCDyingState.new(),
+	"DYING": DyingState.new(),
 }
 
 var current_state: State

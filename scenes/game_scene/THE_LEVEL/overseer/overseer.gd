@@ -74,8 +74,10 @@ func _ready() -> void:
 			body.states.DYING.auto_free = true
 			body.change_state(body.states.DYING)
 		elif body is BotPlayer:
+			body.states.DYING.animation_name = "sawblade_death"
+			body.change_state(body.states.DYING)
 			body.queue_free())
-
+						
 	# pass through our signals to the EventBus
 	trap_started.connect(EventBus.trap_started.emit)
 	trap_finished.connect(EventBus.trap_finished.emit)
