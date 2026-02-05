@@ -156,7 +156,14 @@ func _input(event: InputEvent) -> void:
 		%Sawblade.global_position.x = play_area.get_extents().get_support(Vector2.RIGHT).x
 		%Sawblade.global_position.y = play_area.get_extents().get_center().y + 50
 		%Sawblade.visible = true
+		
+		# Delay collision detection for about a half of the time it takes to animate up
+		%Sawblade.monitoring = false
+		get_tree().create_timer(0.125).timeout.connect(func():
+			%Sawblade.monitoring = true)
+		
 		Slowdown.start_slowdown(self)
+		
 		(
 			create_tween()
 				.tween_property(%Sawblade, ^"global_position:y", -50, 0.25)
