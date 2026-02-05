@@ -1,5 +1,7 @@
 ## ugh...
 ## why did I write this wrapper
+## it's just a bunch of boilerplate
+## but it does make working with the quadrants a bit nicer
 class_name Quadrant
 extends Area2D
 
@@ -7,6 +9,15 @@ extends Area2D
 @onready var shape: CollisionShape2D = $Shape
 
 signal animation_finished(anim_name: StringName)
+
+## Retrieve quadrants in the quadrants group, 100% type-safely
+static func get_nodes_in_group(tree: SceneTree) -> Array[Quadrant]:
+	var quadrants: Array[Quadrant] = []
+	for quadrant in tree.get_nodes_in_group("quadrants"):
+		if quadrant is Quadrant:
+			quadrants.push_back(quadrant)
+	return quadrants
+
 
 func _ready() -> void:
 	anims.animation_finished.connect(animation_finished.emit)

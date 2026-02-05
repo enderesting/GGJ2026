@@ -171,11 +171,7 @@ func _input(event: InputEvent) -> void:
 
 
 func do_quadrants() -> void:
-	# Retrieve quadrants type-safely
-	var quadrants: Array[Quadrant] = []
-	for quadrant in get_tree().get_nodes_in_group("quadrants"):
-		if quadrant is Quadrant:
-			quadrants.push_back(quadrant)
+	var quadrants: Array[Quadrant] = Quadrant.get_nodes_in_group(get_tree())
 
 	for quadrant in quadrants:
 		quadrant.animate_dramatic_flicker()
@@ -198,6 +194,6 @@ func do_quadrants() -> void:
 
 	await get_tree().create_timer(2.0).timeout
 	for quadrant in quadrants:
-		quadrant.off()
+		quadrant.turn_off()
 
 	return blessed_quadrant.animate_turn_off()

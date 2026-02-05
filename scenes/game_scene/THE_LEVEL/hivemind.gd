@@ -19,12 +19,8 @@ func _ready() -> void:
 	for _i in npcs_to_spawn:
 		var new_robot := robot_npc.instantiate() as BotNPC
 		new_robot.add_to_group(&"npcs")
+		new_robot.play_area = play_area
 		add_child(new_robot)
-	
-	# All bots (including the player) get play_area shoved into them
-	for child in get_children():
-		(child as Bot).play_area = play_area
-		
 
 
 func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
