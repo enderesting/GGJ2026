@@ -21,7 +21,6 @@ func _init() -> void:
 		states[state_name].character = self
 
 func _ready() -> void:
-	position = random_position()
 	change_state(states["IDLE"])
 
 func change_state(new_state: State) -> void:

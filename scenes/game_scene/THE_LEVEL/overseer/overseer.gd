@@ -14,7 +14,10 @@ class Slowdown:
 		some_node.create_tween().tween_property(Engine, "time_scale", 1.0, DURATION) \
 			.set_trans(Tween.TRANS_SINE)
 
-@onready var play_area: CollisionShape2D = %PlayArea
+# Nodes that need to be given
+@export var play_area: RectangularArea
+
+# Nodes within ourselves
 @onready var cooldown: Timer = %TrapCooldown
 @onready var warning_signs: AnimatedSprite2D = $WarningSigns
 
@@ -54,10 +57,10 @@ func _ready() -> void:
 	$Stoplight.visible = false
 	#$Colorpicker.visible = false
 
-	#$Colorpicker/Color1.global_position = play_area.get_parent().position - play_area.shape.size/4
-	#$Colorpicker/Color2.global_position = play_area.get_parent().position - Vector2((-play_area.shape.size.x/4) ,play_area.shape.size.y/4)
-	#$Colorpicker/Color3.global_position = play_area.get_parent().position + play_area.shape.size/4
-	#$Colorpicker/Color4.global_position = play_area.get_parent().position - Vector2(play_area.shape.size.x/4 ,-(play_area.shape.size.y/4))
+	#$Colorpicker/Color1.global_position = play_area.get_extents().position - play_area.shape.size/4
+	#$Colorpicker/Color2.global_position = play_area.get_extents().position - Vector2((-play_area.shape.size.x/4) ,play_area.shape.size.y/4)
+	#$Colorpicker/Color3.global_position = play_area.get_extents().position + play_area.shape.size/4
+	#$Colorpicker/Color4.global_position = play_area.get_extents().position - Vector2(play_area.shape.size.x/4 ,-(play_area.shape.size.y/4))
 	$AnimationPlayer.play("overseer_idle")
 
 
@@ -75,7 +78,7 @@ func _input(event: InputEvent) -> void:
 		charging_laser = true
 		warning_signs.play("warning_die")
 		$Deathray.speed = 300
-		$Deathray.position = play_area.get_parent().position
+		$Deathray.position = play_area.get_extents().position
 		$Deathray.visible = true
 		$Deathray/AudioStreamPlayer.play()
 		%Bolt.visible = false
@@ -120,8 +123,8 @@ func _input(event: InputEvent) -> void:
 		warning_signs.play("warning_run")
 		trap_started.emit(&"trap_saw")
 		$SawbladeClipHack/Sawblade/AudioStreamPlayer.play()
-		%Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
-		%Sawblade.global_position.y = play_area.get_parent().position.y + 50
+		%Sawblade.global_position.x = play_area.get_extents().position.x + play_area.shape.size.x/2
+		%Sawblade.global_position.y = play_area.get_extents().position.y + 50
 		%Sawblade.visible = true
 		Slowdown.start_slowdown(self)
 		(

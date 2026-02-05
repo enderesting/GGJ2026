@@ -11,7 +11,7 @@ extends Node2D
 
 ## Reference to the rectangular area that delineates the valid coordinates for
 ## the robot NPCs to be in
-@export var play_area: CollisionShape2D
+@export var play_area: RectangularArea
 
 
 func _ready() -> void:
@@ -23,6 +23,7 @@ func spawn_bot():
 	var new_robot := robot_npc.instantiate() as BotNPC
 	new_robot.add_to_group(&"npcs")
 	new_robot.play_area = play_area
+	new_robot.position = RectangularArea.sample_point(play_area.get_local_extents())
 	add_child(new_robot, true)
 
 

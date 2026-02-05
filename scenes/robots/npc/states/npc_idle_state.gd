@@ -4,7 +4,7 @@ class_name NPCIdleState
 var direction
 
 func enter():
-	character.goal = character.random_position()
+	character.goal = character.play_area.get_random_position()
 	direction = random_dir()
 
 func exit():
@@ -32,7 +32,7 @@ func physics_process(_delta):
 	character.velocity = direction * character.SPEED
 	# var wall_bump = 
 	if character.move_and_slide():
-		direction = (character.random_position()-character.position).normalized().round()
+		direction = (character.play_area.get_random_position()-character.position).normalized().round()
 
 	# if randf() <= 0.5:
 	#     character.velocity = -direction * character.SPEED

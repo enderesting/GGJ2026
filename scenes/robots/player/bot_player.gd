@@ -3,10 +3,8 @@ extends Bot
 class_name BotPlayer
 
 func _ready() -> void:
-	# HACK we need TheHivemind to shove us .play_area before we can randomize
-	# the position
-	await get_parent().ready
-	position = random_position()
+	# Randomize initial player position
+	position = play_area.get_random_position()
 
 func _exit_tree() -> void:
 	EventBus.player_killed.emit()

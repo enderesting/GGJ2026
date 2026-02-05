@@ -178,25 +178,22 @@ _data = {
 &"turn_on": SubResource("Animation_o1kds")
 }
 
-[node name="Quadrant" type="Area2D" unique_id=47736159 groups=["quadrants"]]
+[node name="Quadrant" type="Area2D" unique_id=47736159 node_paths=PackedStringArray("collision_shape_node") groups=["quadrants"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_06cag")
+collision_shape_node = NodePath("Extents")
 
-[node name="Shape" type="CollisionShape2D" parent="." unique_id=945870284]
-position = Vector2(57, 34)
+[node name="Extents" type="CollisionShape2D" parent="." unique_id=945870284]
 shape = SubResource("RectangleShape2D_wkokv")
 
 [node name="Light" type="Sprite2D" parent="." unique_id=1600648789]
 texture = ExtResource("1_ijq5s")
-centered = false
-offset = Vector2(2, 3)
 
 [node name="FloorLightning" type="AnimatedSprite2D" parent="." unique_id=1479229704]
 modulate = Color(1, 1, 1, 0)
 sprite_frames = SubResource("SpriteFrames_xmb24")
 autoplay = "default"
-centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1615619985]
 libraries/ = SubResource("AnimationLibrary_xmb24")

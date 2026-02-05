@@ -10,10 +10,7 @@ func enter():
 	assert(blessed_quadrant, "RUNNING_TO_QUADRANT needs to have a blessed_quadrant assigned!")
 	
 	var goal_rect := blessed_quadrant.get_extents().grow(-20)
-	var goal_point := goal_rect.position + Vector2(
-		goal_rect.size.x * randf(),
-		goal_rect.size.y * randf()
-	)
+	var goal_point := RectangularArea.sample_point(goal_rect)
 	movement_goal = goal_point - character.position
 
 

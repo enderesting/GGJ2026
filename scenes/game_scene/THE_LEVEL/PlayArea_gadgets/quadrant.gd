@@ -3,10 +3,9 @@
 ## it's just a bunch of boilerplate
 ## but it does make working with the quadrants a bit nicer
 class_name Quadrant
-extends Area2D
+extends RectangularArea
 
 @onready var anims: AnimationPlayer = $AnimationPlayer
-@onready var shape: CollisionShape2D = $Shape
 
 signal animation_finished(anim_name: StringName)
 
@@ -22,11 +21,6 @@ static func get_nodes_in_group(tree: SceneTree) -> Array[Quadrant]:
 func _ready() -> void:
 	anims.animation_finished.connect(animation_finished.emit)
 	turn_off()
-
-
-func get_extents() -> Rect2:
-	var rectangle := shape.shape as RectangleShape2D
-	return Rect2(position + shape.position - rectangle.size/2, rectangle.size)
 
 
 func kill_them_all() -> void:
