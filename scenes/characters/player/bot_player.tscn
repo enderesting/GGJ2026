@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bw5ps2bf04erm"]
 
-[ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/robot_player.gd" id="1_t61fv"]
+[ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/characters/player/bot_player.gd" id="1_t61fv"]
 [ext_resource type="AudioStream" uid="uid://dtp655brjrbhc" path="res://scenes/characters/beep_boop.tres" id="2_qd3e3"]
 [ext_resource type="SpriteFrames" uid="uid://drxh8yhpas8f0" path="res://scenes/characters/robot/robot_deaths.tres" id="3_686vu"]
 [ext_resource type="AudioStream" uid="uid://dts02sf20ruxr" path="res://assets/music/beepboop.wav" id="3_hss88"]

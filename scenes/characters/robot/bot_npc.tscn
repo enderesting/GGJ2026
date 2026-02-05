@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqy50s757ncyw"]
 
-[ext_resource type="Script" uid="uid://c0itcwgkt6p25" path="res://scenes/characters/robot/robot_npc.gd" id="1_g3q48"]
+[ext_resource type="Script" uid="uid://c0itcwgkt6p25" path="res://scenes/characters/robot/bot_npc.gd" id="1_g3q48"]
 [ext_resource type="SpriteFrames" uid="uid://drxh8yhpas8f0" path="res://scenes/characters/robot/robot_deaths.tres" id="3_2sjva"]
 [ext_resource type="AudioStream" uid="uid://dts02sf20ruxr" path="res://assets/music/beepboop.wav" id="3_p6hdm"]
 
