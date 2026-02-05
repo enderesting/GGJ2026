@@ -60,7 +60,7 @@ script = ExtResource("3_o4jwg")
 npcs_to_spawn = 20
 play_area = NodePath("..")
 
-[node name="BotPlayer" parent="PlayArea/TheHiveminnd" unique_id=678857731 node_paths=PackedStringArray("play_area") instance=ExtResource("3_wkokv")]
+[node name="BotPlayer" parent="PlayArea/TheHiveminnd" unique_id=678857731 node_paths=PackedStringArray("play_area") groups=["player"] instance=ExtResource("3_wkokv")]
 editor_description = "The player lives in the PlayArea"
 position = Vector2(-14, -76)
 play_area = NodePath("../..")

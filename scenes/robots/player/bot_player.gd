@@ -2,9 +2,35 @@
 extends Bot
 class_name BotPlayer
 
+const PROJECTILE_SCENE : PackedScene = preload("res://scenes/robots/player/projectiles/projectile.tscn")
+
 @export var spriteAnimator : AnimatedSprite2D
 @export var beep_boop_sound : AudioStreamPlayer
 @export var throw_sound : AudioStreamPlayer
+
+#region ammo
+
+var ammo: int = 0
+
+func pickup_ammo():
+	ammo += 1
+
+func throw_ammo():
+	if not ammo:
+		return
+	ammo -= 1
+	
+	throw_sound.play()
+	var projectile := PROJECTILE_SCENE.instantiate() as Node2D
+	projectile.top_level = true
+	projectile.global_position = global_position
+	projectile.z_index = 1000
+	projectile.z_as_relative = false
+	add_child(projectile)
+
+#endregion
+
+#region state machine
 
 var states: Dictionary[StringName, State] = {
 	"IDLE": IdleState.new(),
@@ -36,3 +62,5 @@ func change_state(new_state: State) -> void:
 
 	current_state = new_state
 	current_state.enter()
+
+#endregion
