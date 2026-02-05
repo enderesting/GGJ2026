@@ -6,6 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_t61fv"]
 radius = 4.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t61fv"]
+size = Vector2(16, 29)
+
 [node name="Player" type="CharacterBody2D" unique_id=678857731 node_paths=PackedStringArray("play_area")]
 y_sort_enabled = true
 collision_layer = 2
@@ -20,3 +23,12 @@ animation = &"sawblade_death"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1057614396]
 position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_t61fv")
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=1705402649]
+collision_layer = 8
+collision_mask = 16
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=1817440028]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_t61fv")
+debug_color = Color(0.94960386, 1.0588765e-06, 0.57506585, 0.41960785)

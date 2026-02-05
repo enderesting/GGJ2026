@@ -75,21 +75,28 @@ func _input(event: InputEvent) -> void:
 		trap_started.emit(&"trap_laser")
 		$Deathray.speed = 0
 		Engine.time_scale = 0.2
-		var doomed_roamers: Array[Node2D] = %LaserHitArea.get_overlapping_bodies()
-		for roamer in doomed_roamers:
+		var doomed_roamer_hitboxes: Array[Area2D] = %LaserHitArea.get_overlapping_areas()
+		#print(doomed_roamer_hitboxes.size())
+		var doomed_roamers: Array[Node2D]
+		for roamer_hitbox in doomed_roamer_hitboxes:
+			var roamer = roamer_hitbox.get_parent()
+			#print(roamer)
 			if roamer is RobotNPC:
+				doomed_roamers.append(roamer)
 				roamer.states.DYING.animation_name = "lightning_death"
 				roamer.states.DYING.auto_free = false
 				roamer.change_state(roamer.states.DYING)
+			if roamer is Player:
+				doomed_roamers.append(roamer)
 		%Bolt.visible = true
 		%Bolt.play()
 		create_tween() \
-			.tween_property(Engine, "time_scale", 0.2, 0.1) \
+			.tween_property(Engine, "time_scale", 0.2, 0.01) \
 			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
 		await %Bolt.animation_finished
 
 		create_tween() \
-			.tween_property(Engine, "time_scale", 1, 0.1) \
+			.tween_property(Engine, "time_scale", 1, 0.05) \
 			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
 			
 		$Deathray.visible = false

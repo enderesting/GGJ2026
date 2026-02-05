@@ -42,6 +42,7 @@ polygon = PackedVector2Array(92, 42, 320, 42, 320, 180, 92, 180, 92, 42, 64, 16,
 editor_description = "The confines of the player and the NPC robots"
 y_sort_enabled = true
 position = Vector2(206, 111)
+collision_layer = 0
 
 [node name="PlayArea" type="CollisionShape2D" parent="PlayArea" unique_id=743758708]
 unique_name_in_owner = true

@@ -344,8 +344,8 @@ position = Vector2(0, 27.453945)
 
 [node name="LaserHitArea" type="Area2D" parent="Deathray" unique_id=385527519]
 unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 2
+collision_layer = 16
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deathray/LaserHitArea" unique_id=1491206507]
 shape = SubResource("CircleShape2D_t7mmt")

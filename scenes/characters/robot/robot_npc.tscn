@@ -9,23 +9,26 @@ radius = 4.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ou7uy"]
 size = Vector2(16, 29)
 
-[node name="RobotNpc" type="CharacterBody2D" unique_id=1985711154]
+[node name="RobotNpc" type="CharacterBody2D" unique_id=1985711154 node_paths=PackedStringArray("play_area")]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_g3q48")
+play_area = NodePath("HitboxArea/Hitbox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1223162749]
 sprite_frames = ExtResource("3_2sjva")
 animation = &"sawblade_death"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1683743761]
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1683743761]
 position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_ou7uy")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=855694440]
+[node name="HitboxArea" type="Area2D" parent="." unique_id=185492561]
+collision_layer = 8
+collision_mask = 16
 
-[node name="TrapHitbox" type="CollisionShape2D" parent="Area2D" unique_id=325316462]
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=325316462]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ou7uy")
 debug_color = Color(0.94960386, 1.0588765e-06, 0.57506585, 0.41960785)

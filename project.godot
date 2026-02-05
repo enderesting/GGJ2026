@@ -177,7 +177,8 @@ target_right={
 
 2d_physics/layer_2="roamers"
 2d_physics/layer_3="walls"
-2d_physics/layer_4="roamers_hitbox"
+2d_physics/layer_4="roamer_hitbox"
+2d_physics/layer_5="traps"
 
 [maaacks_game_template]
 
