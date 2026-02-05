@@ -147,8 +147,8 @@ func _input(event: InputEvent) -> void:
 		warning_signs.play("warning_run")
 		trap_started.emit(&"trap_saw")
 		$SawbladeClipHack/Sawblade/AudioStreamPlayer.play()
-		%Sawblade.global_position.x = play_area.get_extents().position.x + play_area.shape.size.x/2
-		%Sawblade.global_position.y = play_area.get_extents().position.y + 50
+		%Sawblade.global_position.x = play_area.get_extents().get_support(Vector2.RIGHT).x
+		%Sawblade.global_position.y = play_area.get_extents().get_center().y + 50
 		%Sawblade.visible = true
 		Slowdown.start_slowdown(self)
 		(

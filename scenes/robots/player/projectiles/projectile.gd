@@ -1,7 +1,10 @@
+class_name Projectile
 extends Node2D
 
 # spawns and moves in an arc to the overseer coordinates, then generates a lil explosion
 var overseer_location : Vector2
+
+var flying_to_overseer := false
 
 func _ready() -> void:
 	var part = randi_range(0,2)
@@ -11,7 +14,8 @@ func _ready() -> void:
 	move_to_overseer()
 
 func _process(delta: float) -> void:
-	rotate(delta * -20.0)
+	if flying_to_overseer:
+		rotate(delta * -20.0)
 
 func _reached_overseer():
 #	explosion animation goes here

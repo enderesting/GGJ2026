@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dve4bfk4sdnq3"]
+
+[ext_resource type="Texture2D" uid="uid://c00uy2wwn1vd1" path="res://assets/deadRobotguy.png" id="1_eqddj"]
+
+[node name="BotCorpse" type="Sprite2D" unique_id=235645986]
+texture = ExtResource("1_eqddj")
