@@ -1,7 +1,7 @@
 ## The base for both the player and the other NPC robots
 ##
 ## Both robots and masker should inherit the movable class. Maybe give it a better name though
-class_name RoamingRobot
+class_name Bot
 extends CharacterBody2D
 
 @export var play_area: CollisionShape2D

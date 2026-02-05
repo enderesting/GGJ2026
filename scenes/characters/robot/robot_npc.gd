@@ -1,6 +1,6 @@
 ## An NPC
-class_name RobotNPC
-extends RoamingRobot
+class_name BotNPC
+extends Bot
 
 var states: Dictionary[StringName, State] = {
 	"IDLE": NPCIdleState.new(),

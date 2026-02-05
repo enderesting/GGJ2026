@@ -58,7 +58,7 @@ script = ExtResource("3_o4jwg")
 npcs_to_spawn = 20
 play_area = NodePath("../PlayArea")
 
-[node name="Player" parent="PlayArea/TheHiveminnd" unique_id=678857731 instance=ExtResource("3_wkokv")]
+[node name="BotPlayer" parent="PlayArea/TheHiveminnd" unique_id=678857731 instance=ExtResource("3_wkokv")]
 editor_description = "The player lives in the PlayArea"
 position = Vector2(-14, -76)
 
@@ -140,7 +140,7 @@ stream = ExtResource("13_fhvee")
 volume_db = -20.0
 autoplay = true
 
-[connection signal="tree_exiting" from="PlayArea/TheHiveminnd/Player" to="." method="_on_player_tree_exiting" flags=3]
+[connection signal="tree_exiting" from="PlayArea/TheHiveminnd/BotPlayer" to="." method="_on_player_tree_exiting" flags=3]
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
 [connection signal="stop_moving" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_stop_moving"]
 [connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]

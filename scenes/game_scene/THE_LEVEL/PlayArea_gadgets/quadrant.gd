@@ -21,13 +21,13 @@ func get_extents() -> Rect2:
 func kill_them_all() -> void:
 	anims.play("floor_lightning_killing")
 
-	var doomed_bots: Array[RoamingRobot] = []
+	var doomed_bots: Array[Bot] = []
 	for body in get_overlapping_bodies():
-		if body is RobotNPC:
+		if body is BotNPC:
 			body.states.DYING.animation_name = "lightning_death"
 			body.states.DYING.auto_free = false
 			body.change_state(body.states.DYING)
-		if body is RoamingRobot:
+		if body is Bot:
 			doomed_bots.push_back(body)
 
 	await get_tree().create_timer(2.0).timeout
