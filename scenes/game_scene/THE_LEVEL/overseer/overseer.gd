@@ -52,9 +52,9 @@ func die():
 	# TODO animate it manually with an AnimationPlayer
 	var tween := create_tween()
 	tween.set_loops(4)
-	tween.tween_callback(sprite.set_visible.bind(false))
+	tween.tween_callback(sprite.hide)
 	tween.tween_interval(0.125)
-	tween.tween_callback(sprite.set_visible.bind(true))
+	tween.tween_callback(sprite.show)
 	tween.tween_interval(0.125)
 	await tween.finished
 	sprite.visible = false
