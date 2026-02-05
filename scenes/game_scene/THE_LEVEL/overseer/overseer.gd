@@ -111,7 +111,6 @@ func _input(event: InputEvent) -> void:
 		$Deathray.position = play_area.get_extents().get_center()
 		$Deathray.visible = true
 		$Deathray/AudioStreamPlayer.play()
-		%Bolt.visible = false
 		return
 
 	if event.is_action_pressed(&"trap_laser") and charging_laser:
@@ -133,11 +132,12 @@ func _input(event: InputEvent) -> void:
 					roamer.states.DYING.animation_name = "lightning_death_human"
 				roamer.states.DYING.auto_free = false
 				roamer.change_state(roamer.states.DYING)
-		%Bolt.visible = true
 		%Bolt.play()
+		create_tween().tween_property(%CanvasModulate, "color", Color(0.082, 0.102, 0.118), 0.125).set_trans(Tween.TRANS_BOUNCE)
 		Slowdown.start_slowdown(self)
 		await %Bolt.animation_finished
 		Slowdown.end_slowdown(self)
+		create_tween().tween_property(%CanvasModulate, "color", Color(1, 1, 1), 1)
 		
 		$Deathray.visible = false
 		for roamer in doomed_roamers:

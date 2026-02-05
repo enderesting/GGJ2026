@@ -49,6 +49,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0acdc"]
+light_mode = 1
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ly5m1"]
 animations = [{
 "frames": [{
@@ -317,6 +320,9 @@ animations = [{
 [node name="Overseer" type="Node2D" unique_id=1110463796]
 script = ExtResource("1_341gs")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=288625955]
+unique_name_in_owner = true
+
 [node name="Deathray" type="CharacterBody2D" parent="." unique_id=1767803891]
 z_index = 3
 collision_layer = 0
@@ -332,6 +338,7 @@ frame_progress = 0.055356957
 [node name="Bolt" type="AnimatedSprite2D" parent="Deathray/Target" unique_id=528697460]
 unique_name_in_owner = true
 z_as_relative = false
+material = SubResource("CanvasItemMaterial_0acdc")
 position = Vector2(0, -90)
 sprite_frames = SubResource("SpriteFrames_ly5m1")
 
@@ -339,7 +346,6 @@ sprite_frames = SubResource("SpriteFrames_ly5m1")
 shape = SubResource("CircleShape2D_2jkeq")
 
 [node name="Emitter" type="AnimatedSprite2D" parent="Deathray" unique_id=1803952232]
-visible = false
 sprite_frames = SubResource("SpriteFrames_j8u7f")
 script = ExtResource("6_rd2gr")
 
