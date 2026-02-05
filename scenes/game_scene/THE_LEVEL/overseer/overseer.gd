@@ -229,6 +229,7 @@ func do_quadrants() -> void:
 		quadrant.animate_floor_lightning_charging()
 	await killing_quadrants[0].animation_finished
 
+	$Deathray/AudioStreamPlayer2.play()
 	for quadrant in killing_quadrants:
 		quadrant.kill_them_all()
 
