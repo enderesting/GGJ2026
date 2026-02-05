@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://uesf3r3bb3sy" path="res://assets/target.png" id="3_a0jya"]
 [ext_resource type="Texture2D" uid="uid://d1a3t5spaw0br" path="res://assets/dearth_ray/DeathBlaster.png" id="4_121vy"]
 [ext_resource type="Texture2D" uid="uid://ba0b28r1gdq8o" path="res://assets/AnimationLightning1_2.png" id="4_dm4dt"]
+[ext_resource type="Texture2D" uid="uid://0lq17ufs74hy" path="res://assets/target1.png" id="4_u26jv"]
 [ext_resource type="Texture2D" uid="uid://cc3ch6xucsojt" path="res://assets/AnimationLightning3_4.png" id="5_2ovfc"]
 [ext_resource type="Texture2D" uid="uid://b88a6k4qchltg" path="res://assets/dearth_ray/DeathBlasterLightning.png" id="5_ayyg4"]
 [ext_resource type="Texture2D" uid="uid://cidp0l3fbe43h" path="res://assets/AnimationLightning5_6.png" id="6_57kmg"]
@@ -32,6 +33,20 @@
 [ext_resource type="Texture2D" uid="uid://bju2581jk8fb8" path="res://assets/sign/warning_die.png" id="30_u26jv"]
 [ext_resource type="Texture2D" uid="uid://dwfhnl63ghd3r" path="res://assets/sign/warning_go.png" id="31_0acdc"]
 [ext_resource type="Texture2D" uid="uid://dflj2mebhjyfg" path="res://assets/sign/warning_stop.png" id="33_t4dqw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0acdc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a0jya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u26jv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ly5m1"]
 animations = [{
@@ -82,7 +97,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t7mmt"]
-radius = 24.0
+radius = 16.0
 
 [sub_resource type="Gradient" id="Gradient_u26jv"]
 
@@ -304,8 +319,10 @@ collision_layer = 0
 collision_mask = 4
 script = ExtResource("2_n6k5h")
 
-[node name="Target" type="Sprite2D" parent="Deathray" unique_id=632358325]
-texture = ExtResource("3_a0jya")
+[node name="Target" type="AnimatedSprite2D" parent="Deathray" unique_id=1353722683]
+sprite_frames = SubResource("SpriteFrames_0acdc")
+autoplay = "default"
+frame_progress = 0.055356957
 
 [node name="Bolt" type="AnimatedSprite2D" parent="Deathray/Target" unique_id=528697460]
 unique_name_in_owner = true
@@ -316,6 +333,7 @@ sprite_frames = SubResource("SpriteFrames_ly5m1")
 shape = SubResource("CircleShape2D_2jkeq")
 
 [node name="Emitter" type="AnimatedSprite2D" parent="Deathray" unique_id=1803952232]
+visible = false
 sprite_frames = SubResource("SpriteFrames_j8u7f")
 script = ExtResource("6_rd2gr")
 
