@@ -147,6 +147,7 @@ autoplay = true
 
 [connection signal="tree_exiting" from="PlayArea/TheHiveminnd/BotPlayer" to="." method="_on_player_tree_exiting" flags=3]
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
+[connection signal="died" from="Overseer" to="." method="_on_overseer_died"]
 [connection signal="stop_moving" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_stop_moving"]
 [connection signal="timeout" from="Countdown/Timer" to="." method="_on_timer_timeout"]
 

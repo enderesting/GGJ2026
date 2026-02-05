@@ -33,7 +33,6 @@ func spawn_bot():
 func _on_npc_death(npc: BotNPC) -> void:
 	var dropped_pickup := corpse_scene.instantiate() as Node2D
 	dropped_pickup.position = npc.position
-	prints("Dropping", dropped_pickup, "at", dropped_pickup.position)
 	add_child.call_deferred(dropped_pickup)
 
 func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:

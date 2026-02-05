@@ -35,14 +35,32 @@ signal trap_cooldown()
 
 #region life
 
+signal died()
+
 @export var max_life: int = 10
 @onready var life := max_life
+
+@onready var sprite := $OverseerSprite as Node2D
 
 func take_damage():
 	life -= 1
 	
-	if life <= 0:
-		print("ded")
+	if life == 0:
+		die()
+
+func die():
+	# TODO animate it manually with an AnimationPlayer
+	var tween := create_tween()
+	tween.set_loops(4)
+	tween.tween_callback(sprite.set_visible.bind(false))
+	tween.tween_interval(0.125)
+	tween.tween_callback(sprite.set_visible.bind(true))
+	tween.tween_interval(0.125)
+	await tween.finished
+	sprite.visible = false
+	died.emit()
+
+
 
 #endregion
 
