@@ -17,6 +17,7 @@ collision_mask = 4
 script = ExtResource("1_lbya3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1223162749]
+use_parent_material = true
 sprite_frames = ExtResource("2_5s0tc")
 animation = &"RESET"
 autoplay = "RESET"

@@ -13,3 +13,7 @@ func enter():
 		anim.animation_finished.connect(character.queue_free) # hack
 	else:
 		anim.sprite_frames.set_animation_loop(animation_name, true) # hack
+
+	# Make it unaffected by CanvasModulate scene darkening
+	character.material = CanvasItemMaterial.new()
+	character.material.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
