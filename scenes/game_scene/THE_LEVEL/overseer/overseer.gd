@@ -56,16 +56,16 @@ func _input(event: InputEvent) -> void:
 	# Trap 1: Death ray
 	if event.is_action_pressed(&"trap_laser") and can_trigger_trap:
 		can_trigger_trap = false
-		charging_laser = true
+		# charging_laser = true
 		warning_signs.play("warning_die")
 		$Deathray.speed = 300
 		$Deathray.position = play_area.get_parent().position
 		$Deathray.visible = true
 		$Deathray/AudioStreamPlayer.play()
 		%Bolt.visible = false
-		
-	if event.is_action_released(&"trap_laser") and charging_laser:
-		charging_laser = false
+		# wait like 5 secs
+		await get_tree().create_timer(3.0).timeout
+		# charging_laser = false
 		$Deathray/AudioStreamPlayer.stop()
 		$Deathray/AudioStreamPlayer2.play()
 		cooldown.start()
@@ -84,7 +84,6 @@ func _input(event: InputEvent) -> void:
 		$Deathray.visible = false
 		for roamer in doomed_roamers:
 			roamer.queue_free()
-		
 		trap_finished.emit(&"trap_laser")
 		warning_signs.play(&"warning_idle")
 
