@@ -12,7 +12,7 @@ gradient = SubResource("Gradient_u26jv")
 width = 227
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ovfc"]
-size = Vector2(48, 16)
+size = Vector2(48, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k3a4y"]
 animations = [{
