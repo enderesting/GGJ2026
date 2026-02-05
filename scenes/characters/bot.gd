@@ -5,6 +5,7 @@ class_name Bot
 extends CharacterBody2D
 
 @export var play_area: CollisionShape2D
+@export var beep_boop: AudioStream
 
 const SPEED = 100.0
 

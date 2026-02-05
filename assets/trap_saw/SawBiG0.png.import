@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d36pc1xcltvtv"
-path="res://.godot/imported/ray0.png-31409b8528ebeb8e2e744c4dee79ba63.ctex"
+uid="uid://c772venoppan6"
+path="res://.godot/imported/SawBiG0.png-5f3bacc14f661d8b498365e7ec7242f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ray0.png"
-dest_files=["res://.godot/imported/ray0.png-31409b8528ebeb8e2e744c4dee79ba63.ctex"]
+source_file="res://assets/trap_saw/SawBiG0.png"
+dest_files=["res://.godot/imported/SawBiG0.png-5f3bacc14f661d8b498365e7ec7242f6.ctex"]
 
 [params]
 

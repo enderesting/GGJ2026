@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0itcwgkt6p25" path="res://scenes/characters/robot/robot_npc.gd" id="1_g3q48"]
 [ext_resource type="SpriteFrames" uid="uid://drxh8yhpas8f0" path="res://scenes/characters/robot/robot_deaths.tres" id="3_2sjva"]
+[ext_resource type="AudioStream" uid="uid://dts02sf20ruxr" path="res://assets/music/beepboop.wav" id="3_p6hdm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ou7uy"]
 radius = 4.0
@@ -18,7 +19,8 @@ play_area = NodePath("HitboxArea/Hitbox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1223162749]
 sprite_frames = ExtResource("3_2sjva")
-animation = &"sawblade_death"
+animation = &"RESET"
+autoplay = "RESET"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1683743761]
 position = Vector2(0, 13)
@@ -32,3 +34,6 @@ collision_mask = 16
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ou7uy")
 debug_color = Color(0.94960386, 1.0588765e-06, 0.57506585, 0.41960785)
+[node name="beep_boop" type="AudioStreamPlayer" parent="." unique_id=583422296]
+stream = ExtResource("3_p6hdm")
+bus = &"SFX"

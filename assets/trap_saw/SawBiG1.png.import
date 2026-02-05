@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp4flguq1ahb"
-path="res://.godot/imported/AnimationLightning13.png-0ee54850fecc4dff98691ba3b26fabec.ctex"
+uid="uid://duro4uoa3gskh"
+path="res://.godot/imported/SawBiG1.png-7be33aa8817d6dc84b9c38e9b2823454.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/AnimationLightning13.png"
-dest_files=["res://.godot/imported/AnimationLightning13.png-0ee54850fecc4dff98691ba3b26fabec.ctex"]
+source_file="res://assets/trap_saw/SawBiG1.png"
+dest_files=["res://.godot/imported/SawBiG1.png-7be33aa8817d6dc84b9c38e9b2823454.ctex"]
 
 [params]
 

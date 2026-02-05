@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de21ciwxfabsk"
-path="res://.godot/imported/color2.png-e8ab35b6cb9d5edf1e7b30b0b9a4429a.ctex"
+uid="uid://uesf3r3bb3sy"
+path="res://.godot/imported/target0.png-8ca07371c29583b1599433525502ae4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/color2.png"
-dest_files=["res://.godot/imported/color2.png-e8ab35b6cb9d5edf1e7b30b0b9a4429a.ctex"]
+source_file="res://assets/trap_death_ray/target0.png"
+dest_files=["res://.godot/imported/target0.png-8ca07371c29583b1599433525502ae4a.ctex"]
 
 [params]
 

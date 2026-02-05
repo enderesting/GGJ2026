@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwwycyt5c4muu"
-path="res://.godot/imported/AnimationLightning8.png-2276824ab77fa0b5b4fc18c382c8d050.ctex"
+uid="uid://0lq17ufs74hy"
+path="res://.godot/imported/target1.png-1c8e6727ca66e0fbc0172f77007c8f16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/AnimationLightning8.png"
-dest_files=["res://.godot/imported/AnimationLightning8.png-2276824ab77fa0b5b4fc18c382c8d050.ctex"]
+source_file="res://assets/trap_death_ray/target1.png"
+dest_files=["res://.godot/imported/target1.png-1c8e6727ca66e0fbc0172f77007c8f16.ctex"]
 
 [params]
 
