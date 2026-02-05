@@ -137,7 +137,7 @@ func _input(event: InputEvent) -> void:
 		Slowdown.start_slowdown(self)
 		await %Bolt.animation_finished
 		Slowdown.end_slowdown(self)
-		create_tween().tween_property(%CanvasModulate, "color", Color(1, 1, 1), 1)
+		create_tween().tween_property(%CanvasModulate, "color", Color(1, 1, 1), 0.25)
 		
 		$Deathray.visible = false
 		for roamer in doomed_roamers:
