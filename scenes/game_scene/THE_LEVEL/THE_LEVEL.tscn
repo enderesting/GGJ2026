@@ -18,6 +18,8 @@ size = Vector2(228, 138)
 
 [sub_resource type="Theme" id="Theme_276iw"]
 
+[sub_resource type="Theme" id="Theme_batfn"]
+
 [node name="TheLevel" type="Node2D" unique_id=521265649 groups=["quadrants"]]
 script = ExtResource("1_5edlj")
 
@@ -89,7 +91,8 @@ texture = ExtResource("10_batfn")
 [node name="Overseer" parent="." unique_id=1110463796 instance=ExtResource("5_2jkeq")]
 
 [node name="Countdown" type="Node2D" parent="." unique_id=1334223834]
-position = Vector2(-59, -42)
+z_index = -3
+position = Vector2(-22, -136)
 script = ExtResource("10_fhvee")
 metadata/_edit_group_ = true
 
@@ -110,6 +113,26 @@ text = "00:00"
 [node name="Timer" type="Timer" parent="Countdown" unique_id=2129905220]
 wait_time = 60.0
 one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="Countdown" unique_id=131855634]
+z_index = -1
+offset_left = 57.0
+offset_top = 140.0
+offset_right = 93.0
+offset_bottom = 155.0
+theme = SubResource("Theme_batfn")
+color = Color(0.05882353, 0.39215687, 0.3019608, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Countdown/ColorRect" unique_id=1031765350]
+z_index = -1
+layout_mode = 0
+offset_left = -0.9999976
+offset_top = -0.9999999
+offset_right = 29.64516
+offset_bottom = 12.709678
+scale = Vector2(1.24, 1.24)
+theme = SubResource("Theme_batfn")
+color = Color(0.15686275, 0.20784314, 0.16862746, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=774278575]
 stream = ExtResource("13_fhvee")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5ppv67na3vsm"]
 
-[ext_resource type="Texture2D" uid="uid://b8kjgn3fjd8fw" path="res://assets/temp/controls.png" id="1_2xxc8"]
+[ext_resource type="Texture2D" uid="uid://b8kjgn3fjd8fw" path="res://assets/cg/controls.png" id="1_2xxc8"]
 [ext_resource type="Script" uid="uid://cf5vi6vg3wssw" path="res://scenes/game_scene/controls/controls_screen.gd" id="2_45wye"]
 [ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="2_250am"]
 
