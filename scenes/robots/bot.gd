@@ -6,9 +6,9 @@ extends CharacterBody2D
 
 @export var play_area: RectangularArea
 @export var beep_boop: AudioStream
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 100.0
-
 
 func _physics_process(_delta: float) -> void:
 	# TODO HACK

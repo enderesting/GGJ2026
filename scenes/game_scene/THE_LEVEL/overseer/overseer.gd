@@ -69,14 +69,11 @@ func _ready() -> void:
 	cooldown.timeout.connect(_on_cooldown_timeout)
 
 	%Sawblade.body_entered.connect(func(body):
-		if body is BotNPC:
+		if body is Bot:
 			body.states.DYING.animation_name = "sawblade_death"
 			body.states.DYING.auto_free = true
 			body.change_state(body.states.DYING)
-		elif body is BotPlayer:
-			body.states.DYING.animation_name = "sawblade_death"
-			body.change_state(body.states.DYING)
-			body.queue_free())
+	)
 						
 	# pass through our signals to the EventBus
 	trap_started.connect(EventBus.trap_started.emit)
@@ -129,13 +126,13 @@ func _input(event: InputEvent) -> void:
 		for roamer_hitbox in doomed_roamer_hitboxes:
 			var roamer = roamer_hitbox.get_parent()
 			#print(roamer)
-			if roamer is BotNPC:
+			if roamer is Bot:
 				doomed_roamers.append(roamer)
 				roamer.states.DYING.animation_name = "lightning_death"
+				if roamer is BotPlayer:
+					roamer.states.DYING.animation_name = "lightning_death_human"
 				roamer.states.DYING.auto_free = false
 				roamer.change_state(roamer.states.DYING)
-			if roamer is BotPlayer:
-				doomed_roamers.append(roamer)
 		%Bolt.visible = true
 		%Bolt.play()
 		Slowdown.start_slowdown(self)

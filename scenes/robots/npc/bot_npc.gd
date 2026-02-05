@@ -11,7 +11,6 @@ var states: Dictionary[StringName, State] = {
 
 var current_state: State
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var goal: Vector2
 @export var dist_to_goal: float = 5

@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://iyf4qnxnnq14" path="res://assets/sprites/default.png" id="4_jrni1"]
 [ext_resource type="Texture2D" uid="uid://ckhajug8muyy2" path="res://assets/AnimationInocentDeathLightning1.png" id="5_ffdg8"]
 [ext_resource type="Texture2D" uid="uid://dn7v265ja67uy" path="res://assets/AnimationInocentDeathLightning2.png" id="6_7ve4c"]
+[ext_resource type="Texture2D" uid="uid://dxjg4r1wxqc56" path="res://assets/temp/AnimationDeathLightning1.png" id="7_sjea7"]
+[ext_resource type="Texture2D" uid="uid://dfseu5cmxy48t" path="res://assets/temp/AnimationDeathLightning2.png" id="8_34eyx"]
 
 [resource]
 animations = [{
@@ -43,6 +45,17 @@ animations = [{
 }],
 "loop": false,
 "name": &"lightning_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_sjea7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_34eyx")
+}],
+"loop": false,
+"name": &"lightning_death_human",
 "speed": 5.0
 }, {
 "frames": [{
