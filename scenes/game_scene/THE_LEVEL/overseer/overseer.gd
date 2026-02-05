@@ -19,7 +19,7 @@ signal trap_cooldown()
 
 func _ready() -> void:
 	cooldown.timeout.connect(_on_cooldown_timeout)
-	
+
 	%Sawblade.body_entered.connect(func(body):
 		if body is RobotNPC:
 			body.states.DYING.animation_name = "sawblade_death"
@@ -27,19 +27,19 @@ func _ready() -> void:
 			body.change_state(body.states.DYING)
 		elif body is Player:
 			body.queue_free())
-	
+
 	# pass through our signals to the EventBus
 	trap_started.connect(EventBus.trap_started.emit)
 	trap_finished.connect(EventBus.trap_finished.emit)
 	trap_cooldown.connect(EventBus.trap_cooldown.emit)
 	color_picked.connect(EventBus.trap_color_picked.emit)
-	
+
 	warning_signs.play("warning_idle")
 	$Deathray.visible = false
 	%Sawblade.visible = false
 	$Stoplight.visible = false
 	#$Colorpicker.visible = false
-	
+
 	#$Colorpicker/Color1.global_position = play_area.get_parent().position - play_area.shape.size/4
 	#$Colorpicker/Color2.global_position = play_area.get_parent().position - Vector2((-play_area.shape.size.x/4) ,play_area.shape.size.y/4)
 	#$Colorpicker/Color3.global_position = play_area.get_parent().position + play_area.shape.size/4
@@ -63,7 +63,7 @@ func _input(event: InputEvent) -> void:
 		$Deathray.visible = true
 		$Deathray/AudioStreamPlayer.play()
 		%Bolt.visible = false
-		
+
 	if event.is_action_released(&"trap_laser") and charging_laser:
 		charging_laser = false
 		$Deathray/AudioStreamPlayer.stop()
@@ -77,18 +77,18 @@ func _input(event: InputEvent) -> void:
 				roamer.states.DYING.animation_name = "lightning_death"
 				roamer.states.DYING.auto_free = false
 				roamer.change_state(roamer.states.DYING)
-			
+
 		%Bolt.visible = true
 		%Bolt.play()
 		await %Bolt.animation_finished
 		$Deathray.visible = false
 		for roamer in doomed_roamers:
 			roamer.queue_free()
-		
+
 		trap_finished.emit(&"trap_laser")
 		warning_signs.play(&"warning_idle")
 
-	
+
 	# Trap 2: Sawblade
 	if event.is_action_pressed(&"trap_saw") and can_trigger_trap:
 		can_trigger_trap = false
@@ -146,20 +146,28 @@ func do_quadrants() -> void:
 	for quadrant in get_tree().get_nodes_in_group("quadrants"):
 		if quadrant is Quadrant:
 			quadrants.push_back(quadrant)
-	
+
 	for quadrant in quadrants:
 		quadrant.animate_dramatic_flicker()
+
 	await quadrants[0].animation_finished
-	
-	var blessed_quadrant := quadrants.pick_random() as Quadrant
+
+	var blessed_quadrant : Quadrant = quadrants.pick_random()
+	var killing_quadrants : Array[Quadrant] = quadrants.filter(func(quadrant):
+		return quadrant != blessed_quadrant)
+
 	await blessed_quadrant.animate_turn_on()
-	
 	color_picked.emit(blessed_quadrant)
-	
+
+	for quadrant in killing_quadrants:
+		quadrant.animate_floor_lightning_charging()
+	await killing_quadrants[0].animation_finished
+
+	for quadrant in killing_quadrants:
+		quadrant.kill_them_all()
+
 	await get_tree().create_timer(2.0).timeout
-	
-	for quadrant in quadrants:
-		if quadrant != blessed_quadrant:
-			quadrant.kill_them_all()
+	for quadrant in killing_quadrants:
+		quadrant.reset()
 
 	return blessed_quadrant.animate_turn_off()
