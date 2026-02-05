@@ -19,17 +19,34 @@ func get_extents() -> Rect2:
 
 
 func kill_them_all() -> void:
+	anims.play("floor_lightning_killing")
+
+	var doomed_bots: Array[RoamingRobot] = []
 	for body in get_overlapping_bodies():
+		if body is RobotNPC:
+			body.states.DYING.animation_name = "lightning_death"
+			body.states.DYING.auto_free = false
+			body.change_state(body.states.DYING)
 		if body is RoamingRobot:
-			body.queue_free() # TODO dying state
+			doomed_bots.push_back(body)
+
+	await get_tree().create_timer(2.0).timeout
+	for bot in doomed_bots:
+		bot.queue_free()
 
 # Animations
 
 func turn_on():
 	anims.play("on")
-	
+
 func turn_off():
 	anims.play("off")
+
+func reset():
+	anims.play("RESET")
+
+func animate_floor_lightning_charging():
+	anims.play(&"floor_lightning_charging")
 
 func animate_dramatic_flicker() -> Signal:
 	anims.play("flicker")
