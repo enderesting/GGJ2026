@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/game_scene/THE_LEVEL/player.gd" id="1_t61fv"]
 [ext_resource type="SpriteFrames" uid="uid://drxh8yhpas8f0" path="res://scenes/characters/robot/robot_deaths.tres" id="3_686vu"]
+[ext_resource type="AudioStream" uid="uid://ctwt7d2sg5hfd" path="res://assets/music/beepboop.wav" id="3_hss88"]
+[ext_resource type="AudioStream" uid="uid://b5em2swl63ftn" path="res://assets/music/throw.wav" id="4_hss88"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t61fv"]
 radius = 4.0
@@ -15,8 +17,14 @@ play_area = NodePath("CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=170366322]
 sprite_frames = ExtResource("3_686vu")
-animation = &"sawblade_death"
+animation = &"RESET"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1057614396]
 position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_t61fv")
+
+[node name="beep_boop" type="AudioStreamPlayer" parent="." unique_id=2071509767]
+stream = ExtResource("3_hss88")
+
+[node name="throw" type="AudioStreamPlayer" parent="." unique_id=818550278]
+stream = ExtResource("4_hss88")
