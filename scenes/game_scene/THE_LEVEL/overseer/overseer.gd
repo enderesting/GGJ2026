@@ -1,6 +1,19 @@
 extends Node2D
 class_name Overseer
 
+
+class Slowdown:
+	const SCALE: float = 0.3
+	const DURATION: float = 0.2
+	
+	static func start_slowdown(some_node):
+		some_node.create_tween().tween_property(Engine, "time_scale", SCALE, DURATION) \
+			.set_trans(Tween.TRANS_SINE)
+	
+	static func end_slowdown(some_node):
+		some_node.create_tween().tween_property(Engine, "time_scale", 1.0, DURATION) \
+			.set_trans(Tween.TRANS_SINE)
+
 @onready var play_area: CollisionShape2D = %PlayArea
 @onready var cooldown: Timer = %TrapCooldown
 @onready var warning_signs: AnimatedSprite2D = $WarningSigns
@@ -74,7 +87,6 @@ func _input(event: InputEvent) -> void:
 		cooldown.start()
 		trap_started.emit(&"trap_laser")
 		$Deathray.speed = 0
-		Engine.time_scale = 0.2
 		var doomed_roamer_hitboxes: Array[Area2D] = %LaserHitArea.get_overlapping_areas()
 		#print(doomed_roamer_hitboxes.size())
 		var doomed_roamers: Array[Node2D]
@@ -90,15 +102,10 @@ func _input(event: InputEvent) -> void:
 				doomed_roamers.append(roamer)
 		%Bolt.visible = true
 		%Bolt.play()
-		create_tween() \
-			.tween_property(Engine, "time_scale", 0.2, 0.01) \
-			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
+		Slowdown.start_slowdown(self)
 		await %Bolt.animation_finished
-
-		create_tween() \
-			.tween_property(Engine, "time_scale", 1, 0.05) \
-			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
-			
+		Slowdown.end_slowdown(self)
+		
 		$Deathray.visible = false
 		for roamer in doomed_roamers:
 			roamer.queue_free()
@@ -116,14 +123,20 @@ func _input(event: InputEvent) -> void:
 		%Sawblade.global_position.x = play_area.get_parent().position.x + play_area.shape.size.x/2
 		%Sawblade.global_position.y = play_area.get_parent().position.y + 50
 		%Sawblade.visible = true
-		create_tween() \
-			.tween_property(%Sawblade, ^"global_position:y", -50, 0.5) \
-			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD) \
-			.as_relative()
-		await create_tween() \
-			.tween_property(%Sawblade, ^"global_position:x", 60, 1.0) \
-			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT) \
-			.finished
+		Slowdown.start_slowdown(self)
+		(
+			create_tween()
+				.tween_property(%Sawblade, ^"global_position:y", -50, 0.25)
+				.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+				.as_relative()
+		)
+		await (
+			create_tween()
+				.tween_property(%Sawblade, ^"global_position:x", 60, 1.0 * Slowdown.SCALE)
+				.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
+				.finished
+		)
+		Slowdown.end_slowdown(self)
 		$SawbladeClipHack/Sawblade/AudioStreamPlayer.stop()
 		%Sawblade.visible = false
 		trap_finished.emit(&"trap_saw")
