@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxi8v1tt5c64p"
-path="res://.godot/imported/drop_cog_3.png-ceb147d45b14eb58ed3a9a4fef2484cf.ctex"
+uid="uid://c1n8rkak2n881"
+path="res://.godot/imported/drop_chip_2.png-7f5c24ce703470992724875c85665051.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp/drop_cog_3.png"
-dest_files=["res://.godot/imported/drop_cog_3.png-ceb147d45b14eb58ed3a9a4fef2484cf.ctex"]
+source_file="res://scenes/robots/player/projectiles/drop_chip_2.png"
+dest_files=["res://.godot/imported/drop_chip_2.png-7f5c24ce703470992724875c85665051.ctex"]
 
 [params]
 

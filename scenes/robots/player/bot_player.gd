@@ -2,6 +2,7 @@
 extends Bot
 class_name BotPlayer
 
+
 func _ready() -> void:
 	# Randomize initial player position
 	position = play_area.get_random_position()

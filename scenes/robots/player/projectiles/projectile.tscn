@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cvebqrchhlhar"]
+
+[ext_resource type="Texture2D" uid="uid://b8qd88k31vlfg" path="res://scenes/robots/player/projectiles/drop_chip_1.png" id="1_3r241"]
+[ext_resource type="Script" uid="uid://dqf1sry2p2han" path="res://scenes/robots/player/projectiles/projectile.gd" id="1_fdw7l"]
+[ext_resource type="Texture2D" uid="uid://c1n8rkak2n881" path="res://scenes/robots/player/projectiles/drop_chip_2.png" id="2_fdw7l"]
+[ext_resource type="Texture2D" uid="uid://cjrsifyoqrm2f" path="res://scenes/robots/player/projectiles/drop_chip_3.png" id="3_t8jgj"]
+[ext_resource type="Texture2D" uid="uid://bb4xrkt6yfsjq" path="res://scenes/robots/player/projectiles/drop_cog_1.png" id="4_th84y"]
+[ext_resource type="Texture2D" uid="uid://bqaq3ek0bvin6" path="res://scenes/robots/player/projectiles/drop_cog_2.png" id="5_grgqx"]
+[ext_resource type="Texture2D" uid="uid://cxi8v1tt5c64p" path="res://scenes/robots/player/projectiles/drop_cog_3.png" id="6_to68y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bh4yx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3r241")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fdw7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t8jgj")
+}],
+"loop": true,
+"name": &"chip",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_th84y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_grgqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_to68y")
+}],
+"loop": true,
+"name": &"cog",
+"speed": 3.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Projectile" type="Node2D" unique_id=1120300677]
+script = ExtResource("1_fdw7l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1023416322]
+sprite_frames = SubResource("SpriteFrames_bh4yx")
+animation = &"chip"
+frame_progress = 0.106261924
