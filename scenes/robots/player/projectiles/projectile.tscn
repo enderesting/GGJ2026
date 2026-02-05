@@ -50,4 +50,3 @@ script = ExtResource("1_fdw7l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1023416322]
 sprite_frames = SubResource("SpriteFrames_bh4yx")
 animation = &"chip"
-frame_progress = 0.106261924
