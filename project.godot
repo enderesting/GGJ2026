@@ -45,11 +45,11 @@ folder_colors={
 "res://assets/": "pink",
 "res://assets/trap_color_quiz/": "pink",
 "res://autoloads/": "green",
-"res://scenes/characters/": "yellow",
 "res://scenes/game_scene/THE_LEVEL/": "orange",
 "res://scenes/game_scene/credits/": "pink",
 "res://scenes/game_scene/endings/": "red",
-"res://scenes/game_scene/main_menu/": "green"
+"res://scenes/game_scene/main_menu/": "green",
+"res://scenes/robots/": "yellow"
 }
 
 [global_group]

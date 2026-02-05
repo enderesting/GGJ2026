@@ -6,8 +6,8 @@ extends Node2D
 @export var npcs_to_spawn: int = 10
 
 ## The robot NPC scene to instance.
-## Defaults to "res://scenes/characters/robot/robot_npc.tscn"
-@export var robot_npc: PackedScene = preload("uid://bqy50s757ncyw")
+## Defaults to "res://scenes/robots/npc/bot_npc.tscn"
+@export var robot_npc: PackedScene = preload("res://scenes/robots/npc/bot_npc.tscn")
 
 ## Reference to the rectangular area that delineates the valid coordinates for
 ## the robot NPCs to be in
@@ -17,10 +17,13 @@ extends Node2D
 func _ready() -> void:
 	# Spawn N robots
 	for _i in npcs_to_spawn:
-		var new_robot := robot_npc.instantiate() as BotNPC
-		new_robot.add_to_group(&"npcs")
-		new_robot.play_area = play_area
-		add_child(new_robot)
+		spawn_bot()
+
+func spawn_bot():
+	var new_robot := robot_npc.instantiate() as BotNPC
+	new_robot.add_to_group(&"npcs")
+	new_robot.play_area = play_area
+	add_child(new_robot, true)
 
 
 func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
