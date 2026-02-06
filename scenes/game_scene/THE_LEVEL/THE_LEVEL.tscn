@@ -123,9 +123,9 @@ y_sort_enabled = true
 position = Vector2(206, 111)
 collision_layer = 0
 script = ExtResource("3_fhvee")
-collision_shape_node = NodePath("Extents")
+collision_shape_node = NodePath("PlayArea extents")
 
-[node name="Extents" type="CollisionShape2D" parent="PlayArea" unique_id=743758708]
+[node name="PlayArea extents" type="CollisionShape2D" parent="PlayArea" unique_id=743758708]
 editor_description = "Rectangle shape that should cover the whole play area"
 shape = SubResource("RectangleShape2D_dy4vm")
 
