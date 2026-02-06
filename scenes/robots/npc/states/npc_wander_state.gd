@@ -11,6 +11,8 @@ func enter():
 	(character.get_node("beep_boop") as AudioStreamPlayer).volume_db = -20
 	beep_timer.timeout.connect(func():
 		character.animated_sprite_2d.play("beep_boop")
+		character.animated_sprite_2d.animation_finished.connect(func():
+			character.animated_sprite_2d.play("RESET"))
 		(character.get_node("beep_boop") as AudioStreamPlayer).play()
 		arm_beep_timer())
 	arm_beep_timer()
