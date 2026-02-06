@@ -11,14 +11,19 @@ const PROJECTILE_SCENE : PackedScene = preload("res://scenes/robots/player/proje
 #region ammo
 
 var ammo: int = 0
+signal ammo_picked(ammo_count:int)
+signal ammo_used(ammo_count:int)
 
 func pickup_ammo():
 	ammo += 1
+	print("pickup_ammo(), ammo count = " , ammo)
+	ammo_picked.emit(ammo)
 
 func throw_ammo():
 	if not ammo:
 		return
 	ammo -= 1
+	ammo_used.emit(ammo)
 	
 	throw_sound.play()
 	var projectile := PROJECTILE_SCENE.instantiate() as Node2D
@@ -44,6 +49,8 @@ func _ready() -> void:
 	position = play_area.get_random_position()
 	for state in states.values():
 		state.character = self
+	ammo_picked.connect(EventBus.ammo_picked.emit)
+	ammo_used.connect(EventBus.ammo_used.emit)
 	change_state(states["IDLE"])
 
 func _exit_tree() -> void:

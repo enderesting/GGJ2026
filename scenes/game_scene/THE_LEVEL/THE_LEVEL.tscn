@@ -12,7 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://bunbjihqtxuhn" path="res://assets/trap_color_quiz/color_4.png" id="10_batfn"]
 [ext_resource type="Script" uid="uid://cx5cgabfve247" path="res://scenes/game_scene/THE_LEVEL/countdown.gd" id="10_fhvee"]
 [ext_resource type="AudioStream" uid="uid://banana" path="res://assets/music/bg_music_level.wav" id="13_fhvee"]
+[ext_resource type="Script" uid="uid://dj18x7tjnl0v1" path="res://scenes/game_scene/THE_LEVEL/cog_counter.gd" id="14_1oanx"]
 [ext_resource type="FontFile" uid="uid://vkqvh356fsem" path="res://assets/background/Seven Segment.ttf" id="14_276iw"]
+[ext_resource type="Texture2D" uid="uid://c7mbk1mnlulkl" path="res://assets/temp/Cog_box_frontcog.png" id="14_xcpem"]
+[ext_resource type="Texture2D" uid="uid://bb5d3wq1d1clv" path="res://assets/temp/Cog_box_cogpile.png" id="15_1oanx"]
+[ext_resource type="Texture2D" uid="uid://bn0hmgrxyl300" path="res://assets/temp/Cog_box_box.png" id="16_77dtk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(228, 138)
@@ -20,6 +24,79 @@ size = Vector2(228, 138)
 [sub_resource type="Theme" id="Theme_276iw"]
 
 [sub_resource type="Theme" id="Theme_batfn"]
+
+[sub_resource type="Animation" id="Animation_51v4g"]
+resource_name = "AddCog"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.5),
+"transitions": PackedFloat32Array(4.141059, 1, 1),
+"update": 0,
+"values": [Vector2(6.34, -46.43), Vector2(6.34, -2.135), Vector2(6.34, -2.135)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CogBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9, 1.0666667, 1.1999999, 1.36),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, -0.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_04fjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6.34, -46.43)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CogBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CogPile:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r8lek"]
+_data = {
+&"AddCog": SubResource("Animation_51v4g"),
+&"RESET": SubResource("Animation_04fjb")
+}
 
 [node name="TheLevel" type="Node2D" unique_id=521265649 groups=["quadrants"]]
 script = ExtResource("1_5edlj")
@@ -144,6 +221,26 @@ color = Color(0.15686275, 0.20784314, 0.16862746, 1)
 stream = ExtResource("13_fhvee")
 volume_db = -20.0
 autoplay = true
+
+[node name="CogCounter" type="Sprite2D" parent="." unique_id=82039191]
+position = Vector2(300, 27)
+script = ExtResource("14_1oanx")
+
+[node name="Cog" type="Sprite2D" parent="CogCounter" unique_id=1770706971]
+show_behind_parent = true
+position = Vector2(6.34, -46.43)
+texture = ExtResource("14_xcpem")
+
+[node name="CogPile" type="Sprite2D" parent="CogCounter" unique_id=920988179]
+show_behind_parent = true
+position = Vector2(0, 9)
+texture = ExtResource("15_1oanx")
+
+[node name="CogBox" type="Sprite2D" parent="CogCounter" unique_id=1676942964]
+texture = ExtResource("16_77dtk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CogCounter" unique_id=95881720]
+libraries/ = SubResource("AnimationLibrary_r8lek")
 
 [connection signal="tree_exiting" from="PlayArea/TheHiveminnd/BotPlayer" to="." method="_on_player_tree_exiting" flags=3]
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]

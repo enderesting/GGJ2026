@@ -9,6 +9,10 @@ signal trap_finished(name: StringName)
 signal trap_cooldown()
 signal trap_color_picked(blessed_quadrant: Quadrant)
 
+# Ammo signals
+signal ammo_picked(ammo_count: int)
+signal ammo_used(ammo_count: int)
+
 signal player_killed()
 
 signal game_over(winner: StringName)
