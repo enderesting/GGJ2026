@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://deqepufc378p1"]
+
+[ext_resource type="Texture2D" uid="uid://dpgdvwly4x16y" path="res://assets/background/button_mask.png" id="1_54v5w"]
+[ext_resource type="Script" uid="uid://ct66e7ohmkpq2" path="res://scenes/game_scene/THE_LEVEL/button_masking.gd" id="2_wcxeg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wfooi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04fjb"]
+bg_color = Color(0, 0.13725491, 0.1254902, 0.8039216)
+
+[node name="Mask" type="Sprite2D" unique_id=155629220]
+self_modulate = Color(0, 0, 0, 1)
+clip_children = 1
+texture = ExtResource("1_54v5w")
+script = ExtResource("2_wcxeg")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1554829314]
+offset_left = -13.0
+offset_top = -10.0
+offset_right = 13.0
+offset_bottom = 10.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_wfooi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_04fjb")
+fill_mode = 2
+show_percentage = false
+metadata/_edit_use_anchors_ = true

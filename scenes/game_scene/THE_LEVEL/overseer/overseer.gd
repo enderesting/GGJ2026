@@ -180,7 +180,6 @@ func _input(event: InputEvent) -> void:
 	# Trap 2: Sawblade
 	if event.is_action_pressed(&"trap_saw") and can_trigger_trap:
 		can_trigger_trap = false
-		cooldown.start()
 		warning_signs.play("warning_run")
 		trap_started.emit(&"trap_saw")
 		$SawbladeClipHack/Sawblade/AudioStreamPlayer.play()
@@ -212,12 +211,14 @@ func _input(event: InputEvent) -> void:
 		%Sawblade.visible = false
 		trap_finished.emit(&"trap_saw")
 		warning_signs.play(&"warning_idle")
+		cooldown.start()
+
 
 
 	# Trap 3: Stop light
 	if event.is_action_pressed(&"trap_stop") and can_trigger_trap:
 		can_trigger_trap = false
-		cooldown.start()
+		# cooldown.start()
 		warning_signs.play("warning_stop")
 		trap_started.emit(&"trap_stop")
 		$Stoplight.visible = true
@@ -229,16 +230,18 @@ func _input(event: InputEvent) -> void:
 		$Stoplight.visible = false
 		warning_signs.play(&"warning_idle")
 		trap_finished.emit(&"trap_stop")
+		cooldown.start()
 
 	# Trap 4: Color quadrants
 	if event.is_action_pressed(&"trap_color") and can_trigger_trap:
 		can_trigger_trap = false
-		cooldown.start()
+		# cooldown.start()
 		warning_signs.play("warning_go")
 		trap_started.emit(&"trap_color")
 		await do_quadrants()
 		trap_finished.emit(&"trap_color")
 		warning_signs.play(&"warning_idle")
+		cooldown.start()
 
 
 func do_quadrants() -> void:

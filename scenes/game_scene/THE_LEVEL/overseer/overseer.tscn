@@ -610,7 +610,7 @@ position = Vector2(-59, -32)
 
 [node name="OverseerBody" type="Sprite2D" parent="OverseerSprite" unique_id=1669471048]
 z_index = 2
-position = Vector2(103.9616, 86.9744)
+position = Vector2(92.62808, 86.20915)
 texture = ExtResource("19_121vy")
 
 [node name="ProjectileTarget" type="Marker2D" parent="OverseerSprite/OverseerBody" unique_id=1050295867]
@@ -630,7 +630,7 @@ shape = SubResource("RectangleShape2D_0acdc")
 
 [node name="OverseerLeftArm" type="Sprite2D" parent="OverseerSprite" unique_id=1460734465]
 z_index = -2
-position = Vector2(120, 68)
+position = Vector2(117.565, 56.99)
 texture = ExtResource("20_ayyg4")
 
 [node name="OverseerMonitorHead" type="Sprite2D" parent="OverseerSprite" unique_id=719077939]

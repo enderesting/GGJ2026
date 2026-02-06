@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c7mbk1mnlulkl" path="res://assets/temp/Cog_box_frontcog.png" id="14_xcpem"]
 [ext_resource type="Texture2D" uid="uid://bb5d3wq1d1clv" path="res://assets/temp/Cog_box_cogpile.png" id="15_1oanx"]
 [ext_resource type="Texture2D" uid="uid://bn0hmgrxyl300" path="res://assets/temp/Cog_box_box.png" id="16_77dtk"]
+[ext_resource type="PackedScene" uid="uid://deqepufc378p1" path="res://scenes/game_scene/THE_LEVEL/cooldown_mask.tscn" id="18_04fjb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(228, 138)
@@ -172,7 +173,6 @@ texture = ExtResource("10_batfn")
 
 [node name="Overseer" parent="." unique_id=1110463796 node_paths=PackedStringArray("play_area") groups=["overseer"] instance=ExtResource("5_2jkeq")]
 play_area = NodePath("../PlayArea")
-max_life = null
 
 [node name="Countdown" type="Node2D" parent="." unique_id=1334223834]
 z_index = -3
@@ -243,6 +243,20 @@ texture = ExtResource("16_77dtk")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CogCounter" unique_id=95881720]
 libraries/ = SubResource("AnimationLibrary_r8lek")
 playback_default_blend_time = 0.2
+
+[node name="ButtonMasks" type="Node2D" parent="." unique_id=827084774]
+
+[node name="Mask" parent="ButtonMasks" unique_id=155629220 instance=ExtResource("18_04fjb")]
+position = Vector2(44, 125)
+
+[node name="Mask2" parent="ButtonMasks" unique_id=2085833935 instance=ExtResource("18_04fjb")]
+position = Vector2(44, 167)
+
+[node name="Mask3" parent="ButtonMasks" unique_id=1859116810 instance=ExtResource("18_04fjb")]
+position = Vector2(18, 146)
+
+[node name="Mask4" parent="ButtonMasks" unique_id=1999650414 instance=ExtResource("18_04fjb")]
+position = Vector2(74, 146)
 
 [connection signal="tree_exiting" from="PlayArea/TheHiveminnd/BotPlayer" to="." method="_on_player_tree_exiting" flags=3]
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
