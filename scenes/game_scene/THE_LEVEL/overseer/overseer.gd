@@ -43,6 +43,15 @@ signal died()
 @onready var sprite := $OverseerSprite as Node2D
 
 func take_damage():
+	$AnimationPlayer.play("overseer_hit")
+	await($AnimationPlayer.animation_finished)
+	if life/max_life <= 0.5:
+		$AnimationPlayer.play("overseer_mid")
+	# if life/max_life <= 0.3:
+		# $AnimationPlayer.play("overseer_late")
+	else:
+		$AnimationPlayer.play("overseer_idle")
+
 	life -= 1
 	
 	if life == 0:
