@@ -6,6 +6,7 @@ const PROJECTILE_SCENE : PackedScene = preload("res://scenes/robots/player/proje
 
 @export var spriteAnimator : AnimatedSprite2D
 @export var beep_boop_sound : AudioStreamPlayer
+@export var no_ammo_sound : AudioStreamPlayer
 @export var throw_sound : AudioStreamPlayer
 
 #region ammo
@@ -23,6 +24,7 @@ func pickup_ammo():
 
 func throw_ammo():
 	if not ammo:
+		no_ammo_sound.play()
 		return
 	ammo -= 1
 	ammo_used.emit(ammo)

@@ -4,14 +4,16 @@
 [ext_resource type="Script" uid="uid://ct31l6ogx4xvu" path="res://scenes/robots/player/bot_player.gd" id="1_t61fv"]
 [ext_resource type="AudioStream" uid="uid://b5em2swl63ftn" path="res://assets/music/throw.wav" id="2_ejp87"]
 [ext_resource type="AudioStream" uid="uid://dts02sf20ruxr" path="res://assets/music/beepboop.wav" id="3_wt6ej"]
+[ext_resource type="AudioStream" uid="uid://da2miisxdxx0y" path="res://assets/music/meeh.wav" id="5_tlfqt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wt6ej"]
 size = Vector2(6, 6)
 
-[node name="BotPlayer" unique_id=1985711154 node_paths=PackedStringArray("spriteAnimator", "beep_boop_sound", "throw_sound") instance=ExtResource("1_1fhir")]
+[node name="BotPlayer" unique_id=1985711154 node_paths=PackedStringArray("spriteAnimator", "beep_boop_sound", "no_ammo_sound", "throw_sound") instance=ExtResource("1_1fhir")]
 script = ExtResource("1_t61fv")
 spriteAnimator = NodePath("AnimatedSprite2D")
 beep_boop_sound = NodePath("beep_boop")
+no_ammo_sound = NodePath("no_ammo")
 throw_sound = NodePath("throw")
 beep_boop = ExtResource("3_wt6ej")
 
@@ -29,5 +31,8 @@ shape = SubResource("RectangleShape2D_wt6ej")
 [node name="throw" type="AudioStreamPlayer" parent="." index="5" unique_id=190951860]
 stream = ExtResource("2_ejp87")
 bus = &"SFX"
+
+[node name="no_ammo" type="AudioStreamPlayer" parent="." index="6" unique_id=279794264]
+stream = ExtResource("5_tlfqt")
 
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
