@@ -5,6 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://b5em2swl63ftn" path="res://assets/music/throw.wav" id="2_ejp87"]
 [ext_resource type="AudioStream" uid="uid://dts02sf20ruxr" path="res://assets/music/beepboop.wav" id="3_wt6ej"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wt6ej"]
+size = Vector2(6, 6)
+
 [node name="BotPlayer" unique_id=1985711154 node_paths=PackedStringArray("spriteAnimator", "beep_boop_sound", "throw_sound") instance=ExtResource("1_1fhir")]
 script = ExtResource("1_t61fv")
 spriteAnimator = NodePath("AnimatedSprite2D")
@@ -15,6 +18,16 @@ beep_boop = ExtResource("3_wt6ej")
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1223162749]
 animation = &"beep_boop"
 
-[node name="throw" type="AudioStreamPlayer" parent="." index="4" unique_id=190951860]
+[node name="PickupArea" type="Area2D" parent="." index="3" unique_id=571021511]
+collision_layer = 0
+collision_mask = 32
+
+[node name="PickupBox" type="CollisionShape2D" parent="PickupArea" index="0" unique_id=1942253587]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_wt6ej")
+
+[node name="throw" type="AudioStreamPlayer" parent="." index="5" unique_id=190951860]
 stream = ExtResource("2_ejp87")
 bus = &"SFX"
+
+[connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]

@@ -33,10 +33,9 @@ func spawn_bot():
 func _on_npc_death(npc: BotNPC) -> void:
 	var dropped_pickup := corpse_scene.instantiate() as Node2D
 	dropped_pickup.position = npc.position
+	dropped_pickup.add_to_group("pickup")
 	add_child.call_deferred(dropped_pickup)
-	var player := get_tree().get_first_node_in_group("player") as BotPlayer
-	if player:
-		player.pickup_ammo()
+
 
 func _on_overseer_color_picked(blessed_quadrant: Quadrant) -> void:
 	for npc in get_children():

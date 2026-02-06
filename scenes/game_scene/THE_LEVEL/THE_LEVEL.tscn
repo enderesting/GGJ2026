@@ -98,7 +98,7 @@ _data = {
 &"RESET": SubResource("Animation_04fjb")
 }
 
-[node name="TheLevel" type="Node2D" unique_id=521265649 groups=["quadrants"]]
+[node name="TheLevel" type="Node2D" unique_id=521265649]
 script = ExtResource("1_5edlj")
 
 [node name="MockupBg" type="Sprite2D" parent="." unique_id=1384063776]
