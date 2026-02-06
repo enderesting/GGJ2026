@@ -2,5 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://c00uy2wwn1vd1" path="res://assets/deadRobotguy.png" id="1_eqddj"]
 
-[node name="BotCorpse" type="Sprite2D" unique_id=235645986]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqddj"]
+size = Vector2(14, 6)
+
+[node name="Area2D" type="Area2D" unique_id=781041981 groups=["corpse"]]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2056024466]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_eqddj")
+
+[node name="BotCorpse" type="Sprite2D" parent="." unique_id=235645986]
 texture = ExtResource("1_eqddj")

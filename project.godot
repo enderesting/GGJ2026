@@ -57,6 +57,7 @@ folder_colors={
 
 quadrants="The quadrants"
 npcs=""
+corpse=""
 
 [gui]
 
@@ -190,6 +191,7 @@ throw={
 2d_physics/layer_3="walls"
 2d_physics/layer_4="roamer_hitbox"
 2d_physics/layer_5="traps"
+2d_physics/layer_6="pickups"
 
 [maaacks_game_template]
 

@@ -4,6 +4,8 @@
 class_name Bot
 extends CharacterBody2D
 
+## Should be assigned in the Inspector or when instantiating,
+## or else we can't randomize positions
 @export var play_area: RectangularArea
 @export var beep_boop: AudioStream
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D

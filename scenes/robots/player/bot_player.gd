@@ -35,6 +35,13 @@ func throw_ammo():
 	projectile.z_as_relative = false
 	add_child(projectile)
 
+func _on_pickup_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("corpse"):
+		area.remove_from_group("corpse")
+		area.modulate.a = 0.25
+		pickup_ammo()
+
+
 #endregion
 
 #region state machine
