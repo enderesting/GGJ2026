@@ -172,6 +172,7 @@ texture = ExtResource("10_batfn")
 
 [node name="Overseer" parent="." unique_id=1110463796 node_paths=PackedStringArray("play_area") groups=["overseer"] instance=ExtResource("5_2jkeq")]
 play_area = NodePath("../PlayArea")
+max_life = null
 
 [node name="Countdown" type="Node2D" parent="." unique_id=1334223834]
 z_index = -3

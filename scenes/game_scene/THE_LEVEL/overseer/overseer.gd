@@ -2,17 +2,38 @@ extends Node2D
 class_name Overseer
 
 
-class Slowdown:
+class SlowdownFX:
 	const SCALE: float = 0.3
 	const DURATION: float = 0.2
-	
+
 	static func start_slowdown(some_node):
 		some_node.create_tween().tween_property(Engine, "time_scale", SCALE, DURATION) \
 			.set_trans(Tween.TRANS_SINE)
-	
+
 	static func end_slowdown(some_node):
 		some_node.create_tween().tween_property(Engine, "time_scale", 1.0, DURATION) \
 			.set_trans(Tween.TRANS_SINE)
+
+class ModulateFX:
+	const DARK_COLOR: Color = Color(0.082, 0.102, 0.118)
+
+	var color_modulate: CanvasModulate
+
+	func _init(the_modulate: CanvasModulate):
+		color_modulate = the_modulate
+
+	func lights_off(intensity: float = 1.0, duration: float = 0.125) -> PropertyTweener:
+		var darker = Color.WHITE.lerp(DARK_COLOR, intensity)
+		return color_modulate.create_tween() \
+			.tween_property(color_modulate, "color", darker, duration) \
+			.set_trans(Tween.TRANS_BOUNCE)
+
+	func lights_on(duration: float = 0.25) -> PropertyTweener:
+		return color_modulate.create_tween() \
+			.tween_property(color_modulate, "color", Color.WHITE, duration)
+
+@onready var modulate_fx := ModulateFX.new(%CanvasModulate)
+
 
 # Nodes that need to be given
 @export var play_area: RectangularArea
@@ -54,7 +75,7 @@ func take_damage():
 		$AnimationPlayer.play("overseer_idle")
 
 	life -= 1
-	
+
 	if life == 0:
 		die()
 
@@ -84,7 +105,7 @@ func _ready() -> void:
 			body.states.DYING.auto_free = true
 			body.change_state(body.states.DYING)
 	)
-						
+
 	# pass through our signals to the EventBus
 	trap_started.connect(EventBus.trap_started.emit)
 	trap_finished.connect(EventBus.trap_finished.emit)
@@ -111,7 +132,7 @@ func _on_cooldown_timeout():
 
 func _input(event: InputEvent) -> void:
 	# Trap 1: Death ray
-	
+
 	if event.is_action_pressed(&"trap_laser") and can_trigger_trap:
 		#if not charging_laser:
 		can_trigger_trap = false
@@ -143,19 +164,19 @@ func _input(event: InputEvent) -> void:
 				roamer.states.DYING.auto_free = false
 				roamer.change_state(roamer.states.DYING)
 		%Bolt.play()
-		create_tween().tween_property(%CanvasModulate, "color", Color(0.082, 0.102, 0.118), 0.125).set_trans(Tween.TRANS_BOUNCE)
-		Slowdown.start_slowdown(self)
+		modulate_fx.lights_off(0.75)
+		SlowdownFX.start_slowdown(self)
 		await %Bolt.animation_finished
-		Slowdown.end_slowdown(self)
-		create_tween().tween_property(%CanvasModulate, "color", Color(1, 1, 1), 0.25)
-		
+		SlowdownFX.end_slowdown(self)
+		modulate_fx.lights_on()
+
 		$Deathray.visible = false
 		for roamer in doomed_roamers:
 			roamer.queue_free()
 		trap_finished.emit(&"trap_laser")
 		warning_signs.play(&"warning_idle")
 		charging_laser = false
-	
+
 	# Trap 2: Sawblade
 	if event.is_action_pressed(&"trap_saw") and can_trigger_trap:
 		can_trigger_trap = false
@@ -166,14 +187,14 @@ func _input(event: InputEvent) -> void:
 		%Sawblade.global_position.x = play_area.get_extents().get_support(Vector2.RIGHT).x
 		%Sawblade.global_position.y = play_area.get_extents().get_center().y + 50
 		%Sawblade.visible = true
-		
+
 		# Delay collision detection for about a half of the time it takes to animate up
 		%Sawblade.monitoring = false
 		get_tree().create_timer(0.125).timeout.connect(func():
 			%Sawblade.monitoring = true)
-		
-		Slowdown.start_slowdown(self)
-		
+
+		SlowdownFX.start_slowdown(self)
+
 		(
 			create_tween()
 				.tween_property(%Sawblade, ^"global_position:y", -50, 0.25)
@@ -182,11 +203,11 @@ func _input(event: InputEvent) -> void:
 		)
 		await (
 			create_tween()
-				.tween_property(%Sawblade, ^"global_position:x", 60, 1.0 * Slowdown.SCALE)
+				.tween_property(%Sawblade, ^"global_position:x", 60, 1.0 * SlowdownFX.SCALE)
 				.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
 				.finished
 		)
-		Slowdown.end_slowdown(self)
+		SlowdownFX.end_slowdown(self)
 		$SawbladeClipHack/Sawblade/AudioStreamPlayer.stop()
 		%Sawblade.visible = false
 		trap_finished.emit(&"trap_saw")
