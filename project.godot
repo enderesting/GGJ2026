@@ -24,6 +24,7 @@ config/icon="uid://c36cbqtsp6qdq"
 
 EventBus="*uid://dtxyc6o1cjutq"
 Crossfade="*uid://4cvykri8e665"
+Globals="*uid://cpohwbe0xvwma"
 
 [display]
 
