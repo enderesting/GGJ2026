@@ -6,3 +6,9 @@
 [node name="BotNPC" unique_id=1985711154 groups=["npcs"] instance=ExtResource("1_ftdd3")]
 script = ExtResource("1_g3q48")
 dist_to_goal = 5.0
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1223162749]
+animation = &"beep_boop"
+
+[node name="BeepTimer" type="Timer" parent="." index="4" unique_id=638214643]
+unique_name_in_owner = true

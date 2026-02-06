@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d1a3t5spaw0br" path="res://assets/trap_death_ray/DeathBlaster.png" id="4_121vy"]
 [ext_resource type="Texture2D" uid="uid://ba0b28r1gdq8o" path="res://assets/trap_death_ray/AnimationLightning0.png" id="4_dm4dt"]
 [ext_resource type="Texture2D" uid="uid://0lq17ufs74hy" path="res://assets/trap_death_ray/target1.png" id="4_u26jv"]
+[ext_resource type="Material" uid="uid://bvpuc7uqb1kob" path="res://scenes/game_scene/THE_LEVEL/overseer/thing_not_affected_by_light_fx.tres" id="5_0acdc"]
 [ext_resource type="Texture2D" uid="uid://cc3ch6xucsojt" path="res://assets/trap_death_ray/AnimationLightning1.png" id="5_2ovfc"]
 [ext_resource type="Texture2D" uid="uid://b88a6k4qchltg" path="res://assets/trap_death_ray/DeathBlasterLightning.png" id="5_ayyg4"]
 [ext_resource type="Texture2D" uid="uid://cidp0l3fbe43h" path="res://assets/trap_death_ray/AnimationLightning2.png" id="6_57kmg"]
@@ -47,9 +48,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0acdc"]
-light_mode = 1
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ly5m1"]
 animations = [{
@@ -538,7 +536,7 @@ frame_progress = 0.055356957
 [node name="Bolt" type="AnimatedSprite2D" parent="Deathray/Target" unique_id=528697460]
 unique_name_in_owner = true
 z_as_relative = false
-material = SubResource("CanvasItemMaterial_0acdc")
+material = ExtResource("5_0acdc")
 position = Vector2(0, -90)
 sprite_frames = SubResource("SpriteFrames_ly5m1")
 
@@ -583,6 +581,7 @@ script = ExtResource("7_rd2gr")
 shape = SubResource("RectangleShape2D_2ovfc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SawbladeClipHack/Sawblade" unique_id=1450157656]
+material = ExtResource("5_0acdc")
 sprite_frames = SubResource("SpriteFrames_k3a4y")
 frame_progress = 0.80752534
 offset = Vector2(0, -15)

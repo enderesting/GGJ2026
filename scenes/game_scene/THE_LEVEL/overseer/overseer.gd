@@ -25,11 +25,13 @@ class ModulateFX:
 	func lights_off(intensity: float = 1.0, duration: float = 0.125) -> PropertyTweener:
 		var darker = Color.WHITE.lerp(DARK_COLOR, intensity)
 		return color_modulate.create_tween() \
+			.set_ignore_time_scale() \
 			.tween_property(color_modulate, "color", darker, duration) \
 			.set_trans(Tween.TRANS_BOUNCE)
 
 	func lights_on(duration: float = 0.25) -> PropertyTweener:
 		return color_modulate.create_tween() \
+			.set_ignore_time_scale() \
 			.tween_property(color_modulate, "color", Color.WHITE, duration)
 
 @onready var modulate_fx := ModulateFX.new(%CanvasModulate)
@@ -193,6 +195,7 @@ func _input(event: InputEvent) -> void:
 			%Sawblade.monitoring = true)
 
 		SlowdownFX.start_slowdown(self)
+		modulate_fx.lights_off(0.4, 0.25).set_trans(Tween.TRANS_SINE)
 
 		(
 			create_tween()
@@ -206,6 +209,7 @@ func _input(event: InputEvent) -> void:
 				.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
 				.finished
 		)
+		modulate_fx.lights_on()
 		SlowdownFX.end_slowdown(self)
 		$SawbladeClipHack/Sawblade/AudioStreamPlayer.stop()
 		%Sawblade.visible = false

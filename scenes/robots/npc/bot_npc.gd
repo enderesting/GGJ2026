@@ -2,6 +2,8 @@
 class_name BotNPC
 extends Bot
 
+@onready var beep_timer := %BeepTimer as Timer
+
 var states: Dictionary[StringName, State] = {
 	"IDLE": NPCWanderState.new(),
 	"BUSY": NPCBusyState.new(),

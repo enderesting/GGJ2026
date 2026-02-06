@@ -2,8 +2,19 @@ extends State
 class_name NPCWanderState
 
 var direction
+var beep_timer: Timer
 
 func enter():
+	assert(character is BotNPC)
+
+	beep_timer = (character as BotNPC).beep_timer
+	(character.get_node("beep_boop") as AudioStreamPlayer).volume_db = -20
+	beep_timer.timeout.connect(func():
+		character.animated_sprite_2d.play("beep_boop")
+		(character.get_node("beep_boop") as AudioStreamPlayer).play()
+		arm_beep_timer())
+	arm_beep_timer()
+
 	character.goal = character.play_area.get_random_position()
 	direction = random_dir()
 
@@ -20,26 +31,26 @@ func physics_process(_delta):
 		# change goal
 		# character.goal = character.random_position()
 		direction = random_dir()
-	
-	
+
+
 	# if character.position.distance_to(character.goal) <= character.dist_to_goal:
 	#     print("reached goal. changing")
 	#     character.goal = character.random_position()
 	# else:
 	#     print("moving towards goal")
-	#     character.velocity = character.position.direction_to(character.goal) * character.SPEED 
+	#     character.velocity = character.position.direction_to(character.goal) * character.SPEED
 	#     character.move_and_slide()
 	character.velocity = direction * character.SPEED
-	# var wall_bump = 
+	# var wall_bump =
 	if character.move_and_slide():
 		direction = (character.play_area.get_random_position()-character.position).normalized().round()
 
 	# if randf() <= 0.5:
 	#     character.velocity = -direction * character.SPEED
-	
+
 
 func random_dir():
-	match randi_range(0,8): 
+	match randi_range(0,8):
 		0:
 			return Vector2(0,1)
 		1:
@@ -58,3 +69,6 @@ func random_dir():
 			return Vector2(0,-1)
 		8:
 			return Vector2(0,0)
+
+func arm_beep_timer():
+	beep_timer.start(randf_range(1.0, 5.0) * randf_range(1.0, 5.0))
