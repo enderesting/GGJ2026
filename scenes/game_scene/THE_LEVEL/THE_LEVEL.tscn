@@ -27,18 +27,19 @@ size = Vector2(228, 138)
 
 [sub_resource type="Animation" id="Animation_51v4g"]
 resource_name = "AddCog"
-length = 1.5
+length = 1.9
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Cog:position")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.5),
-"transitions": PackedFloat32Array(4.141059, 1, 1),
+"times": PackedFloat32Array(0, 0.9, 1.5, 1.9),
+"transitions": PackedFloat32Array(4.141059, 1, 0, 4.141059),
 "update": 0,
-"values": [Vector2(6.34, -46.43), Vector2(6.34, -2.135), Vector2(6.34, -2.135)]
+"values": [Vector2(6.34, -46.43), Vector2(6.34, -2.135), Vector2(6.34, -2.135), Vector2(6.34, -46.43)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false

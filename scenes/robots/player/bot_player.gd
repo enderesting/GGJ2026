@@ -40,7 +40,8 @@ func throw_ammo():
 func _on_pickup_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("corpse"):
 		area.remove_from_group("corpse")
-		area.modulate.a = 0.25
+		# area.modulate.a = 
+		area.hide()
 		pickup_ammo()
 
 
