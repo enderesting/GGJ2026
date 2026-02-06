@@ -44,9 +44,10 @@ signal died()
 
 func take_damage():
 	$AnimationPlayer.play("overseer_hit")
+	$AnimationPlayer.seek(0)
 	await($AnimationPlayer.animation_finished)
 	if life/max_life <= 0.5:
-		$AnimationPlayer.play("overseer_mid")
+		$AnimationPlayer.play("overseer_late")
 	# if life/max_life <= 0.3:
 		# $AnimationPlayer.play("overseer_late")
 	else:
