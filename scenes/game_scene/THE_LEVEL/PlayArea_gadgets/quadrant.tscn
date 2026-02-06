@@ -67,6 +67,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_c2m6i"]
 resource_name = "charging_lightning"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -74,10 +75,10 @@ tracks/0/path = NodePath("FloorLightning:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26351333, 0.35135108, 0.47055948, 0.6650574, 0.7277987, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.39527, 0.52702665, 0.7058392, 0.99758613, 1.091698, 1.5, 1.89527, 2.0270267, 2.2058392, 2.4975863, 2.5916982, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.07058824), Color(1, 1, 1, 0.0627451), Color(1, 1, 1, 0.34901962), Color(1, 1, 1, 0.05490196), Color(1, 1, 1, 0.12156863), Color(1, 1, 1, 0.7137255), Color(1, 1, 1, 0.07058824)]
+"values": [Color(1, 1, 1, 0.07058824), Color(1, 1, 1, 0.0627451), Color(1, 1, 1, 0.34901962), Color(1, 1, 1, 0.05490196), Color(1, 1, 1, 0.12156863), Color(1, 1, 1, 0.7137255), Color(1, 1, 1, 0.07058824), Color(1, 1, 1, 0.0627451), Color(1, 1, 1, 0.34901962), Color(1, 1, 1, 0.05490196), Color(1, 1, 1, 0.12156863), Color(1, 1, 1, 0.7137255), Color(1, 1, 1, 0.07058824)]
 }
 
 [sub_resource type="Animation" id="Animation_68hn8"]

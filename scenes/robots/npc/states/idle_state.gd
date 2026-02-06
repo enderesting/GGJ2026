@@ -18,7 +18,7 @@ func handle_input(event: InputEvent) -> void:
 		
 func physics_process(_delta: float) -> void:
 	var direction := Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
-	direction = direction.round().normalized()
+	direction = direction.round()
 	if direction:
 		character.velocity = direction * character.SPEED
 		if character.velocity.x:

@@ -140,7 +140,7 @@ func _input(event: InputEvent) -> void:
 		can_trigger_trap = false
 		charging_laser = true
 		warning_signs.play("warning_die")
-		$Deathray.speed = 300
+		$Deathray.speed = GlobalVariables.DEATHRAY_SPEED
 		$Deathray.position = play_area.get_extents().get_center()
 		$Deathray.visible = true
 		$Deathray/AudioStreamPlayer.play()
@@ -165,13 +165,15 @@ func _input(event: InputEvent) -> void:
 					roamer.states.DYING.animation_name = "lightning_death_human"
 				roamer.states.DYING.auto_free = false
 				roamer.change_state(roamer.states.DYING)
+		%Bolt.show()
 		%Bolt.play()
 		modulate_fx.lights_off(0.75)
 		SlowdownFX.start_slowdown(self)
 		await %Bolt.animation_finished
 		SlowdownFX.end_slowdown(self)
 		modulate_fx.lights_on()
-
+		
+		%Bolt.hide()
 		$Deathray.visible = false
 		for roamer in doomed_roamers:
 			roamer.queue_free()

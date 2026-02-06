@@ -6,3 +6,5 @@ class_name GlobalVariables
 const MAX_AMMO :int = 5 
 
 const TRAP_COOLDOWN :int = 3
+
+const DEATHRAY_SPEED :int = 140

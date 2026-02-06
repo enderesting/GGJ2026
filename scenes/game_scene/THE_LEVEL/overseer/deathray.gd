@@ -3,7 +3,8 @@ extends CharacterBody2D
 var play_area_position: Vector2
 var stopped: bool
 
-var speed = 300.0
+#defined in overseer as well. this is janky
+var speed = 100.0
 
 func _ready() -> void:
 	position = play_area_position

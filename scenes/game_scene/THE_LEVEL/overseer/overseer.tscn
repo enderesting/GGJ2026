@@ -535,6 +535,7 @@ frame_progress = 0.055356957
 
 [node name="Bolt" type="AnimatedSprite2D" parent="Deathray/Target" unique_id=528697460]
 unique_name_in_owner = true
+visible = false
 z_as_relative = false
 material = ExtResource("5_0acdc")
 position = Vector2(0, -90)

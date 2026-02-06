@@ -22,10 +22,16 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("2_7ve4c")
 }, {
-"duration": 1.0,
+"duration": 0.5,
+"texture": ExtResource("3_sjea7")
+}, {
+"duration": 0.5,
+"texture": ExtResource("2_7ve4c")
+}, {
+"duration": 0.5,
 "texture": ExtResource("3_sjea7")
 }],
 "loop": false,
