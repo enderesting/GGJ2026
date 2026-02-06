@@ -58,7 +58,9 @@ var current_state: State
 
 func _ready() -> void:
 	# Randomize initial player position
-	position = play_area.get_random_position()
+	position = RectangularArea.sample_point(
+		play_area.get_local_extents().grow(-20))
+	# Assign character reference in all states
 	for state in states.values():
 		state.character = self
 	ammo_picked.connect(EventBus.ammo_picked.emit)

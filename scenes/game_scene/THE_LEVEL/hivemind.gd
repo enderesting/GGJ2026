@@ -25,7 +25,7 @@ func spawn_bot():
 	var new_robot := robot_npc.instantiate() as BotNPC
 	new_robot.add_to_group(&"npcs")
 	new_robot.play_area = play_area
-	new_robot.position = RectangularArea.sample_point(play_area.get_local_extents())
+	new_robot.position = RectangularArea.sample_point(play_area.get_local_extents().grow(-20))
 	new_robot.tree_exiting.connect(_on_npc_death, ConnectFlags.CONNECT_APPEND_SOURCE_OBJECT)
 	add_child(new_robot, true)
 
