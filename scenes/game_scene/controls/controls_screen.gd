@@ -52,7 +52,11 @@ func _action_name_tester(action: InputEvent, prefix: String) -> Callable:
 
 ## Returns the Label for the given InputEvent, if there is a matching one
 func get_action_label(action: InputEvent) -> Label:
-	if _dirs.any(_action_name_tester(action, "move")):
+	if action.is_action("beep_boop"):
+		return $beep_boop
+	elif action.is_action("throw"):
+		return $throw
+	elif _dirs.any(_action_name_tester(action, "move")):
 		return $move
 	elif _dirs.any(_action_name_tester(action, "target")):
 		return $target

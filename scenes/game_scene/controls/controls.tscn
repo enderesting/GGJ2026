@@ -9,33 +9,38 @@ base_font = ExtResource("2_250am")
 spacing_glyph = 1
 
 [node name="Controls" type="TextureRect" unique_id=353673576]
-offset_right = 327.1111
-offset_bottom = 184.0
+offset_left = -10.0
+offset_top = -1.0
+offset_right = 317.1111
+offset_bottom = 183.0
 texture = ExtResource("1_2xxc8")
 script = ExtResource("2_45wye")
 
 [node name="P1_tint" type="ColorRect" parent="." unique_id=767008792]
+z_index = 1
 layout_mode = 0
 offset_left = 33.0
 offset_top = 64.0
-offset_right = 146.0
+offset_right = 152.0
 offset_bottom = 159.0
 color = Color(0.08235294, 0.101960786, 0.11764706, 0.83137256)
 
 [node name="P2_tint" type="ColorRect" parent="." unique_id=1318220715]
+z_index = 1
 layout_mode = 0
-offset_left = 171.0
+offset_left = 184.0
 offset_top = 56.0
-offset_right = 297.0
+offset_right = 302.0
 offset_bottom = 166.0
 color = Color(0.08235294, 0.101960786, 0.11764706, 0.83137256)
 
 [node name="trap_color" type="Label" parent="." unique_id=468472276]
+z_index = 1
 layout_mode = 0
-offset_left = 85.0
-offset_top = 42.0
-offset_right = 134.0
-offset_bottom = 67.0
+offset_left = 111.0
+offset_top = 56.0
+offset_right = 160.0
+offset_bottom = 81.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = SubResource("FontVariation_ubmpl")
@@ -48,27 +53,30 @@ vertical_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="trap_saw" type="Label" parent="." unique_id=1459660589]
+z_index = 1
 layout_mode = 0
-offset_left = 141.0
-offset_top = 70.0
-offset_right = 189.0
+offset_left = 136.0
+offset_top = 66.0
+offset_right = 184.0
 offset_bottom = 91.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = SubResource("FontVariation_ubmpl")
 theme_override_font_sizes/font_size = 8
-text = "saw blade
+text = "saw
+blade
 (l)"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="trap_stop" type="Label" parent="." unique_id=516093254]
+z_index = 1
 layout_mode = 0
-offset_left = 54.0
-offset_top = 55.0
-offset_right = 93.0
-offset_bottom = 80.0
+offset_left = 71.0
+offset_top = 47.0
+offset_right = 110.0
+offset_bottom = 72.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = SubResource("FontVariation_ubmpl")
@@ -81,27 +89,64 @@ vertical_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="trap_laser" type="Label" parent="." unique_id=574971246]
+z_index = 1
 layout_mode = 0
-offset_left = 139.0
-offset_top = 99.0
-offset_right = 191.0
-offset_bottom = 120.0
+offset_left = 130.0
+offset_top = 111.0
+offset_right = 182.0
+offset_bottom = 136.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = SubResource("FontVariation_ubmpl")
 theme_override_font_sizes/font_size = 8
-text = "laser beam
+text = "laser
+beam
 (k)"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
 
-[node name="target" type="Label" parent="." unique_id=1961090283]
+[node name="beep_boop" type="Label" parent="." unique_id=1998709214]
+z_index = 1
 layout_mode = 0
-offset_left = 2.0
-offset_top = 51.0
-offset_right = 50.0
-offset_bottom = 76.0
+offset_left = 269.0
+offset_top = 114.0
+offset_right = 321.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_ubmpl")
+theme_override_font_sizes/font_size = 8
+text = "beep
+boop(Q)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="throw" type="Label" parent="." unique_id=159144122]
+z_index = 1
+layout_mode = 0
+offset_left = 273.0
+offset_top = 67.0
+offset_right = 321.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_ubmpl")
+theme_override_font_sizes/font_size = 8
+text = "shoot
+(E)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="target" type="Label" parent="." unique_id=1961090283]
+z_index = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 55.0
+offset_right = 68.0
+offset_bottom = 80.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = SubResource("FontVariation_ubmpl")
@@ -114,11 +159,12 @@ vertical_alignment = 1
 metadata/_edit_group_ = true
 
 [node name="move" type="Label" parent="." unique_id=1613376002]
+z_index = 1
 layout_mode = 0
-offset_left = 240.0
-offset_top = 45.0
-offset_right = 279.0
-offset_bottom = 66.0
+offset_left = 217.0
+offset_top = 48.0
+offset_right = 256.0
+offset_bottom = 69.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = -1
 theme_override_fonts/font = SubResource("FontVariation_ubmpl")
@@ -128,3 +174,51 @@ text = "move
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_group_ = true
+
+[node name="p1_laser" type="Line2D" parent="." unique_id=1290035753]
+position = Vector2(4, -7)
+points = PackedVector2Array(137, 127, 108.93707, 127, 103, 112)
+width = 1.6
+default_color = Color(4.813075e-06, 0.5915846, 0.88883424, 1)
+
+[node name="p1_saw" type="Line2D" parent="." unique_id=512526267]
+position = Vector2(13, -15)
+points = PackedVector2Array(136, 103, 128, 112, 103, 112)
+width = 1.6
+default_color = Color(4.813075e-06, 0.5915846, 0.88883424, 1)
+
+[node name="p1_color" type="Line2D" parent="." unique_id=1752737955]
+position = Vector2(4, -25)
+points = PackedVector2Array(120, 101, 107, 101, 102, 114)
+width = 1.6
+default_color = Color(4.813075e-06, 0.5915846, 0.88883424, 1)
+
+[node name="p1_traffic" type="Line2D" parent="." unique_id=1244498321]
+position = Vector2(4, -25)
+points = PackedVector2Array(86, 99, 86, 122, 94, 122)
+width = 1.6
+default_color = Color(4.813075e-06, 0.5915846, 0.88883424, 1)
+
+[node name="p1_move_laser" type="Line2D" parent="." unique_id=398733424]
+position = Vector2(-47, -23)
+points = PackedVector2Array(86, 104, 86, 117, 102, 117)
+width = 1.6
+default_color = Color(4.813075e-06, 0.5915846, 0.88883424, 1)
+
+[node name="p2_move" type="Line2D" parent="." unique_id=1365319266]
+position = Vector2(7, -6)
+points = PackedVector2Array(214, 73, 208, 77, 208, 93)
+width = 1.6
+default_color = Color(0.9380263, 0.28107658, 0.69091403, 1)
+
+[node name="p2_shoot" type="Line2D" parent="." unique_id=327644324]
+position = Vector2(9, 2)
+points = PackedVector2Array(288, 86, 282, 94, 257, 94)
+width = 1.6
+default_color = Color(0.9380263, 0.28107658, 0.69091403, 1)
+
+[node name="p2_beep" type="Line2D" parent="." unique_id=950913226]
+position = Vector2(-2, -9)
+points = PackedVector2Array(294, 123, 284, 113, 264, 113)
+width = 1.6
+default_color = Color(0.9380263, 0.28107658, 0.69091403, 1)
