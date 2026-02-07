@@ -51,7 +51,7 @@ func tween_labels():
 		
 		# Bounce from joypad
 		var original_position = label.position
-		label.position = Vector2(66, 90) if label.name != "Label6" else Vector2(240, 90)
+		label.position = Vector2(66, 90) if label.name not in ["beep_boop", "throw", "move"] else Vector2(220, 90)
 		tween.tween_property(label, ^"position", original_position, 0.5) \
 			.set_trans(Tween.TRANS_SPRING) \
 			.set_ease(Tween.EASE_OUT) \
