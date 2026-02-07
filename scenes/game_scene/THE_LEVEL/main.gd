@@ -1,10 +1,5 @@
 extends Node2D
 
-
-func _process(_delta: float) -> void:
-	pass
-
-
 func _on_timer_timeout() -> void:
 	Crossfade.fade_out()
 	Crossfade.faded_out.connect(kys)

@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://bb5d3wq1d1clv" path="res://assets/temp/Cog_box_cogpile.png" id="15_1oanx"]
 [ext_resource type="Texture2D" uid="uid://bn0hmgrxyl300" path="res://assets/temp/Cog_box_box.png" id="16_77dtk"]
 [ext_resource type="PackedScene" uid="uid://deqepufc378p1" path="res://scenes/game_scene/THE_LEVEL/cooldown_mask.tscn" id="18_04fjb"]
+[ext_resource type="Script" uid="uid://cnhptx50oih2f" path="res://scenes/game_scene/THE_LEVEL/pause.gd" id="18_sutjb"]
+[ext_resource type="Theme" uid="uid://djkvyrjbuapy7" path="res://resources/new_theme.tres" id="19_04fjb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(228, 138)
@@ -100,6 +102,7 @@ _data = {
 }
 
 [node name="TheLevel" type="Node2D" unique_id=521265649]
+process_mode = 1
 script = ExtResource("1_5edlj")
 
 [node name="MockupBg" type="Sprite2D" parent="." unique_id=1384063776]
@@ -257,6 +260,33 @@ position = Vector2(18, 146)
 
 [node name="Mask4" parent="ButtonMasks" unique_id=1999650414 instance=ExtResource("18_04fjb")]
 position = Vector2(74, 146)
+
+[node name="Pause" type="CanvasLayer" parent="." unique_id=261909794]
+process_mode = 3
+visible = false
+script = ExtResource("18_sutjb")
+
+[node name="PauseBackdrop" type="ColorRect" parent="Pause" unique_id=341330173]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08235294, 0.101960786, 0.11764706, 0.8862745)
+
+[node name="PauseText" type="Label" parent="Pause/PauseBackdrop" unique_id=356264645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("19_04fjb")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="tree_exiting" from="PlayArea/TheHiveminnd/BotPlayer" to="." method="_on_player_tree_exiting" flags=3]
 [connection signal="color_picked" from="Overseer" to="PlayArea/TheHiveminnd" method="_on_overseer_color_picked"]
