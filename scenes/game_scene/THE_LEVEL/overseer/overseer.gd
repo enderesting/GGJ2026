@@ -7,13 +7,97 @@ signal color_picked(blessed_quadrant: Quadrant)
 
 signal trap_started(name: StringName)
 signal trap_finished(name: StringName)
-signal trap_cooldown()
+signal trap_cooldown_finished()
+
+enum InputState {
+	READY_TO_ATTACK,
+	AIMING_LASER,
+	FIRING_LASER,
+	FIRING_SAW,
+	FIRING_STOP,
+	FIRING_COLOR,
+	COOLING_DOWN,
+}
+
+enum InputTransition {
+	TRAP_LASER,
+	TRAP_SAW,
+	TRAP_STOP,
+	TRAP_COLOR,
+	COOLDOWN_START,
+	COOLDOWN_TIMEOUT,
+}
+
+const TRAP_LASER: StringName = &"trap_laser"
+const TRAP_SAW: StringName = &"trap_saw"
+const TRAP_STOP: StringName = &"trap_stop"
+const TRAP_COLOR: StringName = &"trap_color"
+
+const _INPUT_FSM_TRANSITION_TO_ACTION_EVENT: Dictionary[InputTransition, StringName] = {
+	InputTransition.TRAP_LASER: TRAP_LASER,
+	InputTransition.TRAP_SAW:   TRAP_SAW,
+	InputTransition.TRAP_STOP:  TRAP_STOP,
+	InputTransition.TRAP_COLOR: TRAP_COLOR,
+}
+
+const _TO_COOLDOWN = { InputTransition.COOLDOWN_START: InputState.COOLING_DOWN }
+
+## Finite state machine driven by input actions
+const _INPUT_FSM_STATES: Dictionary[InputState, Dictionary] = {
+	InputState.READY_TO_ATTACK: {
+		data = { warning_animation = &"warning_idle" },
+		transitions = {
+			InputTransition.TRAP_LASER: InputState.AIMING_LASER,
+			InputTransition.TRAP_SAW: InputState.FIRING_SAW,
+			InputTransition.TRAP_STOP: InputState.FIRING_STOP,
+			InputTransition.TRAP_COLOR: InputState.FIRING_COLOR,
+		},
+	},
+	InputState.AIMING_LASER: {
+		data = {
+			trap_name = TRAP_LASER,
+			warning_animation = &"warning_die",
+		},
+		transitions = { InputTransition.TRAP_LASER: InputState.FIRING_LASER },
+	},
+	InputState.FIRING_LASER: {
+		data = {
+			trap_name = TRAP_LASER,
+			warning_animation = &"warning_die",
+		},
+		transitions = _TO_COOLDOWN,
+	},
+	InputState.FIRING_SAW: {
+		data = {
+			trap_name = TRAP_SAW,
+			warning_animation = &"warning_run",
+		},
+		transitions = _TO_COOLDOWN,
+	},
+	InputState.FIRING_STOP: {
+		data = {
+			trap_name = TRAP_STOP,
+			warning_animation = &"warning_stop",
+		},
+		transitions = _TO_COOLDOWN,
+	},
+	InputState.FIRING_COLOR: {
+		data = {
+			trap_name = TRAP_COLOR,
+			warning_animation = &"warning_go",
+		},
+		transitions = _TO_COOLDOWN,
+	},
+	InputState.COOLING_DOWN: {
+		data = { warning_animation = &"warning_idle" },
+		transitions = {	InputTransition.COOLDOWN_TIMEOUT: InputState.READY_TO_ATTACK },
+	},
+}
+
+var _current_input_state: InputState = InputState.READY_TO_ATTACK
+
 
 @export var play_area: RectangularArea
-
-# Evil State (that caused us bugs in the game displayed at the jam)
-var can_trigger_trap := true
-var charging_laser := false
 
 @onready var slowdown_fx := SlowdownFX.new(self)
 @onready var modulate_fx := ModulateFX.new(%CanvasModulate)
@@ -25,7 +109,6 @@ signal died()
 
 @export var max_life: int = 10
 @onready var life := max_life
-
 @onready var sprite := $OverseerSprite as Node2D
 
 func take_damage():
@@ -58,17 +141,18 @@ func die():
 #endregion
 
 
-func _ready() -> void:
-	cooldown.wait_time = Globals.match_trap_cooldown
-	cooldown.timeout.connect(_on_cooldown_timeout)
-
-	%Sawblade.body_entered.connect(_on_sawblade_body_entered)
-
+func _init() -> void:
 	# pass through our signals to the EventBus
 	trap_started.connect(EventBus.trap_started.emit)
 	trap_finished.connect(EventBus.trap_finished.emit)
-	trap_cooldown.connect(EventBus.trap_cooldown.emit)
+	trap_cooldown_finished.connect(EventBus.trap_cooldown.emit)
 	color_picked.connect(EventBus.trap_color_picked.emit)
+
+
+func _ready() -> void:
+	cooldown.wait_time = Globals.match_trap_cooldown
+	cooldown.timeout.connect(feed_fsm_input.bind(InputTransition.COOLDOWN_TIMEOUT))
+	%Sawblade.body_entered.connect(_on_sawblade_body_entered)
 
 	warning_signs.play("warning_idle")
 	$Deathray.visible = false
@@ -78,66 +162,51 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Saw, stop and color traps have identical setup and teardown boilerplate
-	var traps: Dictionary[StringName, Dictionary] = {
-		&"trap_saw": {
-			warning_animation = &"warning_run",
-			method = _do_sawblade,
-		},
-		&"trap_stop": {
-			warning_animation = &"warning_stop",
-			method = _do_stop,
-		},
-		&"trap_color": {
-			warning_animation = &"warning_go",
-			method = _do_quadrants,
-		},
-	}
+	# Drive the FSM
+	for available_transition in _INPUT_FSM_STATES[_current_input_state].transitions:
+		if (
+			available_transition in _INPUT_FSM_TRANSITION_TO_ACTION_EVENT
+			and event.is_action_pressed(_INPUT_FSM_TRANSITION_TO_ACTION_EVENT[available_transition])
+		):
+			feed_fsm_input(available_transition)
 
-	for trap_name in traps:
-		var input_action_name := trap_name
-		var trap := traps[trap_name]
 
-		if event.is_action_pressed(input_action_name) and can_trigger_trap:
-			# Setup
-			can_trigger_trap = false
-			warning_signs.play(trap.warning_animation)
-			trap_started.emit(trap_name)
+## The heart of the Finite State Machine
+## Call this to perform state transitions and trigger reactions to all kinds of supported
+## input actions (like &"trap_laser") and messages (like COOLDOWN_START)
+func feed_fsm_input(transition) -> void:
+	var prev_state = _current_input_state
+	var next_state = _INPUT_FSM_STATES[_current_input_state].transitions.get(transition)
+	if next_state != null:
+		var prev_state_data = _INPUT_FSM_STATES[prev_state].get("data", {})
+		var next_state_data = _INPUT_FSM_STATES[next_state].get("data", {})
+		_process_fsm_transition(prev_state, prev_state_data, transition, next_state, next_state_data)
+		_current_input_state = next_state
 
-			# Execution
-			await trap.method.call()
 
-			# Teardown
-			trap_finished.emit(trap_name)
-			warning_signs.play(&"warning_idle")
-			cooldown.start()
-
-			# Don't process more traps
-			return
+## Input and message handling goes here!
+func _process_fsm_transition(prev_state, prev_state_data, transition, next_state, next_state_data):
+	if "warning_animation" in next_state_data:
+		warning_signs.play(next_state_data.warning_animation)
 	
-	# Special input handling for laser trap charging and shooting:
-	# First press initiates laser aiming
-	if event.is_action_pressed(&"trap_laser") and can_trigger_trap:
-		can_trigger_trap = false
-		charging_laser = true
-		warning_signs.play("warning_die")
-		trap_started.emit(&"trap_laser")
-		_do_deathray_charging()
-		return
-
-	# Second press shoots the laser
-	if event.is_action_pressed(&"trap_laser") and charging_laser:
-		charging_laser = false
-		cooldown.start()
-		await _do_deathray_shot()
-		trap_finished.emit(&"trap_laser")
-		warning_signs.play(&"warning_idle")
-		return
-
-
-func _on_cooldown_timeout():
-	trap_cooldown.emit()
-	can_trigger_trap = true
+	match [prev_state, transition, next_state]:
+		[InputState.READY_TO_ATTACK, _, _]:
+			trap_started.emit(next_state_data.trap_name)
+		[_, InputTransition.COOLDOWN_START, InputState.COOLING_DOWN]:
+			trap_finished.emit(prev_state_data.trap_name)
+			cooldown.start()
+		[InputState.COOLING_DOWN, InputTransition.COOLDOWN_TIMEOUT, InputState.READY_TO_ATTACK]:
+			trap_cooldown_finished.emit()
+	
+	match next_state:
+		InputState.AIMING_LASER: _do_deathray_charging()
+		InputState.FIRING_LASER: await _do_deathray_shot()
+		InputState.FIRING_SAW:   await _do_sawblade()
+		InputState.FIRING_STOP:  await _do_stop()
+		InputState.FIRING_COLOR: await _do_quadrants()
+		_: return
+	
+	feed_fsm_input(InputTransition.COOLDOWN_START)
 
 
 func _on_sawblade_body_entered(body: Node2D) -> void:
@@ -179,7 +248,7 @@ func _do_deathray_shot() -> void:
 	await %Bolt.animation_finished
 	slowdown_fx.end_slowdown()
 	modulate_fx.lights_on()
-	
+
 	%Bolt.hide()
 	$Deathray.hide()
 
@@ -262,9 +331,9 @@ class SlowdownFX:
 	const DEFAULT_SCALE: float = 0.3
 	const DEFAULT_DURATION_IN: float = 0.2
 	const DEFAULT_DURATION_OUT: float = 0.2
-	
+
 	var some_node: Node  ## Need something to call "create_tween()" on
-	
+
 	func _init(the_node: Node):
 		some_node = the_node
 
