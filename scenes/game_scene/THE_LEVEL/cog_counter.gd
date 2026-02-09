@@ -14,7 +14,6 @@ func _ready() -> void:
 
 func _on_ammo_pickup(cog_counter: int) -> void:
 	cog_anim_player.play("AddCog")
-	await get_tree().create_timer(1.6).timeout
 	_move_cog_pile(cog_counter)
 
 func _on_ammo_used(cog_counter: int) -> void:
