@@ -78,7 +78,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# DRY on the remaining traps setup, execution and teardown
+	# Saw, stop and color traps have identical setup and teardown boilerplate
 	var traps: Dictionary[StringName, Dictionary] = {
 		&"trap_saw": {
 			warning_animation = &"warning_run",

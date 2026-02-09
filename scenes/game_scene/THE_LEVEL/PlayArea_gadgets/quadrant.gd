@@ -9,10 +9,12 @@ extends RectangularArea
 
 signal animation_finished(anim_name: StringName)
 
+const GROUP: StringName = &"quadrants"
+
 ## Retrieve quadrants in the quadrants group, 100% type-safely
 static func get_nodes_in_group(tree: SceneTree) -> Array[Quadrant]:
 	var quadrants: Array[Quadrant] = []
-	for quadrant in tree.get_nodes_in_group("quadrants"):
+	for quadrant in tree.get_nodes_in_group(GROUP):
 		if quadrant is Quadrant:
 			quadrants.push_back(quadrant)
 	return quadrants
@@ -31,7 +33,7 @@ func kill_them_all() -> void:
 		if body is BotNPC:
 			body.states.DYING.animation_name = "lightning_death"
 		if body is BotPlayer:
-			body.states.DYING.animation_name = "lightning_death_human"	
+			body.states.DYING.animation_name = "lightning_death_human"
 		if body is Bot:
 			body.states.DYING.auto_free = false
 			body.change_state(body.states.DYING)
