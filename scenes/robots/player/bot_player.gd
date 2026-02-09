@@ -16,10 +16,9 @@ signal ammo_picked(ammo_count:int)
 signal ammo_used(ammo_count:int)
 
 func pickup_ammo():
-	if ammo >= GlobalVariables.MAX_AMMO:
+	if ammo >= Globals.match_max_ammo:
 		return
 	ammo += 1
-	print("pickup_ammo(), ammo count = " , ammo)
 	ammo_picked.emit(ammo)
 
 func throw_ammo():
