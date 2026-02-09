@@ -78,7 +78,45 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Trap 1: Death ray
+	# DRY on the remaining traps setup, execution and teardown
+	var traps: Dictionary[StringName, Dictionary] = {
+		&"trap_saw": {
+			warning_animation = &"warning_run",
+			method = _do_sawblade,
+		},
+		&"trap_stop": {
+			warning_animation = &"warning_stop",
+			method = _do_stop,
+		},
+		&"trap_color": {
+			warning_animation = &"warning_go",
+			method = _do_quadrants,
+		},
+	}
+
+	for trap_name in traps:
+		var input_action_name := trap_name
+		var trap := traps[trap_name]
+
+		if event.is_action_pressed(input_action_name) and can_trigger_trap:
+			# Setup
+			can_trigger_trap = false
+			warning_signs.play(trap.warning_animation)
+			trap_started.emit(trap_name)
+
+			# Execution
+			await trap.method.call()
+
+			# Teardown
+			trap_finished.emit(trap_name)
+			warning_signs.play(&"warning_idle")
+			cooldown.start()
+
+			# Don't process more traps
+			return
+	
+	# Special input handling for laser trap charging and shooting:
+	# First press initiates laser aiming
 	if event.is_action_pressed(&"trap_laser") and can_trigger_trap:
 		can_trigger_trap = false
 		charging_laser = true
@@ -87,45 +125,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		_do_deathray_charging()
 		return
 
+	# Second press shoots the laser
 	if event.is_action_pressed(&"trap_laser") and charging_laser:
+		charging_laser = false
 		cooldown.start()
 		await _do_deathray_shot()
 		trap_finished.emit(&"trap_laser")
 		warning_signs.play(&"warning_idle")
-		charging_laser = false
-		return
-
-	# Trap 2: Sawblade
-	if event.is_action_pressed(&"trap_saw") and can_trigger_trap:
-		can_trigger_trap = false
-		warning_signs.play("warning_run")
-		trap_started.emit(&"trap_saw")
-		await _do_sawblade()
-		trap_finished.emit(&"trap_saw")
-		warning_signs.play(&"warning_idle")
-		cooldown.start()
-		return
-
-	# Trap 3: Stop light
-	if event.is_action_pressed(&"trap_stop") and can_trigger_trap:
-		can_trigger_trap = false
-		warning_signs.play("warning_stop")
-		trap_started.emit(&"trap_stop")
-		await _do_stop()
-		warning_signs.play(&"warning_idle")
-		trap_finished.emit(&"trap_stop")
-		cooldown.start()
-		return
-
-	# Trap 4: Color quadrants
-	if event.is_action_pressed(&"trap_color") and can_trigger_trap:
-		can_trigger_trap = false
-		warning_signs.play("warning_go")
-		trap_started.emit(&"trap_color")
-		await _do_quadrants()
-		trap_finished.emit(&"trap_color")
-		warning_signs.play(&"warning_idle")
-		cooldown.start()
 		return
 
 
