@@ -29,6 +29,7 @@ var blink_dim: Color = Color.WHITE.lerp(GlobalVariables.COLOR_BG, 0.95)
 
 func _ready() -> void:
 	EventBus.trap_started.connect(_on_trap_started)
+	EventBus.trap_fired.connect(_on_trap_fired)
 	EventBus.trap_finished.connect(_on_trap_finished)
 
 
@@ -38,9 +39,20 @@ func _on_trap_started(trap_name):
 		led_blink.play()
 
 
+func _on_trap_fired(trap_name):
+	if trap_name == name:
+		led_blink.stop()
+		create_tween().tween_property(activated_led, ^"modulate", blink_lit, 0.15)
+
+
 func _on_trap_finished(_trap_name):
-	activated_led.hide()
+	# Turn off the LED
 	led_blink.stop()
+	(create_tween()
+		.tween_property(activated_led, ^"modulate", blink_dim, 0.15)
+		.finished.connect(activated_led.hide))
+	
+	# Start the cooldown progress animation
 	(create_tween()
 		.tween_property(progress_bar, ^"value", progress_bar.min_value,
 			Globals.match_trap_cooldown)

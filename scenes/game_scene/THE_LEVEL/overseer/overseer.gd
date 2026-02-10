@@ -6,6 +6,7 @@ signal stop_moving()
 signal color_picked(blessed_quadrant: Quadrant)
 
 signal trap_started(name: StringName)
+signal trap_fired(name: StringName)
 signal trap_finished(name: StringName)
 signal trap_cooldown()
 
@@ -70,6 +71,7 @@ func _ready() -> void:
 
 	# pass through our signals to the EventBus
 	trap_started.connect(EventBus.trap_started.emit)
+	trap_fired.connect(EventBus.trap_fired.emit)
 	trap_finished.connect(EventBus.trap_finished.emit)
 	trap_cooldown.connect(EventBus.trap_cooldown.emit)
 	color_picked.connect(EventBus.trap_color_picked.emit)
@@ -116,6 +118,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		TrapState.AIMING_LASER:
 			if event.is_action_pressed(&"trap_laser"):
 				trap_state = TrapState.UNABLE_TO_ACT
+				trap_fired.emit(&"trap_laser")
 				await _do_deathray_shot()
 				trap_teardown.call(&"trap_laser")
 				return
@@ -174,6 +177,7 @@ func _do_deathray_shot() -> void:
 
 
 func _do_sawblade() -> void:
+	trap_fired.emit(&"trap_saw")
 	$SawbladeClipHack/Sawblade/AudioStreamPlayer.play()
 	%Sawblade.global_position.x = play_area.get_extents().get_support(Vector2.RIGHT).x
 	%Sawblade.global_position.y = play_area.get_extents().get_center().y + 50
@@ -208,6 +212,7 @@ func _do_stop() -> void:
 		$Stoplight.play()
 		while $Stoplight.frame < 4:
 			await $Stoplight.frame_changed
+		trap_fired.emit(&"trap_stop")
 		stop_moving.emit()
 		await $Stoplight.animation_finished
 		$Stoplight.visible = false
@@ -231,6 +236,8 @@ func _do_quadrants() -> void:
 	for quadrant in killing_quadrants:
 		quadrant.animate_floor_lightning_charging()
 	await killing_quadrants[0].animation_finished
+	
+	trap_fired.emit(&"trap_color")
 
 	$Deathray/AudioStreamPlayer2.play()
 	for quadrant in killing_quadrants:
