@@ -8,6 +8,7 @@ size = Vector2(14, 6)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ntwvh"]
 shader = ExtResource("1_ntwvh")
+shader_parameter/flickering_dissolve = false
 
 [node name="Area2D" type="Area2D" unique_id=781041981 groups=["corpse"]]
 collision_layer = 32
