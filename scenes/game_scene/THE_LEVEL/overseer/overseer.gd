@@ -9,11 +9,15 @@ signal trap_started(name: StringName)
 signal trap_finished(name: StringName)
 signal trap_cooldown()
 
+enum TrapState {
+	READY_TO_ATTACK,
+	AIMING_LASER,
+	UNABLE_TO_ACT,
+}
+
 @export var play_area: RectangularArea
 
-# Evil State (that caused us bugs in the game displayed at the jam)
-var can_trigger_trap := true
-var charging_laser := false
+var trap_state: TrapState = TrapState.READY_TO_ATTACK
 
 @onready var slowdown_fx := SlowdownFX.new(self)
 @onready var modulate_fx := ModulateFX.new(%CanvasModulate)
@@ -78,66 +82,48 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Saw, stop and color traps have identical setup and teardown boilerplate
-	var traps: Dictionary[StringName, Dictionary] = {
-		&"trap_saw": {
-			warning_animation = &"warning_run",
-			method = _do_sawblade,
-		},
-		&"trap_stop": {
-			warning_animation = &"warning_stop",
-			method = _do_stop,
-		},
-		&"trap_color": {
-			warning_animation = &"warning_go",
-			method = _do_quadrants,
-		},
-	}
-
-	for trap_name in traps:
-		var input_action_name := trap_name
-		var trap := traps[trap_name]
-
-		if event.is_action_pressed(input_action_name) and can_trigger_trap:
-			# Setup
-			can_trigger_trap = false
-			warning_signs.play(trap.warning_animation)
-			trap_started.emit(trap_name)
-
-			# Execution
-			await trap.method.call()
-
-			# Teardown
-			trap_finished.emit(trap_name)
-			warning_signs.play(&"warning_idle")
-			cooldown.start()
-
-			# Don't process more traps
-			return
+	var trap_setup := func(trap):
+		warning_signs.play(trap.warn)
+		trap_started.emit(trap.name)
 	
-	# Special input handling for laser trap charging and shooting:
-	# First press initiates laser aiming
-	if event.is_action_pressed(&"trap_laser") and can_trigger_trap:
-		can_trigger_trap = false
-		charging_laser = true
-		warning_signs.play("warning_die")
-		trap_started.emit(&"trap_laser")
-		_do_deathray_charging()
-		return
-
-	# Second press shoots the laser
-	if event.is_action_pressed(&"trap_laser") and charging_laser:
-		charging_laser = false
-		cooldown.start()
-		await _do_deathray_shot()
-		trap_finished.emit(&"trap_laser")
+	var trap_teardown := func(trap_name):
+		trap_finished.emit(trap_name)
 		warning_signs.play(&"warning_idle")
-		return
+		cooldown.start()
+	
+	match trap_state:
+		TrapState.READY_TO_ATTACK:
+			for trap in [
+				{ name = &"trap_saw"   , fn = _do_sawblade  , warn = &"warning_run"  },
+				{ name = &"trap_stop"  , fn = _do_stop      , warn = &"warning_stop" },
+				{ name = &"trap_color" , fn = _do_quadrants , warn = &"warning_go"   },
+			]:
+				if event.is_action_pressed(trap.name):
+					trap_state = TrapState.UNABLE_TO_ACT
+					trap_setup.call(trap)
+					await trap.fn.call()
+					trap_teardown.call(trap.name)
+					return
+			
+			# Special input handling for laser trap charging and shooting:
+			# First press initiates laser aiming
+			if event.is_action_pressed(&"trap_laser"):
+				trap_state = TrapState.AIMING_LASER
+				trap_setup.call({ name = &"trap_laser", warn = &"warning_die" })
+				_do_deathray_charging()
+				return
+
+		TrapState.AIMING_LASER:
+			if event.is_action_pressed(&"trap_laser"):
+				trap_state = TrapState.UNABLE_TO_ACT
+				await _do_deathray_shot()
+				trap_teardown.call(&"trap_laser")
+				return
 
 
 func _on_cooldown_timeout():
 	trap_cooldown.emit()
-	can_trigger_trap = true
+	trap_state = TrapState.READY_TO_ATTACK
 
 
 func _on_sawblade_body_entered(body: Node2D) -> void:
