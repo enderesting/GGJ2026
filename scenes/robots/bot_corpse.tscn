@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://dve4bfk4sdnq3"]
 
 [ext_resource type="Texture2D" uid="uid://c00uy2wwn1vd1" path="res://assets/deadRobotguy.png" id="1_eqddj"]
+[ext_resource type="Shader" uid="uid://cowh13haddcg0" path="res://resources/dissolve.gdshader" id="1_ntwvh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqddj"]
 size = Vector2(14, 6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ntwvh"]
+shader = ExtResource("1_ntwvh")
 
 [node name="Area2D" type="Area2D" unique_id=781041981 groups=["corpse"]]
 collision_layer = 32
@@ -14,4 +18,6 @@ position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_eqddj")
 
 [node name="BotCorpse" type="Sprite2D" parent="." unique_id=235645986]
+material = SubResource("ShaderMaterial_ntwvh")
+instance_shader_parameters/dissolve = 0.0
 texture = ExtResource("1_eqddj")

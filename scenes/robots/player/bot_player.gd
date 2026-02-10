@@ -27,7 +27,7 @@ func throw_ammo():
 		return
 	ammo -= 1
 	ammo_used.emit(ammo)
-	
+
 	throw_sound.play()
 	var projectile := PROJECTILE_SCENE.instantiate() as Node2D
 	projectile.top_level = true
@@ -36,13 +36,20 @@ func throw_ammo():
 	projectile.z_as_relative = false
 	add_child(projectile)
 
-func _on_pickup_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("corpse"):
-		area.remove_from_group("corpse")
-		# area.modulate.a = 
-		area.hide()
-		pickup_ammo()
 
+func _on_pickup_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group(&"corpse"):
+		area.remove_from_group(&"corpse")
+		pickup_ammo()
+		await _tween_dissolve(area.get_node(^"BotCorpse")).finished
+		area.queue_free()
+
+
+func _tween_dissolve(corpse_sprite: Sprite2D) -> MethodTweener:
+	return create_tween().tween_method(
+		func(dissolve):
+			corpse_sprite.set_instance_shader_parameter("dissolve", dissolve),
+		0.0, 1.0, 0.125)
 
 #endregion
 
@@ -72,10 +79,10 @@ func _exit_tree() -> void:
 
 func _physics_process(_delta: float) -> void:
 	current_state.physics_process(_delta)
-	
+
 func _unhandled_input(event: InputEvent) -> void:
 	current_state.handle_input(event)
-	
+
 func change_state(new_state: State) -> void:
 	if current_state:
 		current_state.exit()
