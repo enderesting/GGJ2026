@@ -1,6 +1,7 @@
 extends Sprite2D
 
 var blink_lit: Color = Color.WHITE.lerp(GlobalVariables.COLOR_BG, 0.05)
+var blink_half_lit: Color = Color.WHITE.lerp(GlobalVariables.COLOR_BG, 0.65)
 var blink_dim: Color = Color.WHITE.lerp(GlobalVariables.COLOR_BG, 0.95)
 
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -19,9 +20,10 @@ var blink_dim: Color = Color.WHITE.lerp(GlobalVariables.COLOR_BG, 0.95)
 	t.tween_interval(0.30)
 	t.tween_property(activated_led, ^"modulate", blink_dim, 0.25)
 	t.tween_interval(0.30)
+
 	# Manually advance some milliseconds, to sync a bit more to the warning signs
-	t.custom_step(0.02)
-	
+	#t.custom_step(0.02)
+
 	t.stop()
 	return t
 ).call() # Maybe an AnimationPlayer would've made more sense. But it doesn't have TRANS_EXPO!
@@ -31,6 +33,7 @@ func _ready() -> void:
 	EventBus.trap_started.connect(_on_trap_started)
 	EventBus.trap_fired.connect(_on_trap_fired)
 	EventBus.trap_finished.connect(_on_trap_finished)
+	EventBus.trap_cooldown.connect(_on_trap_cooldown)
 
 
 func _on_trap_started(trap_name):
@@ -41,20 +44,32 @@ func _on_trap_started(trap_name):
 
 func _on_trap_fired(trap_name):
 	if trap_name == name:
+		activated_led.hide()
 		led_blink.stop()
 		create_tween().tween_property(activated_led, ^"modulate", blink_lit, 0.15)
 
 
 func _on_trap_finished(_trap_name):
 	# Turn off the LED
+	activated_led.show()
 	led_blink.stop()
 	(create_tween()
-		.tween_property(activated_led, ^"modulate", blink_dim, 0.15)
-		.finished.connect(activated_led.hide))
-	
+		.tween_property(activated_led, ^"modulate", blink_dim, 0.15))
+
 	# Start the cooldown progress animation
 	(create_tween()
 		.tween_property(progress_bar, ^"value", progress_bar.min_value,
 			Globals.match_trap_cooldown)
 		.from(progress_bar.max_value)
 		.set_trans(Tween.TRANS_LINEAR))
+
+
+func _on_trap_cooldown():
+	# Blink LED twice, quickly
+	activated_led.show()
+	var t := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	t.tween_property(activated_led, ^"modulate", blink_half_lit, 0.125)
+	t.tween_property(activated_led, ^"modulate", blink_dim, 0.125)
+	t.set_speed_scale(2.0).set_loops(2)
+	await t.finished
+	activated_led.hide()
