@@ -8,6 +8,22 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04fjb"]
 bg_color = Color(0, 0.13725491, 0.1254902, 0.8039216)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wfooi"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_wfooi"]
+interpolation_mode = 2
+colors = PackedColorArray(0.09803922, 0.56078434, 0.39215687, 0.8980392, 0.078431375, 0.08235294, 0.105882354, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ktubx"]
+gradient = SubResource("Gradient_wfooi")
+width = 26
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="Mask" type="Sprite2D" unique_id=155629220]
 self_modulate = Color(0, 0, 0, 1)
 clip_children = 1
@@ -23,4 +39,14 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_wfooi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_04fjb")
 fill_mode = 2
 show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ActivatedLED" type="TextureRect" parent="." unique_id=418614140]
+visible = false
+material = SubResource("CanvasItemMaterial_wfooi")
+offset_left = -13.0
+offset_top = -10.0
+offset_right = 13.0
+offset_bottom = 10.0
+texture = SubResource("GradientTexture2D_ktubx")
 metadata/_edit_use_anchors_ = true

@@ -249,16 +249,16 @@ playback_default_blend_time = 0.2
 
 [node name="ButtonMasks" type="Node2D" parent="." unique_id=827084774]
 
-[node name="Mask" parent="ButtonMasks" unique_id=155629220 instance=ExtResource("18_04fjb")]
+[node name="trap_color" parent="ButtonMasks" unique_id=155629220 instance=ExtResource("18_04fjb")]
 position = Vector2(44, 125)
 
-[node name="Mask2" parent="ButtonMasks" unique_id=2085833935 instance=ExtResource("18_04fjb")]
+[node name="trap_laser" parent="ButtonMasks" unique_id=2085833935 instance=ExtResource("18_04fjb")]
 position = Vector2(44, 167)
 
-[node name="Mask3" parent="ButtonMasks" unique_id=1859116810 instance=ExtResource("18_04fjb")]
+[node name="trap_stop" parent="ButtonMasks" unique_id=1859116810 instance=ExtResource("18_04fjb")]
 position = Vector2(18, 146)
 
-[node name="Mask4" parent="ButtonMasks" unique_id=1999650414 instance=ExtResource("18_04fjb")]
+[node name="trap_saw" parent="ButtonMasks" unique_id=1999650414 instance=ExtResource("18_04fjb")]
 position = Vector2(74, 146)
 
 [node name="Pause" type="CanvasLayer" parent="." unique_id=261909794]
