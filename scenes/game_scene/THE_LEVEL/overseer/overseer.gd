@@ -93,32 +93,28 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	match trap_state:
 		TrapState.READY_TO_ATTACK:
-			for trap in [
+			var activated_trap = [
 				{ name = &"trap_saw"   , fn = _do_sawblade  , warn = &"warning_run"  },
 				{ name = &"trap_stop"  , fn = _do_stop      , warn = &"warning_stop" },
 				{ name = &"trap_color" , fn = _do_quadrants , warn = &"warning_go"   },
-			]:
-				if event.is_action_pressed(trap.name):
-					trap_state = TrapState.UNABLE_TO_ACT
-					trap_setup.call(trap)
-					await trap.fn.call()
-					trap_teardown.call(trap.name)
-					return
+			].reduce(func(acc, trap):
+				return trap if event.is_action_pressed(trap.name) else acc, false)
 			
-			# Special input handling for laser trap charging and shooting:
-			# First press initiates laser aiming
-			if event.is_action_pressed(&"trap_laser"):
+			if activated_trap:
+				trap_state = TrapState.UNABLE_TO_ACT
+				trap_setup.call(activated_trap)
+				await activated_trap.fn.call()
+				trap_teardown.call(activated_trap.name)
+			elif event.is_action_pressed(&"trap_laser"):
 				trap_state = TrapState.AIMING_LASER
 				trap_setup.call({ name = &"trap_laser", warn = &"warning_die" })
 				_do_deathray_charging()
-				return
 
 		TrapState.AIMING_LASER:
 			if event.is_action_pressed(&"trap_laser"):
 				trap_state = TrapState.UNABLE_TO_ACT
 				await _do_deathray_shot()
 				trap_teardown.call(&"trap_laser")
-				return
 
 
 func _on_cooldown_timeout():
