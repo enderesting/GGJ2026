@@ -24,9 +24,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy4vm"]
 size = Vector2(228, 138)
 
-[sub_resource type="Theme" id="Theme_276iw"]
-
 [sub_resource type="Theme" id="Theme_batfn"]
+
+[sub_resource type="Theme" id="Theme_276iw"]
 
 [sub_resource type="Animation" id="Animation_51v4g"]
 resource_name = "AddCog"
@@ -183,43 +183,103 @@ position = Vector2(-22, -136)
 script = ExtResource("10_fhvee")
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Countdown" unique_id=319313245]
-offset_left = 60.0
-offset_top = 140.0
-offset_right = 117.0
-offset_bottom = 168.0
-scale = Vector2(0.43, 0.43)
-theme = SubResource("Theme_276iw")
-theme_override_colors/font_color = Color(0.047058824, 0.85490197, 0.63529414, 1)
-theme_override_colors/font_outline_color = Color(0.05882353, 0.39215687, 0.3019608, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("14_276iw")
-theme_override_font_sizes/font_size = 32
-text = "00:00"
-
 [node name="Timer" type="Timer" parent="Countdown" unique_id=2129905220]
 wait_time = 60.0
 one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="Countdown" unique_id=131855634]
-z_index = -1
-offset_left = 57.0
-offset_top = 140.0
-offset_right = 93.0
-offset_bottom = 155.0
-theme = SubResource("Theme_batfn")
-color = Color(0.05882353, 0.39215687, 0.3019608, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="Countdown/ColorRect" unique_id=1031765350]
-z_index = -1
-layout_mode = 0
-offset_left = -0.9999976
-offset_top = -0.9999999
-offset_right = 29.64516
-offset_bottom = 12.709678
+[node name="ColorRect2" type="ColorRect" parent="Countdown" unique_id=1031765350]
+offset_left = 56.0
+offset_top = 138.0
+offset_right = 96.0
+offset_bottom = 153.0
 scale = Vector2(1.24, 1.24)
 theme = SubResource("Theme_batfn")
 color = Color(0.15686275, 0.20784314, 0.16862746, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Countdown/ColorRect2" unique_id=131855634]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_batfn")
+color = Color(0.05882353, 0.39215687, 0.3019608, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Countdown/ColorRect2/ColorRect" unique_id=1208630558]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="MD" type="Label" parent="Countdown/ColorRect2/ColorRect/HBoxContainer" unique_id=319313245]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_276iw")
+theme_override_colors/font_color = Color(0.047058824, 0.85490197, 0.63529414, 1)
+theme_override_colors/font_outline_color = Color(0.05882353, 0.39215687, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("14_276iw")
+text = "1"
+horizontal_alignment = 2
+
+[node name="MU" type="Label" parent="Countdown/ColorRect2/ColorRect/HBoxContainer" unique_id=1469555045]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_276iw")
+theme_override_colors/font_color = Color(0.047058824, 0.85490197, 0.63529414, 1)
+theme_override_colors/font_outline_color = Color(0.05882353, 0.39215687, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("14_276iw")
+text = "0"
+horizontal_alignment = 2
+
+[node name="colon" type="Label" parent="Countdown/ColorRect2/ColorRect/HBoxContainer" unique_id=1729733270]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_276iw")
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_shadow_color = Color(0.047058824, 0.85490197, 0.63529414, 1)
+theme_override_colors/font_outline_color = Color(0.05882353, 0.39215687, 0.3019608, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = -3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("14_276iw")
+text = ":"
+
+[node name="SD" type="Label" parent="Countdown/ColorRect2/ColorRect/HBoxContainer" unique_id=1124952296]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_276iw")
+theme_override_colors/font_color = Color(0.047058824, 0.85490197, 0.63529414, 1)
+theme_override_colors/font_outline_color = Color(0.05882353, 0.39215687, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("14_276iw")
+text = "0"
+horizontal_alignment = 2
+
+[node name="SU" type="Label" parent="Countdown/ColorRect2/ColorRect/HBoxContainer" unique_id=2077225054]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_276iw")
+theme_override_colors/font_color = Color(0.047058824, 0.85490197, 0.63529414, 1)
+theme_override_colors/font_outline_color = Color(0.05882353, 0.39215687, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("14_276iw")
+text = "0"
+horizontal_alignment = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=774278575]
 stream = ExtResource("13_fhvee")
