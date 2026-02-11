@@ -13,6 +13,6 @@ void fragment() {
 		discard;
 	}
 	
-	COLOR.rgb = vec3(0.35, 0.41, 0.37) + vec3(0.4) * random(vec3(UV, TIME));
+	COLOR.rgb *= vec3(0.35, 0.41, 0.37) + vec3(0.4) * random(vec3(UV, TIME));
 	
 }
