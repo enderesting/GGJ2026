@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdc4t2emyoe6m"]
 
-[ext_resource type="Script" path="res://scenes/game_scene/endings/imposter_win.gd" id="1_2gkdf"]
+[ext_resource type="Script" uid="uid://btb8ku4o886xx" path="res://scenes/game_scene/endings/imposter_win.gd" id="1_2gkdf"]
 [ext_resource type="Texture2D" uid="uid://6m6etlnyhom5" path="res://assets/temp/WinnerCard_faker.png" id="2_canxl"]
 [ext_resource type="FontFile" uid="uid://cg0idfs8prkgv" path="res://resources/Technotot.otf" id="3_33181"]
 

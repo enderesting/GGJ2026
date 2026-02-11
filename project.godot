@@ -23,9 +23,9 @@ config/icon="uid://c36cbqtsp6qdq"
 [autoload]
 
 EventBus="*uid://dtxyc6o1cjutq"
-Crossfade="*uid://4cvykri8e665"
 Globals="*uid://cpohwbe0xvwma"
 fullscreen="*uid://h1atrq6es57v"
+SceneTransition="*uid://dqn0ndhfhpnvh"
 
 [display]
 
