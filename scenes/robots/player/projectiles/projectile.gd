@@ -10,7 +10,8 @@ func _ready() -> void:
 	var part = randi_range(0,2)
 	var parts = $AnimatedSprite2D.get_sprite_frames()
 	$AnimatedSprite2D.play(parts.get_animation_names().get(part))
-	%sfx.pitch_scale = 0.75 * [1.00, 1.12, 1.26, 1.33, 1.50, 1.68, 1.89, 2.00].pick_random()
+	#%sfx.pitch_scale = 0.75 * [1.00, 1.12, 1.26, 1.33, 1.50, 1.68, 1.89, 2.00].pick_random()
+	%sfx.pitch_scale = randf_range(0.92, 1.25)
 	move_to_overseer()
 
 func _process(delta: float) -> void:
