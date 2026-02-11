@@ -1,5 +1,5 @@
 extends Control
-class_name CrossFade
+class_name ShapeCover
 
 signal faded_in()
 signal faded_out()

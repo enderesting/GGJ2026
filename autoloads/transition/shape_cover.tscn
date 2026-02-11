@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dqn0ndhfhpnvh"]
+
+[ext_resource type="Script" uid="uid://bqy1ns3mg1l4l" path="res://autoloads/transition/shape_cover.gd" id="1_knhds"]
+[ext_resource type="Shader" uid="uid://b4pdgchir05st" path="res://autoloads/transition/shape_cover.gdshader" id="2_7rqdr"]
+[ext_resource type="Texture2D" uid="uid://bqaq3ek0bvin6" path="res://scenes/robots/player/projectiles/drop_cog_2.png" id="3_bjjgl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjjgl"]
+shader = ExtResource("2_7rqdr")
+shader_parameter/mask = ExtResource("3_bjjgl")
+shader_parameter/color_to_erase = Color(0.4, 0.89, 0.89, 1)
+shader_parameter/rotation_speed = 4.0
+shader_parameter/scaling_speed = 4.0
+shader_parameter/entry = false
+shader_parameter/progress = 0.3310000157225
+
+[node name="ShapeCover" type="Control" unique_id=932095863]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_knhds")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=455149712]
+material = SubResource("ShaderMaterial_bjjgl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08235294, 0.101960786, 0.11764706, 1)
